@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.Color;
 import java.awt.event.*;
 import static javax.swing.JOptionPane.showMessageDialog;
 import java.util.*;
@@ -38,6 +39,16 @@ public class login implements ActionListener {
         uname.setBounds(305, 105, 100, 25);
         upass.setBounds(305, 145, 100, 25);
 
+        Color fontColor = Color.WHITE;
+
+        lgnBtn.setForeground(fontColor);
+        signBtn.setForeground(fontColor);
+        exBtn.setForeground(fontColor);
+        lusn.setForeground(fontColor);
+        lpass.setForeground(fontColor);
+        uname.setForeground(fontColor);
+        upass.setForeground(fontColor);
+
         // addActionListener
         lgnBtn.addActionListener(this);
         exBtn.addActionListener(this);
@@ -59,8 +70,16 @@ public class login implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane();
         frame.setVisible(true);
-        userPasswordMap = readdata("E:\\DOCUMENTS\\University\\OOP1\\ROOMMATE\\data.txt");// Initializing read method
-                                                                                          // for mapping
+        userPasswordMap = readdata("E:\\DOCUMENTS\\University\\OOP1\\ROOMMATE\\data.txt");// Initializing read method for mapping
+        // set background color
+        Color backgroundColor = new Color(12, 53, 106);
+        frame.getContentPane().setBackground(backgroundColor);
+
+        // set text field color
+        Color textFieldColor = new Color(255, 196, 54); // #FFC436
+        uname.setBackground(textFieldColor);
+        upass.setBackground(textFieldColor);
+
     }
 
     // @Override
