@@ -14,7 +14,7 @@ public class opening {
                 card1.add(label1);
 
                 JPanel card2 = new JPanel();
-                ImageIcon imageIcon2 = new ImageIcon("E:\\DOCUMENTS\\University\\OOP1\\LAB\\Media\\R2.gif");
+                ImageIcon imageIcon2 = new ImageIcon("E:\\DOCUMENTS\\University\\OOP1\\LAB\\Media\\pg2.jpg");
                 JLabel label2 = new JLabel(imageIcon2);
                 card2.add(label2);
 
@@ -30,6 +30,7 @@ public class opening {
                 frame.add(cards);
                 frame.pack();
                 frame.setVisible(true);
+                frame.setLocationRelativeTo(null);
 
                 // Add a mouse listener to card2 for swipe detection
                 card2.addMouseListener(new MouseAdapter() {
@@ -53,7 +54,7 @@ public class opening {
                 });
 
                 // Create a timer that waits 1.5 seconds then shows the second card
-                Timer timer = new Timer(2000, e -> cl.show(cards, "Card 2"));
+                Timer timer = new Timer(2500, e -> cl.show(cards, "Card 2"));
                 timer.setRepeats(false); // Only execute once
                 timer.start(); // Start timer
             }
