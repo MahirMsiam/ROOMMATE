@@ -58,7 +58,7 @@ public class IntroDuck extends JFrame {
         });
         Admin.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 new login();
                 setVisible(false);
             }
