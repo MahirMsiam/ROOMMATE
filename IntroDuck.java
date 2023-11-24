@@ -12,7 +12,7 @@ public class IntroDuck extends JFrame {
 
     IntroDuck() {
         // Setting title and close operation
-        setTitle("ROOMMATE");
+        setTitle("ROOMMATE");//0000000000
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(900, 600);
         setLayout(null);
