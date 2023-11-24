@@ -209,7 +209,7 @@ public class login implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == b1) {
             String user = tf1.getText();
-            String pass = new String(p2.getPassword());
+            String pass = new String(p1.getPassword());
             // validating data from txt file by checking hashmap
             if (userPasswordMap.containsKey(user) && userPasswordMap.get(user).equals(pass)) {
                 showMessageDialog(null, "Login successful!");
@@ -220,10 +220,10 @@ public class login implements ActionListener {
             }
         } else if (e.getSource() == b4) {
             new IntroDuck();
-            loginDashboard.setVisible(false);
+            loginFrame.setVisible(false);
         } else if (e.getSource() == b2) {
             new Signup();
-            loginDashboard.setVisible(false);
+            loginFrame.setVisible(false);
         }
     }
 
@@ -240,7 +240,7 @@ public class login implements ActionListener {
             }
             // catcing exceptions and stack tracing
         } catch (IOException e) {
-            // e.printStackTrace();
+            e.printStackTrace();
             showMessageDialog(null, "Error reading user data from file.");
         }
 
