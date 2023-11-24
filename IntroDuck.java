@@ -71,4 +71,5 @@ public class IntroDuck extends JFrame {
         BGlabel.add(Admin);
         setVisible(true);
     }
-}
+}    
+//Siam is a bad boy
