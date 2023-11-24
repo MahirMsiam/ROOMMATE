@@ -72,5 +72,6 @@ public class IntroDuck extends JFrame {
         setVisible(true);
     }
 }    
-//Siam is a bad boy
-//Siam is  A good boy
+//Siam is a good boy
+
+
