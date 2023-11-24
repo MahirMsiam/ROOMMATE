@@ -72,3 +72,4 @@ public class IntroDuck extends JFrame {
         setVisible(true);
     }
 }
+//Siam is A good boy
