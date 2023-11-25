@@ -22,9 +22,6 @@ public class login implements ActionListener {
     login() {
         userPasswordMap = readdata("E:\\DOCUMENTS\\University\\OOP1\\ROOMMATE\\data.txt");// Initializing read method
                                                                                           // for mapping
-        // b1.addActionListener(this);
-        // b4.addActionListener(this);
-        // b2.addActionListener(this);
 
         // create frame
         loginFrame = new JFrame();
