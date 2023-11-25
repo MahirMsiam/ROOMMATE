@@ -29,9 +29,9 @@ public class login implements ActionListener {
         // create frame
         loginFrame = new JFrame();
 
-        ImageIcon image = new ImageIcon("Images/Background2.jpg");
+        ImageIcon image = new ImageIcon("image_path");
         background = new JLabel(image);
-        background.setBounds(0, 0, 1100, 700);
+        background.setBounds(0, 0,1100,700);
 
         // icon
         ImageIcon icon = new ImageIcon("Images/logo.png");
