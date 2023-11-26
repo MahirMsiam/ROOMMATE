@@ -20,11 +20,8 @@ public class login implements ActionListener {
     private Map<String, String> userPasswordMap;// creating hashmap
 
     login() {
-        userPasswordMap = readdata("E:\\DOCUMENTS\\University\\OOP1\\ROOMMATE\\data.txt");// Initializing read method
+        userPasswordMap = readdata("D:\\Project\\ROOMMATE\\data.txt");// Initializing read method
                                                                                           // for mapping
-        b1.addActionListener(this);
-        b4.addActionListener(this);
-        b2.addActionListener(this);
 
         // create frame
         loginFrame = new JFrame();
