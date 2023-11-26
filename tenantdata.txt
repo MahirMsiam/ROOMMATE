@@ -1,0 +1,7 @@
+
+Name: a
+Address: a
+Contact Number: 0
+Email: m@m.com
+Password: a
+[*][*][*][*][*][*][*][*][*][*][*]

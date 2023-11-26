@@ -17,16 +17,13 @@ public class login implements ActionListener {
     JTextField tf1, tf2;
     JButton b1, b2, b3, b4, b5; // login dashboard
     JButton b6, b7, b8, b9, b10; // admin Login
-    private Map<String, String> userPasswordMap;// creating hashmap
 
     login() {
-        userPasswordMap = readdata("D:\\Project\\ROOMMATE\\data.txt");// Initializing read method
-                                                                                          // for mapping
 
         // create frame
         loginFrame = new JFrame();
 
-        ImageIcon image = new ImageIcon("Images/Background2.jpg");
+        ImageIcon image = new ImageIcon("E:\\DOCUMENTS\\University\\OOP1\\ROOMMATE\\loginBg.jpg");
         background = new JLabel(image);
         background.setBounds(0, 0, 1100, 700);
 
@@ -208,14 +205,15 @@ public class login implements ActionListener {
             String user = tf1.getText();
             String pass = new String(p1.getPassword());
             // validating data from txt file by checking hashmap
-            if (userPasswordMap.containsKey(user) && userPasswordMap.get(user).equals(pass)) {
+            if (validateLogin(user, pass)) {
                 showMessageDialog(null, "Login successful!");
-                // new frame
-                // frame.setVisible(false);
+                // Additional logic if login is successful
             } else {
                 showMessageDialog(null, "Invalid Username or Password!");
             }
-        } else if (e.getSource() == b4) {
+        }
+
+        else if (e.getSource() == b4) {
             new IntroDuck();
             loginFrame.setVisible(false);
         } else if (e.getSource() == b2) {
@@ -224,24 +222,23 @@ public class login implements ActionListener {
         }
     }
 
-    // Reading Lines from txt file with try catc method
-    private Map<String, String> readdata(String filePath) {
-        Map<String, String> userDataMap = new HashMap<>();// initializing hashmap
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(":");
-                if (parts.length == 2) {
-                    userDataMap.put(parts[0], parts[1]);
-                }
+    private boolean validateLogin(String user, String pass) {
+        try (Scanner scanner = new Scanner(new File("E:\\DOCUMENTS\\\\University\\OOP1\\ROOMMATE\\tenantdata.txt"))) {
+            StringBuilder userData = new StringBuilder();
+
+            // Read the entire file into a StringBuilder
+            while (scanner.hasNextLine()) {
+                userData.append(scanner.nextLine().trim()).append("\n");
             }
-            // catcing exceptions and stack tracing
-        } catch (IOException e) {
+
+            // Check if the entered credentials exist in the data
+            String userCredentials = userData.toString();
+            return userCredentials.contains("Name: " + user) &&
+                    userCredentials.contains("Password: " + pass);
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-            showMessageDialog(null, "Error reading user data from file.");
         }
 
-        return userDataMap;
+        return false; // Unable to validate login
     }
-
 }

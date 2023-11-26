@@ -1,11 +1,12 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 
 public class Signup extends JFrame implements ActionListener {
     private JTextField nameField, addressField, contactField, emailField;
     private JPasswordField passwordField, confirmPasswordField;
-    private JButton signupButton,Back;
+    private JButton signupButton, Back;
 
     public Signup() {
         // Setting up the frame
@@ -30,8 +31,8 @@ public class Signup extends JFrame implements ActionListener {
         confirmPasswordField = new JPasswordField();
 
         signupButton = new JButton("Signup");
-        Back =new JButton("Back");
-        
+        Back = new JButton("Back");
+
         // Setting bounds for components
         nameLabel.setBounds(20, 20, 80, 25);
         addressLabel.setBounds(20, 60, 80, 25);
@@ -47,7 +48,7 @@ public class Signup extends JFrame implements ActionListener {
         passwordField.setBounds(180, 180, 150, 25);
         confirmPasswordField.setBounds(180, 220, 150, 25);
         setLocationRelativeTo(null);
-        Back.setBounds(100,280,100,25);
+        Back.setBounds(100, 280, 100, 25);
         signupButton.setBounds(250, 280, 100, 25);
         signupButton.addActionListener(this);
         Back.addActionListener(this);
@@ -87,29 +88,62 @@ public class Signup extends JFrame implements ActionListener {
 
             // Validate and process the user input
             if (validateInputs(name, address, contact, email, password, confirmPassword)) {
-                // Perform signup logic (e.g., save to database, show confirmation)
+                saveDataToFile(name, address, contact, email, password);//if if=true then data will be written in tenantdata.txt file
                 JOptionPane.showMessageDialog(this, "Signup successful!");
-            } else {
-                JOptionPane.showMessageDialog(this, "Invalid input or passwords do not match.");
-            }
-        }
-        else if(e.getSource()==Back){
+            } // else {
+              // JOptionPane.showMessageDialog(this, "Invalid input or passwords do not
+              // match.");
+              // }
+        } else if (e.getSource() == Back) {
             new login();
             setVisible(false);
         }
     }
 
     private boolean validateInputs(String name, String address, String contact, String email,
-                                    char[] password, char[] confirmPassword) {
-        // Add your validation logic here
-        // For example, check if the fields are not empty, validate email format,
-        // and ensure that password and confirmPassword match.
+            char[] password, char[] confirmPassword) {
+        // validation logic here
 
-        // For simplicity, this example just checks if the password and confirmPassword match.
-        return new String(password).equals(new String(confirmPassword));
+        // check if the fields are not empty
+        if (name.isEmpty() || address.isEmpty() || contact.isEmpty() || email.isEmpty() ||
+                password.length == 0 || confirmPassword.length == 0) {
+            JOptionPane.showMessageDialog(this, "Please fill in all fields.");
+            return false;
+        }
+        // validate email format
+        if (!isValidEmail(email)) {
+            JOptionPane.showMessageDialog(this, "Invalid email format.");
+            return false;
+        }
+        // ensure that password and confirmPassword match.
+        if (!new String(password).equals(new String(confirmPassword))) {
+            JOptionPane.showMessageDialog(this, "Passwords do not match.");
+            return false;
+        }
+        return true;
     }
 
-//     public static void main(String[] args) {
-//         new Signup();
-//     }
+    // email validation method
+    private boolean isValidEmail(String email) {
+
+        String emaicheck = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        return email.matches(emaicheck);
+    }
+
+    // saving user data in a txt file
+    private void saveDataToFile(String name, String address, String contact, String email, char[] password) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\DOCUMENTS\\University\\OOP1\\ROOMMATE\\tenantdata.txt", true))) {
+            // Append the user data to the text file
+            writer.write("Name: " + name + "\n");
+            writer.write("Address: " + address + "\n");
+            writer.write("Contact Number: " + contact + "\n");
+            writer.write("Email: " + email + "\n");
+            writer.write("Password: " + new String(password) + "\n");
+            writer.write("====================\n"); // Add a separator between entries
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error saving data to file.");
+        } 
+    }
+
 }
