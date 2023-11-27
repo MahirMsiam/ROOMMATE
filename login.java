@@ -221,16 +221,15 @@ public class login implements ActionListener {
             loginFrame.setVisible(false);
         }
     }
-
+//userpass validation methode
     private boolean validateLogin(String user, String pass) {
-        try (Scanner scanner = new Scanner(new File("E:\\DOCUMENTS\\\\University\\OOP1\\ROOMMATE\\tenantdata.txt"))) {
+        try (Scanner scanner = new Scanner(new File("E:\\DOCUMENTS\\University\\OOP1\\ROOMMATE\\tenantdata.txt"))) {
             StringBuilder userData = new StringBuilder();
 
             // Read the entire file into a StringBuilder
             while (scanner.hasNextLine()) {
                 userData.append(scanner.nextLine().trim()).append("\n");
             }
-
             // Check if the entered credentials exist in the data
             String userCredentials = userData.toString();
             return userCredentials.contains("Name: " + user) &&
