@@ -25,7 +25,7 @@ public class opening {
                 cards.add(card2, "Card 2");
 
                 // Create and set up the window
-                JFrame frame = new JFrame("CardLayout Demo");
+                JFrame frame = new JFrame("ROOMMATE");
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.add(cards);
                 frame.pack();
