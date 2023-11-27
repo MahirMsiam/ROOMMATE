@@ -19,7 +19,7 @@ public class IntroDuck extends JFrame {
         getContentPane();
         setLocationRelativeTo(null);
         // setting image
-        ImageIcon BG = new ImageIcon("E:\\DOCUMENTS\\University\\OOP1\\ROOMMATE\\front.jpg");
+        ImageIcon BG = new ImageIcon("D:\\Project\\ROOMMATE\\front.jpg");
         JLabel BGlabel = new JLabel(BG);
         BGlabel.setBounds(0, 0, getWidth(), getHeight());
         add(BGlabel);
