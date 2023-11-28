@@ -9,12 +9,12 @@ public class opening {
             public void run() {
                 // Create the frames (cards)
                 JPanel card1 = new JPanel();
-                ImageIcon imageIcon1 = new ImageIcon("D:\\Project\\ROOMMATE\\Roommate logo.gif");
+                ImageIcon imageIcon1 = new ImageIcon("E:\\DOCUMENTS\\University\\OOP1\\ROOMMATE\\Roommate logo.gif");
                 JLabel label1 = new JLabel(imageIcon1);
                 card1.add(label1);
 
                 JPanel card2 = new JPanel();
-                ImageIcon imageIcon2 = new ImageIcon("D:\\Project\\ROOMMATE\\pg2.jpg");
+                ImageIcon imageIcon2 = new ImageIcon("E:\\DOCUMENTS\\University\\OOP1\\ROOMMATE\\pg2.jpg");
                 JLabel label2 = new JLabel(imageIcon2);
                 card2.add(label2);
 
@@ -54,7 +54,7 @@ public class opening {
                 });
 
                 // Create a timer that waits 1.5 seconds then shows the second card
-                Timer timer = new Timer(2500, e -> cl.show(cards, "Card 2"));
+                Timer timer = new Timer(2200, e -> cl.show(cards, "Card 2"));
                 timer.setRepeats(false); // Only execute once
                 timer.start(); // Start timer
             }
