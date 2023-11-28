@@ -12,18 +12,18 @@ public class login implements ActionListener {
     JPanel loginDashboard;
     JPanel adminLogin;
     JLabel background, poster;
-    JLabel l1, l2, l3, l4, l5, l6;
-    JPasswordField p1, p2;
-    JTextField tf1, tf2;
-    JButton b1, b2, b3, b4, b5; // login dashboard
-    JButton b6, b7, b8, b9, b10; // admin Login
+    JLabel userlabel, passlabel, ad_usl, ad_psl, l5, l6;
+    JPasswordField pasF, ad_pf;
+    JTextField usertf, passtf;
+    JButton login, signup, frgtpass, exit, Admin; // login dashboard
+    JButton lgin, b7, b8, ad_exi, bc2usr; // admin Login
 
     login() {
 
         // create frame
         loginFrame = new JFrame();
 
-        ImageIcon image = new ImageIcon("E:\\DOCUMENTS\\University\\OOP1\\ROOMMATE\\loginBg.jpg");
+        ImageIcon image = new ImageIcon("E:\\DOCUMENTS\\University\\OOpasF\\ROOMMATE\\loginBg.jpg");
         background = new JLabel(image);
         background.setBounds(0, 0, 1100, 700);
 
@@ -32,85 +32,85 @@ public class login implements ActionListener {
 
         // login dashboard panel
         loginDashboard = new JPanel();
-        l1 = new JLabel("Username:");
-        Font smallFont = l1.getFont().deriveFont(Font.PLAIN, 18f);
-        l1.setBounds(610, 245, 150, 20);
-        l1.setForeground(Color.BLACK);
-        l1.setFont(smallFont);
+        userlabel = new JLabel("Username:");
+        Font smallFont = userlabel.getFont().deriveFont(Font.PLAIN, 18f);
+        userlabel.setBounds(610, 245, 150, 20);
+        userlabel.setForeground(Color.BLACK);
+        userlabel.setFont(smallFont);
 
-        l2 = new JLabel("Password:");
-        l2.setBounds(610, 315, 150, 20);
-        l2.setForeground(Color.BLACK);
-        l2.setFont(smallFont);
+        passlabel = new JLabel("Password:");
+        passlabel.setBounds(610, 315, 150, 20);
+        passlabel.setForeground(Color.BLACK);
+        passlabel.setFont(smallFont);
 
-        tf1 = new JTextField("", 2);
-        tf1.setBounds(725, 242, 300, 32);
-        tf1.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
-        Font bigFont = tf1.getFont().deriveFont(Font.PLAIN, 20f);
-        tf1.setFont(bigFont);
-        tf1.setOpaque(false);
-        // tf1.setContentAreaFilled(false);
-        // tf1.setBorderPainted(false);
+        usertf = new JTextField("", 2);
+        usertf.setBounds(725, 242, 300, 32);
+        usertf.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        Font bigFont = usertf.getFont().deriveFont(Font.PLAIN, 20f);
+        usertf.setFont(bigFont);
+        usertf.setOpaque(false);
+        // usertf.setContentAreaFilled(false);
+        // usertf.setBorderPainted(false);
 
-        p1 = new JPasswordField("", 2);
-        p1.setBounds(725, 311, 300, 32);
-        p1.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
-        p1.setFont(smallFont);
-        p1.setOpaque(false);
-        // / p1.setContentAreaFilled(false);
-        // p1.setBorderPainted(false);
+        pasF = new JPasswordField("", 2);
+        pasF.setBounds(725, 311, 300, 32);
+        pasF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        pasF.setFont(smallFont);
+        pasF.setOpaque(false);
+        // / pasF.setContentAreaFilled(false);
+        // pasF.setBorderPainted(false);
 
-        b1 = new JButton("Login");
-        b1.setBounds(680, 420, 150, 50);
-        b1.addActionListener(this);
-        b1.setOpaque(true);
-        b1.setContentAreaFilled(true);
-        b1.setBackground(Color.BLACK);
-        b1.setBorderPainted(true);
-        b1.setForeground(Color.WHITE);
+        login = new JButton("Login");
+        login.setBounds(680, 420, 150, 50);
+        login.addActionListener(this);
+        login.setOpaque(true);
+        login.setContentAreaFilled(true);
+        login.setBackground(Color.BLACK);
+        login.setBorderPainted(true);
+        login.setForeground(Color.WHITE);
 
-        b2 = new JButton("Sign-up");
-        b2.setBounds(850, 420, 150, 50);
-        b2.addActionListener(this);
-        b2.setOpaque(true);
-        b2.setContentAreaFilled(true);
-        b2.setBackground(Color.BLACK);
-        b2.setBorderPainted(true);
-        b2.setForeground(Color.WHITE);
+        signup = new JButton("Sign-up");
+        signup.setBounds(850, 420, 150, 50);
+        signup.addActionListener(this);
+        signup.setOpaque(true);
+        signup.setContentAreaFilled(true);
+        signup.setBackground(Color.BLACK);
+        signup.setBorderPainted(true);
+        signup.setForeground(Color.WHITE);
 
-        b3 = new JButton("Forgot Password");
-        b3.setBounds(610, 355, 135, 20);
-        b3.addActionListener(this);
-        b3.setOpaque(false);
-        b3.setContentAreaFilled(false);
-        b3.setBorderPainted(false);
-        b3.setForeground(Color.BLACK);
+        frgtpass = new JButton("Forgot Password");
+        frgtpass.setBounds(610, 355, 135, 20);
+        frgtpass.addActionListener(this);
+        frgtpass.setOpaque(false);
+        frgtpass.setContentAreaFilled(false);
+        frgtpass.setBorderPainted(false);
+        frgtpass.setForeground(Color.BLACK);
 
-        b4 = new JButton("Exit");
-        b4.setBounds(1000, 620, 80, 30);
-        b4.addActionListener(this);
-        b4.setOpaque(false);
-        b4.setContentAreaFilled(false);
-        b4.setBorderPainted(false);
-        b4.setForeground(Color.BLACK);
+        exit = new JButton("Exit");
+        exit.setBounds(1000, 620, 80, 30);
+        exit.addActionListener(this);
+        exit.setOpaque(false);
+        exit.setContentAreaFilled(false);
+        exit.setBorderPainted(false);
+        exit.setForeground(Color.BLACK);
 
-        b5 = new JButton("*Administrator portal");
-        b5.setBounds(0, 620, 200, 30);
-        b5.addActionListener(this);
-        b5.setOpaque(false);
-        b5.setContentAreaFilled(false);
-        b5.setBorderPainted(false);
-        b5.setForeground(Color.BLACK);
+        Admin = new JButton("*Administrator portal");
+        Admin.setBounds(0, 620, 200, 30);
+        Admin.addActionListener(this);
+        Admin.setOpaque(false);
+        Admin.setContentAreaFilled(false);
+        Admin.setBorderPainted(false);
+        Admin.setForeground(Color.BLACK);
 
-        loginDashboard.add(b1);
-        loginDashboard.add(b2);
-        loginDashboard.add(b3);
-        loginDashboard.add(b4);
-        loginDashboard.add(b5);
-        loginDashboard.add(l1);
-        loginDashboard.add(l2);
-        loginDashboard.add(tf1);
-        loginDashboard.add(p1);
+        loginDashboard.add(login);
+        loginDashboard.add(signup);
+        loginDashboard.add(frgtpass);
+        loginDashboard.add(exit);
+        loginDashboard.add(Admin);
+        loginDashboard.add(userlabel);
+        loginDashboard.add(passlabel);
+        loginDashboard.add(usertf);
+        loginDashboard.add(pasF);
         loginDashboard.add(background);
         // loginDashboard.add(slider);
         loginDashboard.setLayout(null);
@@ -121,64 +121,64 @@ public class login implements ActionListener {
         // admin login panel
 
         adminLogin = new JPanel();
-        l3 = new JLabel("Username: ");
-        l3.setBounds(390, 245, 150, 20);
-        l3.setForeground(Color.BLACK);
-        l3.setFont(smallFont);
+        ad_usl = new JLabel("Username: ");
+        ad_usl.setBounds(390, 245, 150, 20);
+        ad_usl.setForeground(Color.BLACK);
+        ad_usl.setFont(smallFont);
 
-        l4 = new JLabel("Password: ");
-        l4.setBounds(390, 315, 150, 20);
-        l4.setForeground(Color.BLACK);
-        l4.setFont(smallFont);
+        ad_psl = new JLabel("Password: ");
+        ad_psl.setBounds(390, 315, 150, 20);
+        ad_psl.setForeground(Color.BLACK);
+        ad_psl.setFont(smallFont);
 
-        tf2 = new JTextField("", 4);
-        tf2.setBounds(495, 240, 300, 32);
-        tf2.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
-        tf2.setFont(bigFont);
-        tf2.setOpaque(false);
+        passtf = new JTextField("", 4);
+        passtf.setBounds(495, 240, 300, 32);
+        passtf.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        passtf.setFont(bigFont);
+        passtf.setOpaque(false);
 
-        p2 = new JPasswordField("", 4);
-        p2.setBounds(495, 308, 300, 32);
-        p2.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
-        p2.setFont(bigFont);
-        p2.setOpaque(false);
+        ad_pf = new JPasswordField("", 4);
+        ad_pf.setBounds(495, 308, 300, 32);
+        ad_pf.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        ad_pf.setFont(bigFont);
+        ad_pf.setOpaque(false);
 
-        b6 = new JButton("Login");
-        b6.setBounds(545, 400, 150, 50);
-        b6.addActionListener(this);
-        b6.setOpaque(true);
-        b6.setContentAreaFilled(true);
-        b6.setBackground(Color.BLACK);
-        b6.setBorderPainted(true);
-        b6.setForeground(Color.WHITE);
+        lgin = new JButton("Login");
+        lgin.setBounds(545, 400, 150, 50);
+        lgin.addActionListener(this);
+        lgin.setOpaque(true);
+        lgin.setContentAreaFilled(true);
+        lgin.setBackground(Color.BLACK);
+        lgin.setBorderPainted(true);
+        lgin.setForeground(Color.WHITE);
 
-        b9 = new JButton("Exit");
-        b9.setBounds(1000, 620, 80, 30);
-        b9.addActionListener(this);
-        b9.setOpaque(false);
-        b9.setContentAreaFilled(false);
-        b9.setBorderPainted(false);
-        b9.setForeground(Color.BLACK);
+        ad_exi = new JButton("Exit");
+        ad_exi.setBounds(1000, 620, 80, 30);
+        ad_exi.addActionListener(this);
+        ad_exi.setOpaque(false);
+        ad_exi.setContentAreaFilled(false);
+        ad_exi.setBorderPainted(false);
+        ad_exi.setForeground(Color.BLACK);
 
-        b10 = new JButton("*go back to user Login");
-        b10.setBounds(0, 620, 200, 30);
-        b10.addActionListener(this);
-        b10.setOpaque(false);
-        b10.setContentAreaFilled(false);
-        b10.setBorderPainted(false);
-        b10.setForeground(Color.BLACK);
+        bc2usr = new JButton("*go back to user Login");
+        bc2usr.setBounds(0, 620, 200, 30);
+        bc2usr.addActionListener(this);
+        bc2usr.setOpaque(false);
+        bc2usr.setContentAreaFilled(false);
+        bc2usr.setBorderPainted(false);
+        bc2usr.setForeground(Color.BLACK);
 
         ImageIcon img = new ImageIcon("Images/1.png");
         poster = new JLabel(img);
         poster.setBounds(0, 0, 1100, 700);
 
-        adminLogin.add(l3);
-        adminLogin.add(l4);
-        adminLogin.add(b6);
-        adminLogin.add(b9);
-        adminLogin.add(b10);
-        adminLogin.add(tf2);
-        adminLogin.add(p2);
+        adminLogin.add(ad_usl);
+        adminLogin.add(ad_psl);
+        adminLogin.add(lgin);
+        adminLogin.add(ad_exi);
+        adminLogin.add(bc2usr);
+        adminLogin.add(passtf);
+        adminLogin.add(ad_pf);
         adminLogin.add(poster);
         // adminLogin.add(slider);
         adminLogin.setLayout(null);
@@ -201,9 +201,9 @@ public class login implements ActionListener {
 
     // @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == b1) {
-            String user = tf1.getText();
-            String pass = new String(p1.getPassword());
+        if (e.getSource() == login) {
+            String user = usertf.getText();
+            String pass = new String(pasF.getPassword());
             // validating data from txt file by checking hashmap
             if (validateLogin(user, pass)) {
                 showMessageDialog(null, "Login successful!");
@@ -213,17 +213,17 @@ public class login implements ActionListener {
             }
         }
 
-        else if (e.getSource() == b4) {
+        else if (e.getSource() == exit) {
             new IntroDuck();
             loginFrame.setVisible(false);
-        } else if (e.getSource() == b2) {
+        } else if (e.getSource() == signup) {
             new Signup();
             loginFrame.setVisible(false);
         }
     }
 //userpass validation methode
     private boolean validateLogin(String user, String pass) {
-        try (Scanner scanner = new Scanner(new File("E:\\DOCUMENTS\\University\\OOP1\\ROOMMATE\\tenantdata.txt"))) {
+        try (Scanner scanner = new Scanner(new File("E:\\DOCUMENTS\\University\\OOpasF\\ROOMMATE\\tenantdata.txt"))) {
             StringBuilder userData = new StringBuilder();
 
             // Read the entire file into a StringBuilder
