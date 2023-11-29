@@ -140,10 +140,10 @@ public class Signup extends JFrame implements ActionListener {
             writer.write("Email: " + email + "\n");
             writer.write("Password: " + new String(password) + "\n");
             writer.write("====================\n"); // Add a separator between entries
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
+        } catch (IOException ioE) {
+            ioE.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error saving data to file.");
-        } 
+        }
     }
 
 }
