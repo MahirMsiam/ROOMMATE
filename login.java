@@ -23,12 +23,12 @@ public class login implements ActionListener {
         // create frame
         loginFrame = new JFrame();
 
-        ImageIcon image = new ImageIcon("E:\\DOCUMENTS\\University\\OOpasF\\ROOMMATE\\loginBg.jpg");
+        ImageIcon image = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\loginBg.jpg");
         background = new JLabel(image);
         background.setBounds(0, 0, 1100, 700);
 
         // icon
-        ImageIcon icon = new ImageIcon("Images/logo.png");
+        ImageIcon icon = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\frmlogo.png");
 
         // login dashboard panel
         loginDashboard = new JPanel();
@@ -169,7 +169,7 @@ public class login implements ActionListener {
         bc2usr.setBorderPainted(false);
         bc2usr.setForeground(Color.BLACK);
 
-        ImageIcon img = new ImageIcon("Images/1.png");
+        ImageIcon img = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\frmlogo.png");
         poster = new JLabel(img);
         poster.setBounds(0, 0, 1100, 700);
 
@@ -192,7 +192,7 @@ public class login implements ActionListener {
         loginFrame.add(adminLogin);
 
         loginFrame.setLayout(null);
-        loginFrame.setTitle("Login - Driver koi");
+        loginFrame.setTitle("Login - ROOMMATE");
         loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         loginFrame.setSize(1100, 700);
         loginFrame.setLocationRelativeTo(null);

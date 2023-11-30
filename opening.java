@@ -5,16 +5,18 @@ import java.awt.event.MouseEvent;
 
 public class opening {
     public opening() {
+            
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
+                ImageIcon icon = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\frmlogo.png");//icon
                 // Create the frames (cards)
                 JPanel card1 = new JPanel();
-                ImageIcon imageIcon1 = new ImageIcon("E:\\DOCUMENTS\\University\\OOP1\\ROOMMATE\\Roommate logo.gif");
+                ImageIcon imageIcon1 = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\Roommate logo.gif");
                 JLabel label1 = new JLabel(imageIcon1);
                 card1.add(label1);
 
                 JPanel card2 = new JPanel();
-                ImageIcon imageIcon2 = new ImageIcon("E:\\DOCUMENTS\\University\\OOP1\\ROOMMATE\\pg2.jpg");
+                ImageIcon imageIcon2 = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\pg2.jpg");
                 JLabel label2 = new JLabel(imageIcon2);
                 card2.add(label2);
 
@@ -31,6 +33,7 @@ public class opening {
                 frame.pack();
                 frame.setVisible(true);
                 frame.setLocationRelativeTo(null);
+                frame.setIconImage(icon.getImage());
 
                 // Add a mouse listener to card2 for swipe detection
                 card2.addMouseListener(new MouseAdapter() {
