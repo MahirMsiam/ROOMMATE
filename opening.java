@@ -8,7 +8,7 @@ public class opening {
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                ImageIcon icon = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\frmlogo.png");//icon
+                ImageIcon icon = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\frmlogo.png");// icon
                 // Create the frames (cards)
                 JPanel card1 = new JPanel();
                 ImageIcon imageIcon1 = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\Roommate logo.gif");
