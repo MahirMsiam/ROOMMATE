@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 
 public class opening {
     public opening() {
-            
+
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 ImageIcon icon = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\frmlogo.png");//icon
@@ -48,7 +48,7 @@ public class opening {
                     public void mouseReleased(MouseEvent e) {
                         // Check if the mouse was dragged upwards
                         if (e.getPoint().y < point.y) {
-                            // Switch to Login class
+                            // Switch to IntroDuck class
                             frame.dispose(); // Dispose the current frame
                             IntroDuck IntroDuck = new IntroDuck();
                             IntroDuck.setVisible(true);
