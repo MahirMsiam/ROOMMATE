@@ -45,8 +45,9 @@ public class login implements ActionListener {
 
         usertf = new JTextField("", 2);
         usertf.setBounds(725, 242, 300, 32);
+
         usertf.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
-        Font bigFont = usertf.getFont().deriveFont(Font.PLAIN, 20f);
+        Font bigFont = usertf.getFont().deriveFont(Font.PLAIN, 20);
         usertf.setFont(bigFont);
         usertf.setOpaque(false);
         // usertf.setContentAreaFilled(false);
@@ -199,7 +200,7 @@ public class login implements ActionListener {
 
     }
 
-    // @Override
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == login) {
             String user = usertf.getText();
@@ -221,7 +222,8 @@ public class login implements ActionListener {
             loginFrame.setVisible(false);
         }
     }
-//userpass validation methode
+
+    // userpass validation methode
     private boolean validateLogin(String user, String pass) {
         try (Scanner scanner = new Scanner(new File("D:\\Project\\ROOMMATE\\tenantdata.txt"))) {
             StringBuilder userData = new StringBuilder();
