@@ -1,4 +1,9 @@
 import javax.swing.*;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
@@ -7,8 +12,16 @@ public class Signup extends JFrame implements ActionListener {
     private JTextField nameField, addressField, contactField, emailField;
     private JPasswordField passwordField, confirmPasswordField;
     private JButton signupButton, Back;
+    private JLabel background;
+    //private Font Rancho;
 
     public Signup() {
+
+        
+        ImageIcon img = new ImageIcon("D:\Project\ROOMMATE\SignUp.png");
+        background = new JLabel(img);
+        background.setBounds(0, 0, 800, 600);
+
         // Setting up the frame
         setTitle("Signup Frame");
         setSize(800, 600);
@@ -33,23 +46,41 @@ public class Signup extends JFrame implements ActionListener {
         signupButton = new JButton("Signup");
         Back = new JButton("Back");
 
-        // Setting bounds for components
-        nameLabel.setBounds(20, 20, 80, 25);
-        addressLabel.setBounds(20, 60, 80, 25);
-        contactLabel.setBounds(20, 100, 120, 25);
-        emailLabel.setBounds(20, 140, 80, 25);
-        passwordLabel.setBounds(20, 180, 80, 25);
-        confirmPasswordLabel.setBounds(20, 220, 150, 25);
+        /*try{
+        Rancho = Font.createFont(Font.TRUETYPE_FONT,new File("D:\Project\ROOMMATE\Rancho-Regular.ttf"));
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(Font.createFont(Font.TRUETYPE_FONT,new File("D:\Project\ROOMMATE\Rancho-Regular.ttf")));
+        }
+        catch(IOException | FontFormatException e){
 
-        nameField.setBounds(180, 20, 150, 25);
-        addressField.setBounds(180, 60, 150, 25);
-        contactField.setBounds(180, 100, 150, 25);
-        emailField.setBounds(180, 140, 150, 25);
-        passwordField.setBounds(180, 180, 150, 25);
-        confirmPasswordField.setBounds(180, 220, 150, 25);
+        }*/
+
+        // Setting bounds for components
+        nameLabel.setBounds(300, 120, 160, 30);
+        addressLabel.setBounds(300, 160, 80, 30);
+        contactLabel.setBounds(300, 200, 200, 30);
+        emailLabel.setBounds(300, 240, 150, 30);
+        passwordLabel.setBounds(300, 280, 150, 30);
+        confirmPasswordLabel.setBounds(300, 320, 150, 30);
+
+        /*Setting Fontstyle
+        nameLabel.setFont(Rancho);
+        addressLabel.setFont(new Font("Monoapaced",Font.ITALIC,25));*/
+
+        nameField.setBounds(550, 120, 160, 30);
+        addressField.setBounds(550, 160, 160, 30);
+        contactField.setBounds(550, 200, 160, 30);
+        emailField.setBounds(550, 240, 160, 30);
+        passwordField.setBounds(550, 280, 160, 30);
+        confirmPasswordField.setBounds(550, 320, 160, 30);
         setLocationRelativeTo(null);
-        Back.setBounds(100, 280, 100, 25);
-        signupButton.setBounds(250, 280, 100, 25);
+        Back.setBounds(560, 380, 100, 25);
+        Back.setBackground(Color.PINK);
+        Back.setForeground(Color.black);
+
+        signupButton.setBounds(380, 380, 100, 25);
+        signupButton.setBackground(Color.PINK);
+        signupButton.setForeground(Color.black);
         signupButton.addActionListener(this);
         Back.addActionListener(this);
 
@@ -70,7 +101,7 @@ public class Signup extends JFrame implements ActionListener {
 
         add(signupButton);
         add(Back);
-
+        add(background);
         // Setting frame properties
         setVisible(true);
     }
@@ -140,10 +171,10 @@ public class Signup extends JFrame implements ActionListener {
             writer.write("Email: " + email + "\n");
             writer.write("Password: " + new String(password) + "\n");
             writer.write("====================\n"); // Add a separator between entries
-        } catch (IOException ioE) {
-            ioE.printStackTrace();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error saving data to file.");
-        }
+        } 
     }
 
 }
