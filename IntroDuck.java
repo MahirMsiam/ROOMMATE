@@ -11,7 +11,7 @@ public class IntroDuck extends JFrame {
     private JButton Tenant, landLord, Areaguide, Admin;
 
     IntroDuck() {
-        ImageIcon icon = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\frmlogo.png");//icon
+        ImageIcon icon = new ImageIcon("D:\\Project\\ROOMMATE\\Frmlogo.png");//icon
         // Setting title and close operation
         setTitle("ROOMMATE");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
