@@ -23,12 +23,12 @@ public class login implements ActionListener {
         // create frame
         loginFrame = new JFrame();
 
-        ImageIcon image = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\loginBg.jpg");
+        ImageIcon image = new ImageIcon("D:\\Project\\ROOMMATE\\loginBg.jpg");
         background = new JLabel(image);
         background.setBounds(0, 0, 1100, 700);
 
         // icon
-        ImageIcon icon = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\frmlogo.png");
+        ImageIcon icon = new ImageIcon("D:\\Project\\ROOMMATE\\Frmlogo.png");
 
         // login dashboard panel
         loginDashboard = new JPanel();
@@ -168,7 +168,7 @@ public class login implements ActionListener {
         bc2usr.setBorderPainted(false);
         bc2usr.setForeground(Color.BLACK);
 
-        ImageIcon img = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\frmlogo.png");
+        ImageIcon img = new ImageIcon("D:\\Project\\ROOMMATE\\Frmlogo.png");
         poster = new JLabel(img);
         poster.setBounds(0, 0, 1100, 700);
 
@@ -223,7 +223,7 @@ public class login implements ActionListener {
     }
 //userpass validation methode
     private boolean validateLogin(String user, String pass) {
-        try (Scanner scanner = new Scanner(new File("E:\\DOCUMENTS\\University\\OOpasF\\ROOMMATE\\tenantdata.txt"))) {
+        try (Scanner scanner = new Scanner(new File("D:\\Project\\ROOMMATE\\tenantdata.txt"))) {
             StringBuilder userData = new StringBuilder();
 
             // Read the entire file into a StringBuilder
