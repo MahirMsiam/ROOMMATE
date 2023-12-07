@@ -18,13 +18,13 @@ public class Signup extends JFrame implements ActionListener {
     public Signup() {
 
         
-        ImageIcon img = new ImageIcon("D:\Project\ROOMMATE\SignUp.png");
+        ImageIcon img = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\sugnup.jpg");
         background = new JLabel(img);
-        background.setBounds(0, 0, 800, 600);
+        background.setBounds(0, 0, 1100, 700);
 
         // Setting up the frame
         setTitle("Signup Frame");
-        setSize(800, 600);
+        setSize(1100, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
 
