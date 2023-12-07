@@ -11,17 +11,17 @@ public class IntroDuck extends JFrame {
     private JButton Tenant, landLord, Areaguide, Admin;
 
     IntroDuck() {
-        ImageIcon icon = new ImageIcon("D:\\Project\\ROOMMATE\\Frmlogo.png");//icon
+        ImageIcon icon = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\Frmlogo.png");//icon
         // Setting title and close operation
         setTitle("ROOMMATE");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(900, 600);
+        setSize(1100, 700);
         setLayout(null);
         getContentPane();
         setLocationRelativeTo(null);
         setIconImage(icon.getImage());
         // setting image
-        ImageIcon BG = new ImageIcon("D:\\Project\\ROOMMATE\\front.jpg");
+        ImageIcon BG = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\front.jpg");
         JLabel BGlabel = new JLabel(BG);
         BGlabel.setBounds(0, 0, getWidth(), getHeight());
         add(BGlabel);
