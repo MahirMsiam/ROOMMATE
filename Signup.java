@@ -13,7 +13,6 @@ public class Signup extends JFrame implements ActionListener {
     private JPasswordField passwordField, confirmPasswordField;
     private JButton signupButton, Back;
     private JLabel background;
-    //private Font Rancho;
 
     public Signup() {
 
@@ -29,12 +28,12 @@ public class Signup extends JFrame implements ActionListener {
         setLayout(null);
 
         // Creating components
-        JLabel nameLabel = new JLabel("Name:");
-        JLabel addressLabel = new JLabel("Address:");
-        JLabel contactLabel = new JLabel("Contact Number:");
-        JLabel emailLabel = new JLabel("Email:");
-        JLabel passwordLabel = new JLabel("Password:");
-        JLabel confirmPasswordLabel = new JLabel("Confirm Password:");
+        JLabel nameLabel = new JLabel("Name :");
+        JLabel addressLabel = new JLabel("Address :");
+        JLabel contactLabel = new JLabel("Contact Number :");
+        JLabel emailLabel = new JLabel("Email :");
+        JLabel passwordLabel = new JLabel("Password :");
+        JLabel confirmPasswordLabel = new JLabel("Confirm Password :");
 
         nameField = new JTextField();
         addressField = new JTextField();
@@ -46,39 +45,26 @@ public class Signup extends JFrame implements ActionListener {
         signupButton = new JButton("Signup");
         Back = new JButton("Back");
 
-        /*try{
-        Rancho = Font.createFont(Font.TRUETYPE_FONT,new File("D:\Project\ROOMMATE\Rancho-Regular.ttf"));
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        ge.registerFont(Font.createFont(Font.TRUETYPE_FONT,new File("D:\Project\ROOMMATE\Rancho-Regular.ttf")));
-        }
-        catch(IOException | FontFormatException e){
-
-        }*/
-
         // Setting bounds for components
-        nameLabel.setBounds(300, 120, 160, 30);
-        addressLabel.setBounds(300, 160, 80, 30);
-        contactLabel.setBounds(300, 200, 200, 30);
-        emailLabel.setBounds(300, 240, 150, 30);
-        passwordLabel.setBounds(300, 280, 150, 30);
-        confirmPasswordLabel.setBounds(300, 320, 150, 30);
+        nameLabel.setBounds(570, 120, 160, 30);
+        addressLabel.setBounds(570, 170, 200, 30);
+        contactLabel.setBounds(570, 220, 200, 30);
+        emailLabel.setBounds(570, 270, 200, 30);
+        passwordLabel.setBounds(570, 320,200, 30);
+        confirmPasswordLabel.setBounds(570, 370, 200, 30);
 
-        /*Setting Fontstyle
-        nameLabel.setFont(Rancho);
-        addressLabel.setFont(new Font("Monoapaced",Font.ITALIC,25));*/
-
-        nameField.setBounds(550, 120, 160, 30);
-        addressField.setBounds(550, 160, 160, 30);
-        contactField.setBounds(550, 200, 160, 30);
-        emailField.setBounds(550, 240, 160, 30);
-        passwordField.setBounds(550, 280, 160, 30);
-        confirmPasswordField.setBounds(550, 320, 160, 30);
+        nameField.setBounds(810, 120, 180, 30);
+        addressField.setBounds(810, 170, 180, 30);
+        contactField.setBounds(810, 220, 180, 30);
+        emailField.setBounds(810, 270, 180, 30);
+        passwordField.setBounds(810, 320, 180, 30);
+        confirmPasswordField.setBounds(810, 370, 180, 30);
         setLocationRelativeTo(null);
-        Back.setBounds(560, 380, 100, 25);
+        Back.setBounds(840, 450, 100, 35);
         Back.setBackground(Color.PINK);
         Back.setForeground(Color.black);
 
-        signupButton.setBounds(380, 380, 100, 25);
+        signupButton.setBounds(620, 450, 100,35);
         signupButton.setBackground(Color.PINK);
         signupButton.setForeground(Color.black);
         signupButton.addActionListener(this);
