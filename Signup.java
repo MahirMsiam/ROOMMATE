@@ -88,14 +88,14 @@ public class Signup extends JFrame implements ActionListener {
         add(signupButton);
         add(Back);
         add(background);
-        // Setting frame properties
+        // Setting frames
         setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == signupButton) {
-            // Handle signup logic here
+            // getting inputs from signup page
             String name = nameField.getText();
             String address = addressField.getText();
             String contact = contactField.getText();
@@ -160,7 +160,7 @@ public class Signup extends JFrame implements ActionListener {
         } catch (IOException ioException) {
             ioException.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error saving data to file.");
-        } 
+        }
     }
 
 }
