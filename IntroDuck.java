@@ -31,10 +31,10 @@ public class IntroDuck extends JFrame {
         Areaguide = new JButton("Area Guide");
         Admin = new JButton("Admin");
 
-        Tenant.setBounds(350, 220, 100, 30);
-        landLord.setBounds(350, 270, 100, 30);
-        Areaguide.setBounds(350, 320, 100, 30);
-        Admin.setBounds(710, -1, 80, 30);
+        Tenant.setBounds(660, 250, 120, 35);
+        landLord.setBounds(760, 300, 120, 35);
+        Areaguide.setBounds(860, 350, 120, 35);
+        Admin.setBounds(1020,0, 70, 35);
 
         // adding actionlisteners
         Tenant.addActionListener(new ActionListener() {
