@@ -11,12 +11,12 @@ public class opening {
                 ImageIcon icon = new ImageIcon("D:\\Project\\ROOMMATE\\Frmlogo.png");//icon
                 // Create the frames (cards)
                 JPanel card1 = new JPanel();
-                ImageIcon imageIcon1 = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\Roommate logo.gif");
+                ImageIcon imageIcon1 = new ImageIcon("D:\\Project\\ROOMMATE\\Roommate logo.gif");
                 JLabel label1 = new JLabel(imageIcon1);
                 card1.add(label1);
 
                 JPanel card2 = new JPanel();
-                ImageIcon imageIcon2 = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\pg2.jpg");
+                ImageIcon imageIcon2 = new ImageIcon("D:\\Project\\ROOMMATE\\pg2.jpg");
                 JLabel label2 = new JLabel(imageIcon2);
                 card2.add(label2);
 
