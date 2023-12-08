@@ -23,12 +23,12 @@ public class login implements ActionListener {
         // create frame
         loginFrame = new JFrame();
 
-        ImageIcon image = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\loginBg.jpg");
+        ImageIcon image = new ImageIcon("D:\\Project\\ROOMMATE\\loginBg.jpg");
         background = new JLabel(image);
         background.setBounds(0, 0, 1100, 700);
 
         // icon
-        ImageIcon icon = new ImageIcon("D:\\UNIVERSITY\\OOP1\\Project\\ROOMMATE\\Frmlogo.png");
+        ImageIcon icon = new ImageIcon("D:\\Project\\ROOMMATE\\Frmlogo.png");
 
         // login dashboard panel
         loginDashboard = new JPanel();
@@ -243,3 +243,4 @@ public class login implements ActionListener {
         return false; // Unable to validate login
     }
 }
+//Hello Bad Boy!!!
