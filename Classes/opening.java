@@ -7,10 +7,10 @@ import java.awt.event.MouseEvent;
 
 public class opening {
     public opening() {
-    
+
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                ImageIcon icon = new ImageIcon("Media\\Frmlogo.png");//icon
+                ImageIcon icon = new ImageIcon("Media\\Frmlogo.png");// icon
                 // Create the Cards
                 JPanel card1 = new JPanel();
                 ImageIcon img1 = new ImageIcon("Media\\Roommate logo.gif");
@@ -22,7 +22,7 @@ public class opening {
                 JLabel label2 = new JLabel(img2);
                 card2.add(label2);
 
-                // Create the panel that contains the "cards"
+                // Creating the panel that contains the cards
                 CardLayout cl = new CardLayout();
                 JPanel cards = new JPanel(cl);
                 cards.add(card1, "Loading");
@@ -58,8 +58,8 @@ public class opening {
                     }
                 });
 
-                // Create a timer that waits 1.5 seconds then shows the second card
-                Timer timer = new Timer(2200, e -> cl.show(cards, "Card 2"));
+                // Create a timer that waits 2.2 seconds then shows the second card
+                Timer timer = new Timer(2200, e -> cl.show(cards, "swipeup"));
                 timer.setRepeats(false); // Only execute once
                 timer.start(); // Start timer
             }
