@@ -169,7 +169,7 @@ public class login implements ActionListener {
         bc2usr.setBorderPainted(false);
         bc2usr.setForeground(Color.BLACK);
 
-        ImageIcon img = new ImageIcon("D:\\Project\\ROOMMATE\\Frmlogo.png");
+        ImageIcon img = new ImageIcon("Frmlogo.png");
         poster = new JLabel(img);
         poster.setBounds(0, 0, 1100, 700);
 
@@ -225,7 +225,7 @@ public class login implements ActionListener {
 
     // userpass validation methode
     private boolean validateLogin(String user, String pass) {
-        try (Scanner scanner = new Scanner(new File("D:\\Project\\ROOMMATE\\tenantdata.txt"))) {
+        try (Scanner scanner = new Scanner(new File("tenantdata.txt"))) {
             StringBuilder userData = new StringBuilder();
 
             // Read the entire file into a StringBuilder
