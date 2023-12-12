@@ -1,18 +1,1 @@
-Name:  Siam
-Address: 347/sha
-Contact Number: 10101
-Email: m@m.com
-Password: 1234
-====================
-Name: mahima
-Address: uttara
-Contact Number: 1111
-Email: m@m.com
-Password: 1
-====================
-Name: siam
-Address: 11
-Contact Number: 24
-Email: mahir@gmail.com
-Password: a
-====================
+
