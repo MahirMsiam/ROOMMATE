@@ -17,7 +17,7 @@ public class Signup extends JFrame implements ActionListener {
     public Signup() {
 
         
-        ImageIcon img = new ImageIcon("D:\\Project\\ROOMMATE\\sugnup.jpg");
+        ImageIcon img = new ImageIcon("sugnup.jpg");
         background = new JLabel(img);
         background.setBounds(0, 0, 1100, 700);
 
@@ -116,6 +116,7 @@ public class Signup extends JFrame implements ActionListener {
             setVisible(false);
         }
     }
+    //validation methode
 
     private boolean validateInputs(String name, String address, String contact, String email,
             char[] password, char[] confirmPassword) {
@@ -149,7 +150,7 @@ public class Signup extends JFrame implements ActionListener {
 
     // saving user data in a txt file
     private void saveDataToFile(String name, String address, String contact, String email, char[] password) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\Project\\ROOMMATE\\tenantdata.txt", true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("tenantdata.txt", true))) {
             // Append the user data to the text file
             writer.write("Name: " + name + "\n");
             writer.write("Address: " + address + "\n");
