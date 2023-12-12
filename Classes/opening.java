@@ -7,26 +7,26 @@ import java.awt.event.MouseEvent;
 
 public class opening {
     public opening() {
-            
+    
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 ImageIcon icon = new ImageIcon("Media\\Frmlogo.png");//icon
-                // Create the frames (cards)
+                // Create the Cards
                 JPanel card1 = new JPanel();
-                ImageIcon imageIcon1 = new ImageIcon("Media\\Roommate logo.gif");
-                JLabel label1 = new JLabel(imageIcon1);
+                ImageIcon img1 = new ImageIcon("Media\\Roommate logo.gif");
+                JLabel label1 = new JLabel(img1);
                 card1.add(label1);
 
                 JPanel card2 = new JPanel();
-                ImageIcon imageIcon2 = new ImageIcon("Media\\pg2.jpg");
-                JLabel label2 = new JLabel(imageIcon2);
+                ImageIcon img2 = new ImageIcon("Media\\pg2.jpg");
+                JLabel label2 = new JLabel(img2);
                 card2.add(label2);
 
                 // Create the panel that contains the "cards"
                 CardLayout cl = new CardLayout();
                 JPanel cards = new JPanel(cl);
-                cards.add(card1, "Card 1");
-                cards.add(card2, "Card 2");
+                cards.add(card1, "Loading");
+                cards.add(card2, "swipeup");
 
                 // Create and set up the window
                 JFrame frame = new JFrame("ROOMMATE");
