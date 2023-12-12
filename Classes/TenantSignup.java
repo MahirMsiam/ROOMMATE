@@ -14,6 +14,7 @@ public class TenantSignup extends JFrame implements ActionListener {
     private JLabel background;
 
     public TenantSignup() {
+        ImageIcon icon = new ImageIcon("Media\\Frmlogo.png");
 
         
         ImageIcon img = new ImageIcon("Media\\sugnup.jpg");
@@ -21,7 +22,8 @@ public class TenantSignup extends JFrame implements ActionListener {
         background.setBounds(0, 0, 1100, 700);
 
         // Setting up the frame
-        setTitle("Signup Frame");
+        setIconImage(icon.getImage());
+        setTitle("Signup here");
         setSize(1100, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
