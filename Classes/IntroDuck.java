@@ -1,3 +1,6 @@
+package Classes;
+
+// Imports
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -73,5 +76,6 @@ public class IntroDuck extends JFrame {
         setVisible(true);
     }
 }
+
 
 
