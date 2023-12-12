@@ -1,4 +1,4 @@
-
+package Classes;
 
 import javax.swing.*;
 import java.awt.Color;
@@ -171,7 +171,7 @@ public class login implements ActionListener {
         bc2usr.setBorderPainted(false);
         bc2usr.setForeground(Color.BLACK);
 
-        ImageIcon img = new ImageIcon("Frmlogo.png");
+        ImageIcon img = new ImageIcon("Media\\Frmlogo.png");
         poster = new JLabel(img);
         poster.setBounds(0, 0, 1100, 700);
 
@@ -208,11 +208,17 @@ public class login implements ActionListener {
             String user = usertf.getText();
             String pass = new String(pasF.getPassword());
             // validating data from txt file by checking hashmap
-            if (validateLogin(user, pass)) {
+            if (user.isEmpty() || pass.isEmpty()) {
+                showMessageDialog(null, "Fields cannot be empty");
+            }
+
+            else if (validateLogin(user, pass)) {
                 showMessageDialog(null, "Login successful!");
                 // Additional logic if login is successful
-            } else {
-                showMessageDialog(null, "Invalid Username or Password!");
+            }
+            // add another condition to check for empty field
+            else { // Login failed
+                showMessageDialog(null, "Invalid username or password!");
             }
         }
 
@@ -220,7 +226,7 @@ public class login implements ActionListener {
             new IntroDuck();
             loginFrame.setVisible(false);
         } else if (e.getSource() == signup) {
-            new Signup();
+            new TenantSignup();
             loginFrame.setVisible(false);
         }
     }
@@ -245,4 +251,4 @@ public class login implements ActionListener {
         return false; // Unable to validate login
     }
 }
-//Hello Bad Boy!!!
+// Hello Bad Boy!!!
