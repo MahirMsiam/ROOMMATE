@@ -207,7 +207,7 @@ public class login implements ActionListener {
         if (e.getSource() == login) {
             String user = usertf.getText();
             String pass = new String(pasF.getPassword());
-            // validating data from txt file by checking hashmap
+            // validating data from txt file
             if (user.isEmpty() || pass.isEmpty()) {
                 showMessageDialog(null, "Fields cannot be empty");
             }
