@@ -1,0 +1,7 @@
+
+Name: s
+Address: s
+Contact Number: 000
+Email: mahi@gmail.com
+Password: s
+====================
