@@ -1,3 +1,5 @@
+package Classes;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -14,7 +16,7 @@ public class opening {
                 ImageIcon imageIcon1 = new ImageIcon("Media\\Roommate logo.gif");
                 JLabel label1 = new JLabel(imageIcon1);
                 card1.add(label1);
-    
+
                 JPanel card2 = new JPanel();
                 ImageIcon imageIcon2 = new ImageIcon("Media\\pg2.jpg");
                 JLabel label2 = new JLabel(imageIcon2);
