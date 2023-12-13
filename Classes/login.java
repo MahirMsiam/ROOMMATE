@@ -214,9 +214,9 @@ public class login implements ActionListener {
 
             else if (validateLogin(user, pass)) {
                 showMessageDialog(null, "Login successful!");
-                // Additional logic if login is successful
+                // Additional frame here
             }
-            // add another condition to check for empty field
+
             else { // Login failed
                 showMessageDialog(null, "Invalid username or password!");
             }
@@ -244,7 +244,8 @@ public class login implements ActionListener {
             String userCredentials = userData.toString();
             return userCredentials.contains("Name: " + user) &&
                     userCredentials.contains("Password: " + pass);
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
