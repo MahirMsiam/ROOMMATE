@@ -236,12 +236,12 @@ public class login implements ActionListener {
         try (Scanner scanner = new Scanner(new File("Data\\tenantdata.txt"))) {
             StringBuilder userData = new StringBuilder();
 
-            // Read the entire file into a StringBuilder
+            // Reading file into a StringBuilder
             while (scanner.hasNextLine()) {
                 userData.append(scanner.nextLine().trim()).append("\n");
             }
             // Check if the entered credentials exist in the data
-            String userCredentials = userData.toString();
+            String userCredentials = userData.toString();//String builder to regular String
             return userCredentials.contains("Name: " + user) &&
                     userCredentials.contains("Password: " + pass);
         }
@@ -249,7 +249,7 @@ public class login implements ActionListener {
             e.printStackTrace();
         }
 
-        return false; // Unable to validate login
+        return false; // if Unable to validate login
     }
 }
 // Hello Bad Boy!!!
