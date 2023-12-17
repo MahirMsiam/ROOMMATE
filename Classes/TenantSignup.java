@@ -43,8 +43,8 @@ public class TenantSignup extends JFrame implements ActionListener {
         passwordField = new JPasswordField();
         confirmPasswordField = new JPasswordField();
 
-        signupButton = new JButton("Signup");
-        Back = new JButton("Back");
+        RoundButton signupButton = new RoundButton("SIGNUP");
+        RoundButton Back = new RoundButton("BACK");
 
         // Setting bounds for components
         nameLabel.setBounds(570, 120, 160, 30);
@@ -64,14 +64,19 @@ public class TenantSignup extends JFrame implements ActionListener {
         Back.setBounds(840, 450, 100, 35);
         Back.setBackground(Color.PINK);
         Back.setForeground(Color.black);
+        Back.setBorder(BorderFactory.createMatteBorder(1, 1, 2, 1, Color.BLACK));
 
         signupButton.setBounds(620, 450, 100,35);
-        signupButton.setBackground(Color.PINK);
-        signupButton.setForeground(Color.black);
+        signupButton.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+        signupButton.setForeground(Color.black);   
         signupButton.addActionListener(this);
         Back.addActionListener(this);
-
-        // Adding components to the frame
+ 
+         // Set button colors using RGB values
+         signupButton.setBackground(new Color(255, 102, 102)); // very light red
+         Back.setBackground(new Color(255, 102, 102)); //very light red
+ 
+       // Adding components to the frame
         add(nameLabel);
         add(addressLabel);
         add(contactLabel);
