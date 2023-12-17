@@ -63,23 +63,28 @@ public class login implements ActionListener {
         // / pasF.setContentAreaFilled(false);
         // pasF.setBorderPainted(false);
 
-        login = new JButton("Login");
-        login.setBounds(680, 420, 150, 50);
+        login = new JButton("LOGIN");
+        login.setBounds(680, 420, 100, 35);
         login.addActionListener(this);
+        login.setBackground(Color.BLACK);
+        login.setForeground(Color.black);
+        login.setBorder(BorderFactory.createMatteBorder(1, 1, 2, 1, Color.black));
         login.setOpaque(true);
         login.setContentAreaFilled(true);
-        login.setBackground(Color.BLACK);
-        login.setBorderPainted(true);
-        login.setForeground(Color.WHITE);
-
-        signup = new JButton("Sign-up");
-        signup.setBounds(850, 420, 150, 50);
+        
+         
+        signup = new JButton("SIGN-UP");
+        signup.setBounds(850, 420, 100, 35);
         signup.addActionListener(this);
+        signup.setBackground(Color.BLACK);
+        signup.setForeground(Color.black);
+        signup.setBorder(BorderFactory.createMatteBorder(1, 1, 2, 1, Color.black));
         signup.setOpaque(true);
         signup.setContentAreaFilled(true);
-        signup.setBackground(Color.BLACK);
-        signup.setBorderPainted(true);
-        signup.setForeground(Color.WHITE);
+        
+
+        login.setBackground(new Color(167, 199, 231)); // pastel blue
+        signup.setBackground(new Color(167, 199, 231)); //pastel blue
 
         frgtpass = new JButton("Forgot Password");
         frgtpass.setBounds(610, 355, 135, 20);
