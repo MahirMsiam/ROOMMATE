@@ -16,7 +16,6 @@ public class TenantSignup extends JFrame implements ActionListener {
     public TenantSignup() {
         ImageIcon icon = new ImageIcon("Media\\Frmlogo.png");
 
-        
         ImageIcon img = new ImageIcon("Media\\sugnup.jpg");
         background = new JLabel(img);
         background.setBounds(0, 0, 1100, 700);
@@ -51,7 +50,7 @@ public class TenantSignup extends JFrame implements ActionListener {
         addressLabel.setBounds(570, 170, 200, 30);
         contactLabel.setBounds(570, 220, 200, 30);
         emailLabel.setBounds(570, 270, 200, 30);
-        passwordLabel.setBounds(570, 320,200, 30);
+        passwordLabel.setBounds(570, 320, 200, 30);
         confirmPasswordLabel.setBounds(570, 370, 200, 30);
 
         nameField.setBounds(810, 120, 180, 30);
@@ -66,17 +65,17 @@ public class TenantSignup extends JFrame implements ActionListener {
         Back.setForeground(Color.black);
         Back.setBorder(BorderFactory.createMatteBorder(1, 1, 2, 1, Color.BLACK));
 
-        signupButton.setBounds(620, 450, 100,35);
+        signupButton.setBounds(620, 450, 100, 35);
         signupButton.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-        signupButton.setForeground(Color.black);   
+        signupButton.setForeground(Color.black);
         signupButton.addActionListener(this);
         Back.addActionListener(this);
- 
-         // Set button colors using RGB values
-         signupButton.setBackground(new Color(255, 102, 102)); // very light red
-         Back.setBackground(new Color(255, 102, 102)); //very light red
- 
-       // Adding components to the frame
+
+        // Set button colors using RGB values
+        signupButton.setBackground(new Color(255, 102, 102)); // very light red
+        Back.setBackground(new Color(255, 102, 102)); // very light red
+
+        // Adding components to the frame
         add(nameLabel);
         add(addressLabel);
         add(contactLabel);
@@ -111,12 +110,12 @@ public class TenantSignup extends JFrame implements ActionListener {
 
             // Validate and process the user input
             if (validateInputs(name, address, contact, email, password, confirmPassword)) {
-                saveDataToFile(name, address, contact, email, password);//if if=true then data will be written in tenantdata.txt file
+                saveDataToFile(name, address, contact, email, password);// if if=true then data will be written in
+                                                                        // tenantdata.txt file
                 JOptionPane.showMessageDialog(this, "Signup successful!");
-            } // else {
-              // JOptionPane.showMessageDialog(this, "Invalid input or passwords do not
-              // match.");
-              // }
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid input or passwords do not match");
+            }
         } else if (e.getSource() == Back) {
             new login();
             setVisible(false);
@@ -149,8 +148,8 @@ public class TenantSignup extends JFrame implements ActionListener {
     // email validation method
     private boolean isValidEmail(String email) {
 
-        String emaicheck = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        return email.matches(emaicheck);
+        String emailcheck = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        return email.matches(emailcheck);
     }
 
     // saving user data in a txt file
