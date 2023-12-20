@@ -188,7 +188,7 @@ public class LandLordSignup extends JFrame implements ActionListener {
 
     // saving user data in a txt file
     private void saveDataToFile(String name, String address, String contact, String email, char[] password, String rent, String room, String location, String bathroom) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\moyaz\\OneDrive\\Desktop\\Siam Roomie version 2\\src\\tenantdata.txt", true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data\\tenantdata.txt", true))) {
             // Append the user data to the text file
             writer.write("Name: " + name + "\n");
             writer.write("Address: " + address + "\n");
