@@ -16,7 +16,7 @@ public class IntroDuck extends JFrame {
     private JButton Tenant, landLord;
 
     IntroDuck() {
-        ImageIcon icon = new ImageIcon("Media\\Frmlogo.png");//icon
+        ImageIcon icon = new ImageIcon("Media\\Frmlogo.png");// icon
         // Setting title and close operation
         setTitle("ROOMMATE");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,20 +37,26 @@ public class IntroDuck extends JFrame {
         Tenant.setBackground(Color.red);
         Tenant.setForeground(Color.black);
         Tenant.setBorder(BorderFactory.createMatteBorder(1, 1, 2, 1, Color.black));
-        Tenant.setForeground(Color.black); 
+        Tenant.setForeground(Color.black);
         landLord.setBackground(Color.PINK);
         landLord.setForeground(Color.black);
         landLord.setBorder(BorderFactory.createMatteBorder(1, 1, 2, 1, Color.black));
+<<<<<<< HEAD
         landLord.setForeground(Color.black);  
         
        
         Tenant.setBounds(720, 290, 120, 38);
         landLord.setBounds(830, 340, 120, 38);
+=======
+        landLord.setForeground(Color.black);
+
+        Tenant.setBounds(720, 290, 100, 35);
+        landLord.setBounds(830, 340, 100, 35);
+>>>>>>> 299e63140fae4ef9e749b563fddc8abb846258c4
         // Set button colors using RGB values
         Tenant.setBackground(new Color(255, 219, 88)); // mustard yellow
-        landLord.setBackground(new Color(255, 219, 88)); //mustard yellow
+        landLord.setBackground(new Color(255, 219, 88)); // mustard yellow
 
-        
         // adding actionlisteners
         Tenant.addActionListener(new ActionListener() {
             @Override
@@ -67,13 +73,10 @@ public class IntroDuck extends JFrame {
                 ;
             }
         });
-       
+
         // adding buttons
         BGlabel.add(Tenant);
         BGlabel.add(landLord);
         setVisible(true);
     }
 }
-
-
-
