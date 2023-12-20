@@ -1,3 +1,6 @@
-
-
-
+Name: a
+Address: a
+Contact Number: 0000
+Email: siam@gmail.com
+Password: a
+====================
