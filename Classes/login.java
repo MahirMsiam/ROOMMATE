@@ -17,7 +17,8 @@ public class login implements ActionListener {
     JLabel userlabel, passlabel, ad_usl, ad_psl, l5, l6;
     JPasswordField pasF, ad_pf;
     JTextField usertf, passtf;
-    JButton login, signup, frgtpass, exit, Admin; // login dashboard
+    RoundButton login, signup,exit;
+    JButton frgtpass, Admin; // login dashboard
     JButton lgin, b7, b8, ad_exi, bc2usr; // admin Login
 
     login() {
@@ -63,24 +64,24 @@ public class login implements ActionListener {
         // / pasF.setContentAreaFilled(false);
         // pasF.setBorderPainted(false);
 
-        login = new JButton("LOGIN");
+        login = new RoundButton("LOGIN");
         login.setBounds(680, 420, 100, 35);
         login.addActionListener(this);
         login.setBackground(Color.BLACK);
         login.setForeground(Color.black);
-        login.setBorder(BorderFactory.createMatteBorder(1, 1, 2, 1, Color.black));
-        login.setOpaque(true);
-        login.setContentAreaFilled(true);
+        login.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.black));
+        /*login.setOpaque(true);
+        login.setContentAreaFilled(true);*/
         
          
-        signup = new JButton("SIGN-UP");
+        signup = new RoundButton("SIGN-UP");
         signup.setBounds(850, 420, 100, 35);
         signup.addActionListener(this);
         signup.setBackground(Color.BLACK);
         signup.setForeground(Color.black);
-        signup.setBorder(BorderFactory.createMatteBorder(1, 1, 2, 1, Color.black));
-        signup.setOpaque(true);
-        signup.setContentAreaFilled(true);
+        signup.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.black));
+       /*  signup.setOpaque(true);
+        signup.setContentAreaFilled(true);*/
         
 
         login.setBackground(new Color(167, 199, 231)); // pastel blue
@@ -94,13 +95,15 @@ public class login implements ActionListener {
         frgtpass.setBorderPainted(false);
         frgtpass.setForeground(Color.BLACK);
 
-        exit = new JButton("Exit");
+        exit = new RoundButton("Exit");
         exit.setBounds(1000, 620, 80, 30);
         exit.addActionListener(this);
         exit.setOpaque(false);
         exit.setContentAreaFilled(false);
         exit.setBorderPainted(false);
         exit.setForeground(Color.BLACK);
+        exit.setBackground(new Color(191, 49, 49)); // pastel blue
+        exit.setBorder(BorderFactory.createMatteBorder(1, 1, 3, 1, Color.black));
 
         Admin = new JButton("*Administrator portal");
         Admin.setBounds(0, 620, 200, 30);
