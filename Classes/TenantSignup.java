@@ -10,7 +10,7 @@ import java.io.*;
 public class TenantSignup extends JFrame implements ActionListener {
     private JTextField nameField, addressField, contactField, emailField;
     private JPasswordField passwordField, confirmPasswordField;
-    private JButton signupButton, Back;
+    private RoundButton signupButton, Back;
     private JLabel background;
 
     public TenantSignup() {
@@ -43,8 +43,8 @@ public class TenantSignup extends JFrame implements ActionListener {
         passwordField = new JPasswordField();
         confirmPasswordField = new JPasswordField();
 
-        RoundButton signupButton = new RoundButton("SIGNUP");
-        RoundButton Back = new RoundButton("BACK");
+        signupButton = new RoundButton("SIGNUP");
+        Back = new RoundButton("BACK");
 
         // Setting bounds for components
         nameLabel.setBounds(570, 120, 160, 30);
