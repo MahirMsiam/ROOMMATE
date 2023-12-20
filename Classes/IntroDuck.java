@@ -41,18 +41,10 @@ public class IntroDuck extends JFrame {
         landLord.setBackground(Color.PINK);
         landLord.setForeground(Color.black);
         landLord.setBorder(BorderFactory.createMatteBorder(1, 1, 2, 1, Color.black));
-<<<<<<< HEAD
-        landLord.setForeground(Color.black);  
-        
-       
-        Tenant.setBounds(720, 290, 120, 38);
-        landLord.setBounds(830, 340, 120, 38);
-=======
         landLord.setForeground(Color.black);
 
-        Tenant.setBounds(720, 290, 100, 35);
-        landLord.setBounds(830, 340, 100, 35);
->>>>>>> 299e63140fae4ef9e749b563fddc8abb846258c4
+        Tenant.setBounds(720, 290, 120, 38);
+        landLord.setBounds(830, 340, 120, 38);
         // Set button colors using RGB values
         Tenant.setBackground(new Color(255, 219, 88)); // mustard yellow
         landLord.setBackground(new Color(255, 219, 88)); // mustard yellow
