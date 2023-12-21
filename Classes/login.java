@@ -36,7 +36,7 @@ public class login implements ActionListener, Ilginval {
 
         // login dashboard panel
         loginDashboard = new JPanel();
-        userlabel = new JLabel("Username:");
+        userlabel = new JLabel("Email:");
         Font smallFont = userlabel.getFont().deriveFont(Font.PLAIN, 18f);
         userlabel.setBounds(610, 245, 150, 20);
         userlabel.setForeground(Color.BLACK);
@@ -147,13 +147,13 @@ public class login implements ActionListener, Ilginval {
 
         passtf = new JTextField("", 4);
         passtf.setBounds(495, 240, 300, 32);
-        passtf.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        passtf.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
         passtf.setFont(bigFont);
         passtf.setOpaque(false);
 
         ad_pf = new JPasswordField("", 4);
         ad_pf.setBounds(495, 308, 300, 32);
-        ad_pf.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        ad_pf.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
         ad_pf.setFont(bigFont);
         ad_pf.setOpaque(false);
 
@@ -174,7 +174,7 @@ public class login implements ActionListener, Ilginval {
         ad_exi.setBorderPainted(false);
         ad_exi.setForeground(Color.BLACK);
 
-        bc2usr = new JButton("*go back to user Login");
+        bc2usr = new JButton("go back to user Login");
         bc2usr.setBounds(0, 620, 200, 30);
         bc2usr.addActionListener(this);
         bc2usr.setOpaque(false);
@@ -182,7 +182,7 @@ public class login implements ActionListener, Ilginval {
         bc2usr.setBorderPainted(false);
         bc2usr.setForeground(Color.BLACK);
 
-        ImageIcon img = new ImageIcon("Media\\Frmlogo.png");
+        ImageIcon img = new ImageIcon("Media\\admindash.jpg");
         poster = new JLabel(img);
         poster.setBounds(0, 0, 1100, 700);
 
@@ -257,7 +257,7 @@ public class login implements ActionListener, Ilginval {
             }
 
             else if (validateLoginAdmin(user, pass)) {
-                showMessageDialog(null, "Login successful!");
+                //showMessageDialog(null, "Login successful!");
                 // Additional frame here
                 new AdminDashboard().setVisible(true);
                 //loginFrame.setVisible(false);
@@ -282,7 +282,7 @@ public class login implements ActionListener, Ilginval {
             }
             // Check if the entered credentials exist in the data
             String userCredentials = userData.toString();
-            return userCredentials.contains("Name: " + user) &&
+            return userCredentials.contains("Email: " + user) &&
                     userCredentials.contains("Password: " + pass);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
