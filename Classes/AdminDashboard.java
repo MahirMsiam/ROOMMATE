@@ -156,7 +156,8 @@ public class AdminDashboard extends JFrame {
                 }
             }
 
-            JOptionPane.showMessageDialog(mainFrame, "User not found", "Search Result", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(mainFrame, "User not found", "Search Result",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
 
         private void deleteUser() {
@@ -164,7 +165,8 @@ public class AdminDashboard extends JFrame {
                 int selectedRow = mainFrame.userListTable.getSelectedRow();
                 if (selectedRow != -1) {
                     int confirm = JOptionPane.showConfirmDialog(mainFrame,
-                            "Are you sure you want to delete this user?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+                            "Are you sure you want to delete this user?", "Confirm Deletion",
+                            JOptionPane.YES_NO_OPTION);
 
                     if (confirm == JOptionPane.YES_OPTION) {
                         mainFrame.userListTableModel.removeRow(selectedRow);
@@ -185,7 +187,8 @@ public class AdminDashboard extends JFrame {
                 }
             }
 
-            JOptionPane.showMessageDialog(mainFrame, "LandLord not found", "Search Result", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(mainFrame, "LandLord not found", "Search Result",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
 
         private void deleteLandLord() {
@@ -193,7 +196,8 @@ public class AdminDashboard extends JFrame {
                 int selectedRow = mainFrame.landLordListTable.getSelectedRow();
                 if (selectedRow != -1) {
                     int confirm = JOptionPane.showConfirmDialog(mainFrame,
-                            "Are you sure you want to delete this LandLord?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+                            "Are you sure you want to delete this LandLord?", "Confirm Deletion",
+                            JOptionPane.YES_NO_OPTION);
 
                     if (confirm == JOptionPane.YES_OPTION) {
                         mainFrame.landLordListTableModel.removeRow(selectedRow);
@@ -205,22 +209,23 @@ public class AdminDashboard extends JFrame {
     }
 
     private void loadUserData() {
-        String[] columnNames = {"Name", "Address", "Contact Number", "Email", "Password"};
+        String[] columnNames = { "Name", "Address", "Contact Number", "Email", "Password" };
         userListTableModel = new DefaultTableModel(columnNames, 0);
         userListTable = new JTable(userListTableModel);
-    
-        try (BufferedReader br = new BufferedReader(new FileReader("Media\\tenantdata.txt"))) {
+
+        try (BufferedReader br = new BufferedReader(new FileReader("Data\\tenantdata.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.startsWith("Name:")) {
+                    System.out.println("Read data: " + line); // Add this line for debugging
                     String name = line.substring(6).trim();
                     String address = br.readLine().substring(9).trim();
                     String contactNumber = br.readLine().substring(17).trim();
                     String email = br.readLine().substring(7).trim();
                     String password = br.readLine().substring(10).trim();
                     br.readLine(); // Skip a line (Separator line)
-    
-                    Object[] data = {name, address, contactNumber, email, password};
+
+                    Object[] data = { name, address, contactNumber, email, password };
                     userListTableModel.addRow(data);
                 }
             }
@@ -231,7 +236,7 @@ public class AdminDashboard extends JFrame {
 
     private void saveUserDataToFile() {
         if (userListTableModel != null) {
-            try (FileWriter writer = new FileWriter("Media\\tenantdata.txt")) {
+            try (FileWriter writer = new FileWriter("Data\\tenantdata.txt")) {
                 for (int row = 0; row < userListTableModel.getRowCount(); row++) {
                     writer.write("Name: " + userListTableModel.getValueAt(row, 0) + "\n");
                     writer.write("Address: " + userListTableModel.getValueAt(row, 1) + "\n");
@@ -247,11 +252,11 @@ public class AdminDashboard extends JFrame {
     }
 
     private void loadLandLordData() {
-        String[] columnNames = {"Name", "Address", "Contact Number", "Email", "Password"};
+        String[] columnNames = { "Name", "Address", "Contact Number", "Email", "Password" };
         landLordListTableModel = new DefaultTableModel(columnNames, 0);
         landLordListTable = new JTable(landLordListTableModel);
-    
-        try (BufferedReader br = new BufferedReader(new FileReader("Media\\LandLordData.txt"))) {
+
+        try (BufferedReader br = new BufferedReader(new FileReader("Data\\LandLordData.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.startsWith("Name:")) {
@@ -261,8 +266,8 @@ public class AdminDashboard extends JFrame {
                     String email = br.readLine().substring(7).trim();
                     String password = br.readLine().substring(10).trim();
                     br.readLine(); // Skip a line (Separator line)
-    
-                    Object[] data = {name, address, contactNumber, email, password};
+
+                    Object[] data = { name, address, contactNumber, email, password };
                     landLordListTableModel.addRow(data);
                 }
             }
@@ -273,7 +278,7 @@ public class AdminDashboard extends JFrame {
 
     private void saveLandLordDataToFile() {
         if (landLordListTableModel != null) {
-            try (FileWriter writer = new FileWriter("Media\\LandLordData.txt")) {
+            try (FileWriter writer = new FileWriter("Data\\LandLordData.txt")) {
                 for (int row = 0; row < landLordListTableModel.getRowCount(); row++) {
                     writer.write("Name: " + landLordListTableModel.getValueAt(row, 0) + "\n");
                     writer.write("Address: " + landLordListTableModel.getValueAt(row, 1) + "\n");
@@ -289,4 +294,3 @@ public class AdminDashboard extends JFrame {
     }
 
 }
-
