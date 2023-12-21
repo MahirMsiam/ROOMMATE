@@ -17,7 +17,7 @@ public class login implements ActionListener {
     JLabel userlabel, passlabel, ad_usl, ad_psl, l5, l6;
     JPasswordField pasF, ad_pf;
     JTextField usertf, passtf;
-    RoundButton login, signup,exit;
+    RoundButton login, signup, exit;
     JButton frgtpass, Admin; // login dashboard
     JButton lgin, b7, b8, ad_exi, bc2usr; // admin Login
 
@@ -70,22 +70,24 @@ public class login implements ActionListener {
         login.setBackground(Color.BLACK);
         login.setForeground(Color.black);
         login.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.black));
-        /*login.setOpaque(true);
-        login.setContentAreaFilled(true);*/
-        
-         
+        /*
+         * login.setOpaque(true);
+         * login.setContentAreaFilled(true);
+         */
+
         signup = new RoundButton("SIGN-UP");
         signup.setBounds(850, 420, 100, 35);
         signup.addActionListener(this);
         signup.setBackground(Color.BLACK);
         signup.setForeground(Color.black);
         signup.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.black));
-       /*  signup.setOpaque(true);
-        signup.setContentAreaFilled(true);*/
-        
+        /*
+         * signup.setOpaque(true);
+         * signup.setContentAreaFilled(true);
+         */
 
         login.setBackground(new Color(167, 199, 231)); // pastel blue
-        signup.setBackground(new Color(167, 199, 231)); //pastel blue
+        signup.setBackground(new Color(167, 199, 231)); // pastel blue
 
         frgtpass = new JButton("Forgot Password");
         frgtpass.setBounds(610, 355, 135, 20);
@@ -252,8 +254,7 @@ public class login implements ActionListener {
             String userCredentials = userData.toString();
             return userCredentials.contains("Name: " + user) &&
                     userCredentials.contains("Password: " + pass);
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
