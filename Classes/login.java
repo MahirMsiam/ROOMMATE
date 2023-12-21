@@ -1,4 +1,5 @@
 package Classes;
+import Interfaces.*;
 
 import javax.swing.*;
 import java.awt.Color;
@@ -8,7 +9,7 @@ import java.util.*;
 import java.io.*;
 import java.awt.Font;
 
-public class login implements ActionListener {
+public class login implements ActionListener, Ilginval {
 
     JFrame loginFrame;
     JPanel loginDashboard;
@@ -222,7 +223,7 @@ public class login implements ActionListener {
                 showMessageDialog(null, "Fields cannot be empty");
             }
 
-            else if (validateLogin(user, pass)) {
+            else if (validateLoginUser(user, pass)) {
                 showMessageDialog(null, "Login successful!");
                 // Additional frame here
             }
@@ -238,12 +239,60 @@ public class login implements ActionListener {
         } else if (e.getSource() == signup) {
             new TenantSignup();
             loginFrame.setVisible(false);
+        } else if (e.getSource() == Admin) {
+            loginDashboard.setVisible(false);
+            adminLogin.setVisible(true);
+        } else if (e.getSource() == bc2usr) {
+            loginDashboard.setVisible(true);
+            adminLogin.setVisible(false);
+        } else if (e.getSource() == ad_exi) {
+            new IntroDuck();
+            loginFrame.setVisible(false);
+        } else if (e.getSource() == lgin) {
+            String user = passtf.getText();
+            String pass = new String(ad_pf.getPassword());
+            // validating data from txt file
+            if (user.isEmpty() || pass.isEmpty()) {
+                showMessageDialog(null, "Fields cannot be empty");
+            }
+
+            else if (validateLoginAdmin(user, pass)) {
+                showMessageDialog(null, "Login successful!");
+                // Additional frame here
+                new AdminDashboard().setVisible(true);
+                //loginFrame.setVisible(false);
+            }
+
+            else { // Login failed
+                showMessageDialog(null, "Invalid username or password!");
+            }
+
         }
     }
 
     // userpass validation methode
-    private boolean validateLogin(String user, String pass) {
+    @Override
+    public boolean validateLoginUser(String user, String pass) {
         try (Scanner scanner = new Scanner(new File("Data\\tenantdata.txt"))) {
+            StringBuilder userData = new StringBuilder();
+
+            // Read the entire file into a StringBuilder
+            while (scanner.hasNextLine()) {
+                userData.append(scanner.nextLine().trim()).append("\n");
+            }
+            // Check if the entered credentials exist in the data
+            String userCredentials = userData.toString();
+            return userCredentials.contains("Name: " + user) &&
+                    userCredentials.contains("Password: " + pass);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return false; // Unable to validate login
+    }
+    //admin validation methode
+    public boolean validateLoginAdmin(String user, String pass) {
+        try (Scanner scanner = new Scanner(new File("Data\\Admindata.txt"))) {
             StringBuilder userData = new StringBuilder();
 
             // Read the entire file into a StringBuilder
