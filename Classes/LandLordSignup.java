@@ -66,7 +66,6 @@ public class LandLordSignup extends JFrame implements ActionListener {
         locationLabel.setBounds(570, 520, 200, 30);
         bathroomLabel.setBounds(570, 570, 200, 30);
 
-
         nameField.setBounds(810, 120, 180, 30);
         addressField.setBounds(810, 170, 180, 30);
         contactField.setBounds(810, 220, 180, 30);
