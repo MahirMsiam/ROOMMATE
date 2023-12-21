@@ -1,8 +1,10 @@
 package Classes;
 
 import javax.swing.*;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
@@ -12,7 +14,7 @@ import java.io.IOException;
 
 public class AdminDashboard extends JFrame {
     private JTable userListTable;
-    private JTable landLordListTable;
+    private JTable landLordListTable,poster;
     private DefaultTableModel userListTableModel;
     private DefaultTableModel landLordListTableModel;
 
@@ -22,14 +24,16 @@ public class AdminDashboard extends JFrame {
         setLayout(new GridLayout(2, 2, 10, 10));
 
         // Create labels with clickable images
-        add(createClickableLabel("Tenant List", "1.jpeg"));
-        add(createClickableLabel("LandLord List", "2.jpeg"));
-        add(createClickableLabel("Properties", "3.jpeg"));
-        add(createClickableLabel("Contributors", "4.jpeg"));
+        add(createClickableLabel("Tenant List", "Media\\tenant.png"));
+        add(createClickableLabel("LandLord List", "Media\\landlord.png"));
+        add(createClickableLabel("Properties", ",,,,,,"));
+        add(createClickableLabel("Contributors", "Media\\contribution.png"));
+        //add(poster);
 
         setSize(1000, 600);
         setLocationRelativeTo(null);
     }
+
 
     private JLabel createClickableLabel(String labelText, String imagePath) {
         ImageIcon icon = new ImageIcon(imagePath);
@@ -44,6 +48,10 @@ public class AdminDashboard extends JFrame {
 
         return label;
     }
+    //BG image
+    // ImageIcon img = new ImageIcon("Media\\admindash.jpg");
+    // poster = new JLabel(img);
+    // poster.setBounds(0, 0, 1100, 700);
 
     private class MouseClickListener extends MouseAdapter {
         private final String labelText;
@@ -131,7 +139,7 @@ public class AdminDashboard extends JFrame {
 
         private void showContributorsImage() {
             // Change the path to the actual image file
-            ImageIcon contributorsImage = new ImageIcon("2.jpeg");
+            ImageIcon contributorsImage = new ImageIcon("Media\\3.jpeg");
 
             // Create a new frame to display the image
             JFrame contributorsFrame = new JFrame("Contributors");
