@@ -118,7 +118,7 @@ public class login implements ActionListener, Ilginval {
 
         loginDashboard.add(login);
         loginDashboard.add(signup);
-        loginDashboard.add(frgtpass);
+        //loginDashboard.add(frgtpass);
         loginDashboard.add(exit);
         loginDashboard.add(Admin);
         loginDashboard.add(userlabel);
