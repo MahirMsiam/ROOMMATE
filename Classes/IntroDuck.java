@@ -1,20 +1,16 @@
 package Classes;
 
-import java.awt.Color;
-// Imports
+import Landlord.LandLordLogin;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 public class IntroDuck extends JFrame {
     private JButton Tenant, landLord;
 
-    IntroDuck() {
+    public IntroDuck() {
         ImageIcon icon = new ImageIcon("Media\\Frmlogo.png");// icon
         // Setting title and close operation
         setTitle("ROOMMATE");
@@ -59,7 +55,7 @@ public class IntroDuck extends JFrame {
         landLord.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new login();
+                new LandLordLogin();
                 setVisible(false);
                 ;
             }
