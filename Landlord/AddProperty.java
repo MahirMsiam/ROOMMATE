@@ -139,10 +139,27 @@ public class AddProperty extends JFrame implements ActionListener {
     }
 
     private void saveDataToFile(String name, String address, String descriptionFieldText, String wifi) {
+        try {
+            FileWriter fw = new FileWriter("Media\\Property.txt", true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+
+            pw.println(name);
+            pw.println(address);
+            pw.println(descriptionFieldText);
+            pw.println(wifi);
+
+            pw.flush();
+            pw.close();
+
+            JOptionPane.showMessageDialog(null, "Data Saved");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Data not Saved");
+        }
 
     }
 
-    private void saveDatatoProp(addressField, rentField, descriptionField, wifiCombo, imageLabel){
+    private void saveDatatoFile(addressField, rentField, descriptionField, wifiCombo, imageLabel){
             try{
                 FileWriter fw = new FileWriter("Media\\Property.txt", true);
                 BufferedWriter bw = new BufferedWriter(fw);
