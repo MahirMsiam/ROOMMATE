@@ -1,3 +1,9 @@
+Name: 1
+Address: 1
+Contact Number: 111
+Email: 111@gmail.com
+Password: 1
+Rent: 1
 Name: John Doe
 Address: 123 Main St
 Contact Number: 5-1234
