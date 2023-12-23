@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 
+
 public class AddProperty extends JFrame implements ActionListener {
 
     private JTextField addressField, rentField, descriptionField;
@@ -126,9 +127,9 @@ public class AddProperty extends JFrame implements ActionListener {
             } else if (validateInputs(address, rent, description, wifi)) {
                 saveDataToFile(address, rent, description, wifi);//saves data to file if true
                 try {
-                    ImageIO.write(img, filExtension, new File(".\\AptPictures\\" + address + filExtension));
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
+                    ImageIO.write(img, filExtension, new File("Apartments\\AptPictures\\" + address + filExtension));
+                } catch (IOException e1) {
+
                 }
 
                 JOptionPane.showMessageDialog(null, "Property Added Successfully");
@@ -143,8 +144,7 @@ public class AddProperty extends JFrame implements ActionListener {
                 img = ImageIO.read(file);
 
                 ImageIcon icon = new ImageIcon(img);
-                ImageIcon imageIcon = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
-
+                ImageIcon imageIcon = new ImageIcon(icon.getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH));
                 upload.setIcon(imageIcon);
                 String extensions[] = {".jpg", ".png", ".gif" };
                 for (String extension : extensions) {

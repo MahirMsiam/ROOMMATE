@@ -1,0 +1,20 @@
+Address: 1
+Rent: 1
+Description: 1
+Wifi: No
+====================
+Address: 1
+Rent: 1
+Description: 1
+Wifi: No
+====================
+Address: 1
+Rent: 1
+Description: 1
+Wifi: No
+====================
+Address: 1
+Rent: 1
+Description: 1
+Wifi: No
+====================

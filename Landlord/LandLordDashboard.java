@@ -1,6 +1,7 @@
 package Landlord;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,9 +15,9 @@ public class LandLordDashboard extends JFrame implements ActionListener {
     public LandLordDashboard() {
 
 
-        ImageIcon img = new ImageIcon("Media\\landlord.jpg");
+        ImageIcon img = new ImageIcon("Media\\vb.png");
         background = new JLabel(img);
-        background.setBounds(0, 0, 1100, 700);
+        background.setBounds(0, 0, 1085, 700);
 
         // Setting up the frame
         setTitle("LandLord Dashboard");
@@ -31,9 +32,9 @@ public class LandLordDashboard extends JFrame implements ActionListener {
         logout = new JButton("Logout");
 
         // Setting bounds for components
-        addProperty.setBounds(450, 200, 200, 50);
-        viewProperties.setBounds(450, 300, 200, 50);
-        logout.setBounds(450, 600, 200, 50);
+        addProperty.setBounds(417, 430, 200, 50);
+        viewProperties.setBounds(417, 480, 200, 50);
+        logout.setBounds(417, 530, 200, 50);
 
         // Adding components to the frame
         add(addProperty);
@@ -45,6 +46,11 @@ public class LandLordDashboard extends JFrame implements ActionListener {
         addProperty.addActionListener(this);
         viewProperties.addActionListener(this);
         logout.addActionListener(this);
+
+        //setting color
+        addProperty.setBackground(Color.ORANGE);
+        viewProperties.setBackground(Color.ORANGE);
+        logout.setBackground(Color.ORANGE);
 
         // Setting visibility
         setVisible(true);
@@ -58,6 +64,7 @@ public class LandLordDashboard extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(LandLordDashboard.this, "Frame incoming");
         } else if (e.getSource() == logout) {
             new LandLordLogin();
+            setVisible(false);
         }
     }
 }
