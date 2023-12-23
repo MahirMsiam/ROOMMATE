@@ -13,3 +13,17 @@ Email: w@gmail.com
 Password: w
 Nid: 12121
 ====================
+Name: 1
+Address: 11
+Contact Number: 1
+Email: agiuag@gmail.com
+Password: 1
+Nid: 1
+====================
+Name: 1
+Address: 11
+Contact Number: 1
+Email: agiuag@gmail.com
+Password: 1
+Nid: 1
+====================
