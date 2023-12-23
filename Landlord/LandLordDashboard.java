@@ -1,10 +1,8 @@
 package Landlord;
 
-import Classes.IntroDuck;
-
 import javax.swing.*;
-import java.awt.event.*;
-import static javax.swing.JOptionPane.showMessageDialog;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LandLordDashboard extends JFrame implements ActionListener {
 
@@ -15,6 +13,7 @@ public class LandLordDashboard extends JFrame implements ActionListener {
 
     public LandLordDashboard() {
 
+
         ImageIcon img = new ImageIcon("Media\\landlord.jpg");
         background = new JLabel(img);
         background.setBounds(0, 0, 1100, 700);
@@ -22,13 +21,13 @@ public class LandLordDashboard extends JFrame implements ActionListener {
         // Setting up the frame
         setTitle("LandLord Dashboard");
         setSize(1100, 700);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
 
         // Creating components
         addProperty = new JButton("Add Property");
         viewProperties = new JButton("View Property");
-
         logout = new JButton("Logout");
 
         // Setting bounds for components
@@ -53,7 +52,7 @@ public class LandLordDashboard extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addProperty) {
-            //new AddProperty();
+            new AddProperty();
             setVisible(false);
         } else if (e.getSource() == viewProperties) {
             JOptionPane.showMessageDialog(LandLordDashboard.this, "Frame incoming");

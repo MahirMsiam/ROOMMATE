@@ -15,7 +15,7 @@ public class login implements ActionListener, Ilginval {
     JPanel loginDashboard;
     JPanel adminLogin;
     JLabel background, poster;
-    JLabel userlabel, passlabel, ad_usl, ad_psl, l5, l6;
+    JLabel userlabel, passlabel, ad_usl, ad_psl;
     JPasswordField pasF, ad_pf;
     JTextField usertf, passtf;
     RoundButton login, signup, exit;

@@ -1,12 +1,29 @@
+
+Name: e
+Address: e
+Contact Number: 22
+Email: e@gamil.com
+Password: 2
+Nid: 1234
+====================
+Name: w
+Address: w
+Contact Number: 121212
+Email: w@gmail.com
+Password: w
+Nid: 12121
+====================
 Name: 1
-Address: 1
-Contact Number: 111
-Email: 111@gmail.com
+Address: 11
+Contact Number: 1
+Email: agiuag@gmail.com
 Password: 1
-Rent: 1
-Name: John Doe
-Address: 123 Main St
-Contact Number: 5-1234
-Email: john@example.com
-Password: secret123
+Nid: 1
+====================
+Name: 1
+Address: 11
+Contact Number: 1
+Email: agiuag@gmail.com
+Password: 1
+Nid: 1
 ====================

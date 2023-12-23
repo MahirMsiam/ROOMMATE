@@ -20,11 +20,11 @@ public class LandLordLogin implements ActionListener {
     JPanel loginDashboard;
     JPanel adminLogin;
     JLabel background, poster;
-    JLabel userlabel, passlabel, ad_usl, ad_psl, l5, l6;
+    JLabel userlabel, passlabel, ad_usl, ad_psl;
     JPasswordField pasF, ad_pf;
     JTextField usertf, passtf;
     JButton login, signup, frgtpass, exit, Admin; // login dashboard
-    JButton lgin, b7, b8, ad_exi, bc2usr; // admin Login
+    JButton lgin, ad_exi, bc2usr; // admin Login
 
     public LandLordLogin() {
 
@@ -262,7 +262,7 @@ public class LandLordLogin implements ActionListener {
 
     // userpass validation methode
     private boolean validateLogin(String user, String pass) {
-        try (Scanner scanner = new Scanner(new File("Data\\Admindata.txt"))) {
+        try (Scanner scanner = new Scanner(new File("Data\\LandLordData.txt"))) {
             StringBuilder userData = new StringBuilder();
 
             // Read the entire file into a StringBuilder
