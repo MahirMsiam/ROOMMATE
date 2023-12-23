@@ -7,16 +7,15 @@ import java.awt.event.ActionListener;
 
 public class LandLordDashboard extends JFrame implements ActionListener {
 
-    private JLabel background;
-    private JFrame dashframe;
-
-    private JButton addProperty, viewProperties,logout;
+    private final JButton addProperty;
+    private final JButton viewProperties;
+    private final JButton logout;
 
     public LandLordDashboard() {
 
 
         ImageIcon img = new ImageIcon("Media\\vb.png");
-        background = new JLabel(img);
+        JLabel background = new JLabel(img);
         background.setBounds(0, 0, 1085, 700);
 
         // Setting up the frame

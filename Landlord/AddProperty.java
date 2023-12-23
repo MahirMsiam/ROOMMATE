@@ -16,8 +16,9 @@ import java.io.IOException;
 
 public class AddProperty extends JFrame implements ActionListener {
 
-    private JTextField addressField, rentField, descriptionField;
-    private JLabel background;
+    private final JTextField addressField;
+    private final JTextField rentField;
+    private final JTextField descriptionField;
 
     private JButton submit, Back, upload;
     private JComboBox wifiCombo;
@@ -32,7 +33,7 @@ public class AddProperty extends JFrame implements ActionListener {
 
 
         ImageIcon img = new ImageIcon("Media\\blu.jpg");
-        background = new JLabel(img);
+        JLabel background = new JLabel(img);
         background.setBounds(0, 0, 1100, 700);
 
         // Setting up the frame
