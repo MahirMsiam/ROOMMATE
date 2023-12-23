@@ -1,20 +1,23 @@
 package Landlord;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.*;
-
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 
 public class AddProperty extends JFrame implements ActionListener {
 
     private JTextField addressField, rentField, descriptionField;
-    private JLabel addressLabel, rentLabel, image, descriptionLabel, WifiLabel, uploadLabel, background;
-    private JFrame frame;
-    private JPanel panel;
+    private JLabel background;
+
     private JButton submit, Back, upload;
     private JComboBox wifiCombo;
     private JFileChooser chooser;
@@ -24,9 +27,8 @@ public class AddProperty extends JFrame implements ActionListener {
 
     public AddProperty() {
 
-        wifiCombo = new JComboBox();
-        wifiCombo.addItem("Yes");
-        wifiCombo.addItem("No");
+
+
 
         ImageIcon img = new ImageIcon("Media\\blu.jpg");
         background = new JLabel(img);
@@ -37,14 +39,13 @@ public class AddProperty extends JFrame implements ActionListener {
         setSize(1100, 700);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
 
         // Creating components
-        addressLabel = new JLabel("Address :");
-        rentLabel = new JLabel("Rent :");
-        descriptionLabel = new JLabel("Description :");
-        WifiLabel = new JLabel("Wifi :");
-        uploadLabel = new JLabel("Choose Image :");
+        JLabel addressLabel = new JLabel("Address :");
+        JLabel rentLabel = new JLabel("Rent :");
+        JLabel descriptionLabel = new JLabel("Description :");
+        JLabel WifiLabel = new JLabel("Wifi :");
+        JLabel uploadLabel = new JLabel("Choose Image :");
 
 
         addressField = new JTextField();
@@ -56,6 +57,12 @@ public class AddProperty extends JFrame implements ActionListener {
         submit = new JButton("Submit");
         Back = new JButton("Back");
         upload = new JButton("Upload");
+
+        // Adding action listeners
+        submit.addActionListener(this);
+        Back.addActionListener(this);
+        upload.addActionListener(this);
+
 
         // Setting bounds for components
 
@@ -69,9 +76,9 @@ public class AddProperty extends JFrame implements ActionListener {
         rentField.setBounds(260, 170, 180, 30);
         descriptionField.setBounds(260, 220, 180, 30);
         wifiCombo.setBounds(260, 270, 180, 30);
-        upload.setBounds(290, 320, 100, 30);
         submit.setBounds(170, 370, 100, 35);
         Back.setBounds(170, 420, 100, 35);
+        upload.setBounds(260, 320, 180, 30);
 
         // Adding components to the frame
 
@@ -89,13 +96,18 @@ public class AddProperty extends JFrame implements ActionListener {
         add(wifiCombo);
 
         //Buttons
-        add(upload);
         add(submit);
         add(Back);
+        add(upload);
 
         add(background);
 
         setVisible(true);
+
+        wifiCombo = new JComboBox();
+        wifiCombo.addItem("Yes");
+        wifiCombo.addItem("No");
+        wifiCombo.setSelectedIndex(1);
     }
 
 
@@ -108,48 +120,60 @@ public class AddProperty extends JFrame implements ActionListener {
             String description = descriptionField.getText();
             String wifi = (String) wifiCombo.getSelectedItem();
 
-            if (validateInputs(address,rent,description,wifi)){
-                saveDataToFile(address,rent,description,wifi);//saves data to file if true
-                JOptionPane.showMessageDialog(null, "Property Added Successfully");
-            } else {
+            if (address.isEmpty() || rent.isEmpty() || description.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please fill in all fields");
+
+            } else if (validateInputs(address, rent, description, wifi)) {
+                saveDataToFile(address, rent, description, wifi);//saves data to file if true
                 try {
-                    FileWriter fw = new FileWriter("Apartments\\Property.txt", true);
-                    BufferedWriter bw = new BufferedWriter(fw);
-                    PrintWriter pw = new PrintWriter(bw);
-
-                    pw.println(address + "," + rent + "," + description + "," + wifi + ",");
-                    pw.flush();
-                    pw.close();
-
-                    JOptionPane.showMessageDialog(null, "Property Added Successfully");
-                    dispose();
-                    new LandLordDashboard();
-
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Error Occurred");
+                    ImageIO.write(img, filExtension, new File(".\\AptPictures\\" + address + filExtension));
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
                 }
+
+                JOptionPane.showMessageDialog(null, "Property Added Successfully");
             }
-        }
-        else if (e.getSource() == upload) {
-            chooser = new JFileChooser();
-            chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("*.IMAGE", "jpg", "gif", "png");
-            chooser.addChoosableFileFilter(filter);
-            int result = chooser.showSaveDialog(null);
-            if (result == JFileChooser.APPROVE_OPTION) {
+        } else if (e.getSource() == upload) {
+            try {
+                FileNameExtensionFilter filter = new FileNameExtensionFilter("*.IMAGE", "jpg", "gif", "png");
+                chooser = new JFileChooser();
+                chooser.setFileFilter(filter);
+                chooser.showOpenDialog(this);
                 file = chooser.getSelectedFile();
-                String path = file.getAbsolutePath();
-                filExtension = path.substring(path.lastIndexOf(".") + 1, path.length());
-            } else if (result == JFileChooser.CANCEL_OPTION) {
-                System.out.println("No Data");
+                img = ImageIO.read(file);
+
+                ImageIcon icon = new ImageIcon(img);
+                ImageIcon imageIcon = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+
+                upload.setIcon(imageIcon);
+                String extensions[] = {".jpg", ".png", ".gif" };
+                for (String extension : extensions) {
+                    if (file.getName().toLowerCase().endsWith(extension)) {
+                        filExtension = extension;
+                        break;
+                    }
+                }
+
+                upload.revalidate();
+                upload.repaint();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (Exception ex2) {
             }
         }
+
+
 
         else if (e.getSource() == Back) {
-            new LandLordDashboard();
-            setVisible(false);
+                new LandLordDashboard();
+                setVisible(false);
+            }
         }
-    }
+
+
+
+
+
 
     private boolean validateInputs(String address, String rent, String description, String wifi) {
         // validation logic here
@@ -175,6 +199,10 @@ public class AddProperty extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(this, "Error saving data");//Add a separator between entries
         }
     }
+
+
+
+
 }
 
 
