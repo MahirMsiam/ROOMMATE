@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class AdminDashboard extends JFrame {
     private JTable userListTable;
-    private JTable landLordListTable,poster;
+    private JTable landLordListTable, poster;
     private DefaultTableModel userListTableModel;
     private DefaultTableModel landLordListTableModel;
 
@@ -28,12 +28,11 @@ public class AdminDashboard extends JFrame {
         add(createClickableLabel("LandLord List", "Media\\landlord.png"));
         add(createClickableLabel("Properties", ",,,,,,"));
         add(createClickableLabel("Contributors", "Media\\contribution.png"));
-        //add(poster);
+        // add(poster);
 
         setSize(1000, 600);
         setLocationRelativeTo(null);
     }
-
 
     private JLabel createClickableLabel(String labelText, String imagePath) {
         ImageIcon icon = new ImageIcon(imagePath);
@@ -48,7 +47,7 @@ public class AdminDashboard extends JFrame {
 
         return label;
     }
-    //BG image
+    // BG image
     // ImageIcon img = new ImageIcon("Media\\admindash.jpg");
     // poster = new JLabel(img);
     // poster.setBounds(0, 0, 1100, 700);
