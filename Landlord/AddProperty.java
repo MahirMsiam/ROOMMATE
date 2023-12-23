@@ -176,15 +176,3 @@ public class AddProperty extends JFrame implements ActionListener {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
