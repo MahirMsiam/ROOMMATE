@@ -24,7 +24,6 @@ public class AddProperty extends JFrame implements ActionListener {
     private final JButton Back;
     private final JButton upload;
     private JComboBox wifiCombo;
-    private JFileChooser chooser;
     File file;
     BufferedImage img;
     String filExtension = "";
@@ -132,7 +131,7 @@ public class AddProperty extends JFrame implements ActionListener {
                 try {
                     ImageIO.write(img, filExtension, new File("Apartments\\AptPictures\\" + address + filExtension));
                 } catch (IOException e1) {
-
+                    throw new RuntimeException(e1);
                 }
 
                 JOptionPane.showMessageDialog(null, "Property Added Successfully");
@@ -140,7 +139,7 @@ public class AddProperty extends JFrame implements ActionListener {
         } else if (e.getSource() == upload) {
             try {
                 FileNameExtensionFilter filter = new FileNameExtensionFilter("*.IMAGE", "jpg", "gif", "png");
-                chooser = new JFileChooser();
+                JFileChooser chooser = new JFileChooser();
                 chooser.setFileFilter(filter);
                 chooser.showOpenDialog(this);
                 file = chooser.getSelectedFile();
@@ -162,6 +161,7 @@ public class AddProperty extends JFrame implements ActionListener {
             } catch (IOException ex) {
                 ex.printStackTrace();
             } catch (Exception ex2) {
+                throw new RuntimeException(ex2);
             }
         }
 
