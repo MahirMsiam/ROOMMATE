@@ -261,11 +261,14 @@ public class login implements ActionListener, Ilginval {
                 // Additional frame here
                 new AdminDashboard().setVisible(true);
                 //loginFrame.setVisible(false);
+            
             }
 
             else { // Login failed
                 showMessageDialog(null, "Invalid username or password!");
             }
+        
+            
 
         }
     }
