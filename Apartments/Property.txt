@@ -18,3 +18,30 @@ Rent: 1
 Description: 1
 Wifi: No
 ====================
+Address: 123123
+Rent: 1231231
+Description: 123123
+Wifi: Yes
+====================
+Address: 123123
+Rent: 1231231
+Description: 123123
+Wifi: Yes
+====================
+Address: 123123
+Rent: 1231231
+Description: 123123
+Wifi: No
+====================
+Property added at: 2023/12/23 21:45:28
+Address: fdafa
+Rent: 12222222222222
+Description: awfawf
+Wifi: No
+====================
+Property added at: 2023/12/23 23:38:38
+Address: USA
+Rent: 2000000
+Description: Be rich
+Wifi: Yes
+====================

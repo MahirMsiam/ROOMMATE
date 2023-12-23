@@ -60,7 +60,8 @@ public class LandLordDashboard extends JFrame implements ActionListener {
             new AddProperty();
             setVisible(false);
         } else if (e.getSource() == viewProperties) {
-            JOptionPane.showMessageDialog(LandLordDashboard.this, "Frame incoming");
+            JOptionPane.showMessageDialog(null, "No Properties Added Yet");
+            setVisible(false);
         } else if (e.getSource() == logout) {
             new LandLordLogin();
             setVisible(false);

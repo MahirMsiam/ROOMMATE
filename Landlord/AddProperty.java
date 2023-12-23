@@ -11,7 +11,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class AddProperty extends JFrame implements ActionListener {
@@ -19,19 +20,17 @@ public class AddProperty extends JFrame implements ActionListener {
     private final JTextField addressField;
     private final JTextField rentField;
     private final JTextField descriptionField;
+    private JTextField wifiField;
 
     private final JButton submit;
     private final JButton Back;
     private final JButton upload;
-    private JComboBox wifiCombo;
+    private JRadioButton wifiYes, wifiNo;
     File file;
     BufferedImage img;
     String filExtension = "";
 
     public AddProperty() {
-
-
-
 
         ImageIcon img = new ImageIcon("Media\\blu.jpg");
         JLabel background = new JLabel(img);
@@ -51,10 +50,10 @@ public class AddProperty extends JFrame implements ActionListener {
         JLabel uploadLabel = new JLabel("Choose Image :");
 
 
+
         addressField = new JTextField();
         rentField = new JTextField();
         descriptionField = new JTextField();
-        wifiCombo = new JComboBox();
 
 
         submit = new JButton("Submit");
@@ -78,10 +77,10 @@ public class AddProperty extends JFrame implements ActionListener {
         addressField.setBounds(260, 120, 180, 30);
         rentField.setBounds(260, 170, 180, 30);
         descriptionField.setBounds(260, 220, 180, 30);
-        wifiCombo.setBounds(260, 270, 180, 30);
         submit.setBounds(170, 370, 100, 35);
         Back.setBounds(170, 420, 100, 35);
         upload.setBounds(260, 320, 180, 30);
+
 
         // Adding components to the frame
 
@@ -96,38 +95,66 @@ public class AddProperty extends JFrame implements ActionListener {
         add(addressField);
         add(rentField);
         add(descriptionField);
-        add(wifiCombo);
 
         //Buttons
         add(submit);
         add(Back);
         add(upload);
 
+        //creating radio buttons
+        wifiNo = new JRadioButton("No");
+        wifiNo.setForeground(Color.decode("#301934"));
+        wifiNo.setBackground(Color.WHITE);
+        wifiYes = new JRadioButton("Yes");
+        wifiYes.setForeground(Color.decode("#301934"));
+        wifiYes.setBackground(Color.WHITE);
+        wifiNo.setFocusPainted(false);
+        wifiYes.setFocusPainted(false);
+        wifiNo.setBounds(260, 270, 80, 30);
+        wifiYes.setBounds(340, 270, 80, 30);
+
+        //grouping the radio buttons
+        ButtonGroup bg = new ButtonGroup();
+        bg.add(wifiNo);
+        bg.add(wifiYes);
+        add(wifiNo);
+        add(wifiYes);
+        wifiNo.setSelected(true);
+
+        //setting the background of radio options
+        wifiNo.setOpaque(false);
+        wifiYes.setOpaque(false);
+
+        //setting background
         add(background);
+
 
         setVisible(true);
 
-        wifiCombo = new JComboBox();
-        wifiCombo.addItem("Yes");
-        wifiCombo.addItem("No");
-        wifiCombo.setSelectedIndex(1);
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        String wifi = "";
+        if (wifiYes.isSelected()) {
+            wifi = "Yes";
+        } else if (wifiNo.isSelected()) {
+            wifi = "No";
+        }
+
         if (e.getSource() == submit) {
             //getting input
             String address = addressField.getText();
             String rent = rentField.getText();
             String description = descriptionField.getText();
-            String wifi = (String) wifiCombo.getSelectedItem();
 
-            if (address.isEmpty() || rent.isEmpty() || description.isEmpty()) {
+            if (address.isEmpty() || rent.isEmpty() || description.isEmpty()|| wifi.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Please fill in all fields");
 
-            } else if (validateInputs(address, rent, description, wifi)) {
-                saveDataToFile(address, rent, description, wifi);//saves data to file if true
+            } else if (validateInputs(address, rent, description,wifi)) {
+                saveDataToFile(address, rent, description,wifi);//saves data to file if true
                 try {
                     ImageIO.write(img, filExtension, new File("Apartments\\AptPictures\\" + address + filExtension));
                 } catch (IOException e1) {
@@ -168,10 +195,10 @@ public class AddProperty extends JFrame implements ActionListener {
 
 
         else if (e.getSource() == Back) {
-                new LandLordDashboard();
-                setVisible(false);
-            }
+            new LandLordDashboard();
+            setVisible(false);
         }
+    }
 
 
 
@@ -182,7 +209,7 @@ public class AddProperty extends JFrame implements ActionListener {
         // validation logic here
 
         // check if the fields are not empty
-        if (address.isEmpty() || rent.isEmpty() || description.isEmpty() || wifi.isEmpty()) {
+        if (address.isEmpty() || rent.isEmpty() || description.isEmpty()|| wifi.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in all fields.");
             return false;
         }
@@ -192,6 +219,10 @@ public class AddProperty extends JFrame implements ActionListener {
     private void saveDataToFile(String address,String rent, String description, String wifi){
         try (BufferedWriter writer= new BufferedWriter(new FileWriter("Apartments\\Property.txt",true))) {
             //Append the user data to the text file
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+            writer.write("Property added at: " + dtf.format(now)+"\n");
             writer.write("Address: " + address + "\n");
             writer.write("Rent: " + rent + "\n");
             writer.write("Description: " + description + "\n");
