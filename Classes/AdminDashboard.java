@@ -20,7 +20,7 @@ public class AdminDashboard extends JFrame {
 
     public AdminDashboard() {
         setTitle("ADMIN-Dashboard");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridLayout(2, 2, 10, 10));
 
         // Create labels with clickable images
@@ -172,7 +172,7 @@ public class AdminDashboard extends JFrame {
                 int selectedRow = mainFrame.userListTable.getSelectedRow();
                 if (selectedRow != -1) {
                     int confirm = JOptionPane.showConfirmDialog(mainFrame,
-                            "Are you sure you want to delete this user?", "Confirm Deletion",
+                            "Are you sure you want to delete this user?", "Confirm if you want to delete",
                             JOptionPane.YES_NO_OPTION);
 
                     if (confirm == JOptionPane.YES_OPTION) {
