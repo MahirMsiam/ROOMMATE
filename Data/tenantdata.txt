@@ -1,6 +1,6 @@
 Name: a
 Address: a
-Contact Number: 000
+Contact Number: 00
 Email: siam@gmail.com
 Password: a
 ====================
