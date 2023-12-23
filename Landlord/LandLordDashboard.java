@@ -15,6 +15,7 @@ public class LandLordDashboard extends JFrame implements ActionListener {
 
     public LandLordDashboard() {
 
+
         ImageIcon img = new ImageIcon("Media\\landlord.jpg");
         background = new JLabel(img);
         background.setBounds(0, 0, 1100, 700);
@@ -22,13 +23,13 @@ public class LandLordDashboard extends JFrame implements ActionListener {
         // Setting up the frame
         setTitle("LandLord Dashboard");
         setSize(1100, 700);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
 
         // Creating components
         addProperty = new JButton("Add Property");
         viewProperties = new JButton("View Property");
-
         logout = new JButton("Logout");
 
         // Setting bounds for components
