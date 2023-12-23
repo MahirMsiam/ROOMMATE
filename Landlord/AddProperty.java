@@ -20,7 +20,9 @@ public class AddProperty extends JFrame implements ActionListener {
     private final JTextField rentField;
     private final JTextField descriptionField;
 
-    private JButton submit, Back, upload;
+    private final JButton submit;
+    private final JButton Back;
+    private final JButton upload;
     private JComboBox wifiCombo;
     private JFileChooser chooser;
     File file;
@@ -147,7 +149,7 @@ public class AddProperty extends JFrame implements ActionListener {
                 ImageIcon icon = new ImageIcon(img);
                 ImageIcon imageIcon = new ImageIcon(icon.getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH));
                 upload.setIcon(imageIcon);
-                String extensions[] = {".jpg", ".png", ".gif" };
+                String[] extensions = {".jpg", ".png", ".gif" };
                 for (String extension : extensions) {
                     if (file.getName().toLowerCase().endsWith(extension)) {
                         filExtension = extension;
