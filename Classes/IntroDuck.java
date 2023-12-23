@@ -62,6 +62,7 @@ public class IntroDuck extends JFrame {
         });
 
         // adding buttons
+        //adding extra bfgg
         BGlabel.add(Tenant);
         BGlabel.add(landLord);
         setVisible(true);
