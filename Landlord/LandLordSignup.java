@@ -8,13 +8,12 @@ import java.awt.event.ActionListener;
 import java.io.*;
 
 public class LandLordSignup extends JFrame implements ActionListener {
-    private JTextField nameField, addressField, contactField, emailField,rentfield;
+    private JTextField nameField, addressField, contactField, emailField, Nidfield;
     private JPasswordField passwordField, confirmPasswordField;
     private JButton signupButton, Back;
     private JLabel background;
 
     public LandLordSignup() {
-
 
         ImageIcon img = new ImageIcon("Media\\sugnup.jpg");
         background = new JLabel(img);
@@ -35,17 +34,13 @@ public class LandLordSignup extends JFrame implements ActionListener {
         JLabel confirmPasswordLabel = new JLabel("Confirm Password :");
         JLabel NIDLabel = new JLabel("NID Number :");
 
-
-
         nameField = new JTextField();
         addressField = new JTextField();
         contactField = new JTextField();
         emailField = new JTextField();
         passwordField = new JPasswordField();
         confirmPasswordField = new JPasswordField();
-        rentfield = new JTextField();
-
-
+        Nidfield = new JTextField();
 
         signupButton = new JButton("Signup");
         Back = new JButton("Back");
@@ -55,11 +50,9 @@ public class LandLordSignup extends JFrame implements ActionListener {
         addressLabel.setBounds(570, 170, 200, 30);
         contactLabel.setBounds(570, 220, 200, 30);
         emailLabel.setBounds(570, 270, 200, 30);
-        passwordLabel.setBounds(570, 320,200, 30);
+        passwordLabel.setBounds(570, 320, 200, 30);
         confirmPasswordLabel.setBounds(570, 370, 200, 30);
         NIDLabel.setBounds(570, 420, 200, 30);
-
-
 
         nameField.setBounds(810, 120, 180, 30);
         addressField.setBounds(810, 170, 180, 30);
@@ -67,15 +60,14 @@ public class LandLordSignup extends JFrame implements ActionListener {
         emailField.setBounds(810, 270, 180, 30);
         passwordField.setBounds(810, 320, 180, 30);
         confirmPasswordField.setBounds(810, 370, 180, 30);
-        rentfield.setBounds(810, 420, 180, 30);
-
+        Nidfield.setBounds(810, 420, 180, 30);
 
         setLocationRelativeTo(null);
         Back.setBounds(780, 610, 100, 35);
         Back.setBackground(Color.PINK);
         Back.setForeground(Color.black);
 
-        signupButton.setBounds(890, 610, 100,35);
+        signupButton.setBounds(890, 610, 100, 35);
         signupButton.setBackground(Color.PINK);
         signupButton.setForeground(Color.black);
         signupButton.addActionListener(this);
@@ -90,15 +82,13 @@ public class LandLordSignup extends JFrame implements ActionListener {
         add(confirmPasswordLabel);
         add(NIDLabel);
 
-
         add(nameField);
         add(addressField);
         add(contactField);
         add(emailField);
         add(passwordField);
         add(confirmPasswordField);
-        add(rentfield);
-
+        add(Nidfield);
 
         add(signupButton);
         add(Back);
@@ -115,35 +105,33 @@ public class LandLordSignup extends JFrame implements ActionListener {
             String address = addressField.getText();
             String contact = contactField.getText();
             String email = emailField.getText();
-            String NID = rentfield.getText();
-
+            String NID = Nidfield.getText();
 
             char[] password = passwordField.getPassword();
             char[] confirmPassword = confirmPasswordField.getPassword();
 
             // Validate and process the user input
-            if (validateInputs(name, address, contact, email, password, confirmPassword,NID)) {
-                saveDataToFile(name, address, contact, email, password,NID);// if=true then data will be written in tenantdata.txt file
+            if (validateInputs(name, address, contact, email, password, confirmPassword, NID)) {
+                saveDataToFile(name, address, contact, email, password, NID);// if=true then data will be written in
+                                                                             // tenantdata.txt file
                 JOptionPane.showMessageDialog(this, "Signup successful!");
             } // else {
-            // JOptionPane.showMessageDialog(this, "Invalid input or passwords do not
-            // match.");
-            // }
+              // JOptionPane.showMessageDialog(this, "Invalid input or passwords do not
+              // match.");
+              // }
         } else if (e.getSource() == Back) {
             new LandLordLogin();
             setVisible(false);
         }
     }
 
-
-
     private boolean validateInputs(String name, String address, String contact, String email,
-                                   char[] password, char[] confirmPassword , String rent) {
+            char[] password, char[] confirmPassword, String Nid) {
         // validation logic here
 
         // check if the fields are not empty
         if (name.isEmpty() || address.isEmpty() || contact.isEmpty() || email.isEmpty() ||
-                password.length == 0 || confirmPassword.length == 0||rent.isEmpty()) {
+                password.length == 0 || confirmPassword.length == 0 || Nid.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in all fields.");
             return false;
         }
@@ -168,7 +156,8 @@ public class LandLordSignup extends JFrame implements ActionListener {
     }
 
     // saving user data in a txt file
-    private void saveDataToFile(String name, String address, String contact, String email, char[] password, String rent) {
+    private void saveDataToFile(String name, String address, String contact, String email, char[] password,
+            String Nid) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data\\LandLordData.txt", true))) {
             // Append the user data to the text file
             writer.write("Name: " + name + "\n");
@@ -176,7 +165,8 @@ public class LandLordSignup extends JFrame implements ActionListener {
             writer.write("Contact Number: " + contact + "\n");
             writer.write("Email: " + email + "\n");
             writer.write("Password: " + new String(password) + "\n");
-            writer.write("Rent: " + rent + "\n");
+            writer.write("Nid: " + Nid + "\n");
+            writer.write("====================\n");
 
         } catch (IOException ioException) {
             ioException.printStackTrace();

@@ -53,7 +53,7 @@ public class LandLordDashboard extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addProperty) {
-            new AddProperty();
+            //new AddProperty();
             setVisible(false);
         } else if (e.getSource() == viewProperties) {
             JOptionPane.showMessageDialog(LandLordDashboard.this, "Frame incoming");

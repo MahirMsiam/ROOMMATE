@@ -1,7 +1,8 @@
 package Landlord;
-import Classes.IntroDuck;
-import Landlord.LandLordSignup;
 
+import Classes.*;
+import Landlord.LandLordSignup;
+import Interfaces.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,8 +14,7 @@ import java.util.Scanner;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
-
-public class LandLordLogin implements ActionListener{
+public class LandLordLogin implements ActionListener {
 
     JFrame loginFrame;
     JPanel loginDashboard;
@@ -26,17 +26,17 @@ public class LandLordLogin implements ActionListener{
     JButton login, signup, frgtpass, exit, Admin; // login dashboard
     JButton lgin, b7, b8, ad_exi, bc2usr; // admin Login
 
-     public LandLordLogin() {
+    public LandLordLogin() {
 
         // create frame
         loginFrame = new JFrame();
 
-        ImageIcon image = new ImageIcon("C:\\Users\\moyaz\\OneDrive\\Desktop\\Uni\\Java\\Java proj\\Media\\loginBg.jpg");
+        ImageIcon image = new ImageIcon("Media\\loginBg.jpg");
         background = new JLabel(image);
         background.setBounds(0, 0, 1100, 700);
 
         // icon
-        ImageIcon icon = new ImageIcon("C:\\Users\\moyaz\\OneDrive\\Desktop\\Uni\\Java\\Java proj\\Media\\Frmlogo.png");
+        ImageIcon icon = new ImageIcon("Media\\Frmlogo.png");
 
         // login dashboard panel
         loginDashboard = new JPanel();
@@ -142,13 +142,13 @@ public class LandLordLogin implements ActionListener{
 
         passtf = new JTextField("", 4);
         passtf.setBounds(495, 240, 300, 32);
-        passtf.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        passtf.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
         passtf.setFont(bigFont);
         passtf.setOpaque(false);
 
         ad_pf = new JPasswordField("", 4);
         ad_pf.setBounds(495, 308, 300, 32);
-        ad_pf.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        ad_pf.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
         ad_pf.setFont(bigFont);
         ad_pf.setOpaque(false);
 
@@ -177,7 +177,7 @@ public class LandLordLogin implements ActionListener{
         bc2usr.setBorderPainted(false);
         bc2usr.setForeground(Color.BLACK);
 
-        ImageIcon img = new ImageIcon("Media\\Frmlogo.png");
+        ImageIcon img = new ImageIcon("Media\\\\admindash.jpg");
         poster = new JLabel(img);
         poster.setBounds(0, 0, 1100, 700);
 
@@ -214,19 +214,15 @@ public class LandLordLogin implements ActionListener{
             String user = usertf.getText();
             String pass = new String(pasF.getPassword());
             // validating data from txt file by checking hashmap
-            if (user.isEmpty() || pass.isEmpty())
-            {
+            if (user.isEmpty() || pass.isEmpty()) {
                 showMessageDialog(null, "Both fields are required!");
-                //add another condition to check for empty field
-            }
-            else if (validateLogin(user, pass)) {
+                // add another condition to check for empty field
+            } else if (validateLogin(user, pass)) {
                 showMessageDialog(null, "Login Successful");
                 new LandLordDashboard();
                 loginFrame.setVisible(false);
                 // Additional logic if login is successful
-            }
-            else
-            { // Login failed
+            } else { // Login failed
                 showMessageDialog(null, "Invalid username or password!");
             }
         }
@@ -237,12 +233,36 @@ public class LandLordLogin implements ActionListener{
         } else if (e.getSource() == signup) {
             new LandLordSignup();
             loginFrame.setVisible(false);
+        } else if (e.getSource() == Admin) {
+            loginDashboard.setVisible(false);
+            adminLogin.setVisible(true);
+        } else if (e.getSource() == bc2usr) {
+            loginDashboard.setVisible(true);
+            adminLogin.setVisible(false);
+        } else if (e.getSource() == ad_exi) {
+            new IntroDuck();
+            loginFrame.setVisible(false);
+        } else if (e.getSource() == lgin) {
+            String user = passtf.getText();
+            String pass = new String(ad_pf.getPassword());
+            // validating data from txt file by checking hashmap
+            if (user.isEmpty() || pass.isEmpty()) {
+                showMessageDialog(null, "Both fields are required!");
+                // add another condition to check for empty field
+            } else if (validateLogin(user, pass)) {
+                showMessageDialog(null, "Login Successful");
+                new AdminDashboard().setVisible(true);
+                loginFrame.setVisible(false);
+                // Additional logic if login is successful
+            } else { // Login failed
+                showMessageDialog(null, "Invalid username or password!");
+            }
         }
     }
 
     // userpass validation methode
     private boolean validateLogin(String user, String pass) {
-        try (Scanner scanner = new Scanner(new File("Data\\LandLordData.txt"))) {
+        try (Scanner scanner = new Scanner(new File("Data\\Admindata.txt"))) {
             StringBuilder userData = new StringBuilder();
 
             // Read the entire file into a StringBuilder
@@ -260,4 +280,4 @@ public class LandLordLogin implements ActionListener{
         return false; // Unable to validate login
     }
 }
-//Hello Bad Boy!!!
+// Hello Bad Boy!!
