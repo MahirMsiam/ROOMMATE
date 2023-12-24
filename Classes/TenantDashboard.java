@@ -32,7 +32,6 @@ public class TenantDashboard extends JFrame {
 
         searchPanel.add(new JLabel("Enter search term: "));
         searchPanel.add(searchField);
-        searchPanel.add(searchButton);
 
         mainPanel.add(searchPanel, BorderLayout.NORTH);
 
