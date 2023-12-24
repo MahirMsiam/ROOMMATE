@@ -18,7 +18,7 @@ public class opening {
                 card1.add(label1);
 
                 JPanel card2 = new JPanel();
-                ImageIcon img2 = new ImageIcon("Media\\pg2.jpg");
+                ImageIcon img2 = new ImageIcon("Media\\pg2.jpg ");
                 JLabel label2 = new JLabel(img2);
                 card2.add(label2);
 
@@ -40,7 +40,6 @@ public class opening {
                 // Add a mouse listener to card2 for swipe detection
                 card2.addMouseListener(new MouseAdapter() {
                     Point point = new Point();
-
                     @Override
                     public void mousePressed(MouseEvent e) {
                         point = e.getPoint();

@@ -1,12 +1,11 @@
-
-Name: s
-Address: s
-Contact Number: 000
-Email: mahi@gmail.com
-Password: s
+Name: a
+Address: a
+Contact Number: 00
+Email: siam@gmail.com
+Password: a
 ====================
 
-Name: s 
+Name: s
 Address: s
 Contact Number: 00
 Email: mmm@gmail.com
