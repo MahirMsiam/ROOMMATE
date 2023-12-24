@@ -94,3 +94,8 @@ Address: awfaw
 Rent: 142124
 Description: LandLord :
 ====================
+Property added at: 2023/12/25 00:52:17
+Address: Dhaka
+Rent: 20000
+Description: LandLord :
+====================

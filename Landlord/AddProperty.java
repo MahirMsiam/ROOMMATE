@@ -19,7 +19,7 @@ public class AddProperty extends JFrame implements ActionListener {
     private final JLabel descriptionField;
     private final JLabel size;
     private final JLabel rent;
-    private final JLabel place;
+    private final JLabel address;
     private final JLabel imgLabel2;
     private final JLabel uploadLabel;
 
@@ -87,12 +87,12 @@ public class AddProperty extends JFrame implements ActionListener {
         LandLordName.setBorder(redBorder1);
         frame.add(LandLordName);
 
-        place = new JLabel("Place :");
-        place.setBounds(150, 155, 150, 50);
+        address = new JLabel("Place :");
+        address.setBounds(150, 155, 150, 50);
         Font fullNameFont = new Font("Times New Roman", Font.PLAIN, 20);
-        place.setFont(fullNameFont);
-        place.setForeground(Color.decode("#8ee0f0"));
-        frame.add(place);
+        address.setFont(fullNameFont);
+        address.setForeground(Color.decode("#8ee0f0"));
+        frame.add(address);
 
         addressField = new JTextField();
         addressField.setBounds(150, 195, 236, 30);
@@ -219,7 +219,7 @@ public class AddProperty extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Please fill in all fields");
 
             } else if (validateInputs(address, rent, description)) {
-                saveDataToFile(address, rent, description);//saves data to file if true
+                saveDataToFile(address, rent, description, LandLordName.getText());
                 JOptionPane.showMessageDialog(null, "Property Added Successfully");
             }
         } else if (e.getSource() == attachButton) {
@@ -265,16 +265,18 @@ public class AddProperty extends JFrame implements ActionListener {
         return true;
     }
 
-    private void saveDataToFile(String address,String rent, String description){
+    private void saveDataToFile(String address,String rent, String description, String LandLordName) {
         try (BufferedWriter writer= new BufferedWriter(new FileWriter("Apartments\\Property.txt",true))) {
             //Append the user data to the text file
             LocalDateTime now = LocalDateTime.now();
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
+            writer.write("====================\n");
             writer.write("Property added at: " + dtf.format(now)+ "\n");
             writer.write("Address: " + address + "\n");
             writer.write("Rent: " + rent + "\n");
             writer.write("Description: " + description + "\n");
+            writer.write("By: " + LandLordName + "\n");
             writer.write("====================\n");
         } catch (IOException ioException){
             ioException.printStackTrace();
