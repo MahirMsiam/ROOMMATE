@@ -34,3 +34,48 @@ Rent: 1
 Description: 1
 Wifi: Yes
 ====================
+Shop Details
+ADW
+600
+20000
+Dhaka
+Apartments\Assassin's Creed Mirage2023-10-6-21-31-1.jpg
+
+Shop Details
+AWAFWAf
+1200
+20000
+DHAAD
+Apartments\Assassin's Creed Mirage2023-10-6-21-31-1.jpg
+
+Property added at: 2023/12/24 21:37:02 By 46d23dca-f16e-4369-8668-7c6dd0cf6c4d
+Address: 1233e12
+Rent: 1123123
+Description: fawfawf
+Wifi: No
+====================
+Property added at: 2023/12/24 21:40:50 By 10f3b173-52be-4e5c-8f3c-e3ca3650eb4a
+Address: fawf
+Rent: 121312
+Description: 21123
+Wifi: Yes
+====================
+Property added at: 2023/12/24 21:49:37 By 9452cd7b-34ec-44b3-81c9-8d52b7fcd932
+Address: wafawf
+Rent: wafaw
+Description: wafawf
+Wifi: No
+====================
+Shop Details
+ZXY
+1000
+1600
+ZXY
+Apartments\Assassin's Creed Mirage2023-10-6-21-31-1.jpg
+
+MAFAf
+123
+12000
+123123
+Apartments\Assassin's Creed Mirage2023-10-6-21-31-1.jpg
+

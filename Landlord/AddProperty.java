@@ -4,40 +4,38 @@ import java.lang.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import java.io.*;
 import java.nio.file.*;
 
 public class AddProperty implements ActionListener {
-    private Container c;
-    private JFrame frame;
-    private JLabel type;
-    private JLabel size;
-    private JLabel rent;
-    private JLabel place;
-    private JLabel max;
-    private JLabel imgLabel2;
+    private final Container c;
+    private final JFrame frame;
+    private final JLabel type;
+    private final JLabel size;
+    private final JLabel rent;
+    private final JLabel place;
+    private final JLabel imgLabel2;
 
-    private JTextField attach;
-    private JTextField LandLordName;
-    private JTextField rentField;
-    private JTextField sizeField;
-    private JTextField placeField;
+    private final JTextField attach;
+    private final JTextField LandLordName;
+    private final JTextField rentField;
+    private final JTextField sizeField;
+    private final JTextField addressField;
 
-    private JButton attachButton;
-    private JButton submitButton;
-    private JButton backButton;
+    private final JButton attachButton;
+    private final JButton submitButton;
+    private final JButton backButton;
 
-    private JPanel panel;
+    private final JPanel panel;
 
-    private Cursor cursor;
+    private final Cursor cursor;
 
     public AddProperty() {
 
         frame = new JFrame();
-        frame.setBounds(50, 50, 850, 550);
+        frame.setBounds(50, 40, 850, 550);
         frame.setTitle("Add Property");
         frame.setLayout(null);
         frame.setVisible(true);
@@ -53,10 +51,10 @@ public class AddProperty implements ActionListener {
         cursor = new Cursor(Cursor.HAND_CURSOR);
 
         panel = new JPanel();
-        panel.setBounds(520, 90, 260, 260);
+        panel.setBounds(520, 120, 260, 260);
         panel.setLayout(null);
         panel.setVisible(true);
-        panel.setBackground(Color.decode("#e8b20e"));
+        panel.setBackground(new Color(142, 224, 240));
         c.add(panel);
 
         JLabel add = new JLabel("Add Property Details");
@@ -67,14 +65,14 @@ public class AddProperty implements ActionListener {
         frame.add(add);
 
         type = new JLabel("LandLord :");
-        type.setBounds(150, 30, 150, 50);
+        type.setBounds(150, 55, 150, 50);
         Font typeFont = new Font("Times New Roman", Font.PLAIN, 20);
         type.setFont(typeFont);
         type.setForeground(Color.decode("#8ee0f0"));
         frame.add(type);
 
         LandLordName = new JTextField();
-        LandLordName.setBounds(150, 80, 236, 30);
+        LandLordName.setBounds(150, 105, 236, 30);
         Font userfieldFont = new Font("Verdana", Font.PLAIN, 17);
         LandLordName.setFont(userfieldFont);
         LandLordName.setOpaque(false);
@@ -85,32 +83,32 @@ public class AddProperty implements ActionListener {
         frame.add(LandLordName);
 
         place = new JLabel("Place :");
-        place.setBounds(150, 130, 150, 50);
+        place.setBounds(150, 155, 150, 50);
         Font fullNameFont = new Font("Times New Roman", Font.PLAIN, 20);
         place.setFont(fullNameFont);
         place.setForeground(Color.decode("#8ee0f0"));
         frame.add(place);
 
-        placeField = new JTextField();
-        placeField.setBounds(150, 170, 236, 30);
+        addressField = new JTextField();
+        addressField.setBounds(150, 195, 236, 30);
         Font fullFieldFont = new Font("Verdana", Font.PLAIN, 17);
-        placeField.setFont(fullFieldFont);
-        placeField.setOpaque(false);
-        placeField.setForeground(new Color(219, 226, 233));
-        placeField.setBorder(BorderFactory.createEmptyBorder());
+        addressField.setFont(fullFieldFont);
+        addressField.setOpaque(false);
+        addressField.setForeground(new Color(219, 226, 233));
+        addressField.setBorder(BorderFactory.createEmptyBorder());
         Border redBorder = BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(0, 0, 0));
-        placeField.setBorder(redBorder);
-        frame.add(placeField);
+        addressField.setBorder(redBorder);
+        frame.add(addressField);
 
         size = new JLabel("Size :");
-        size.setBounds(150, 220, 150, 50);
+        size.setBounds(150, 245, 150, 50);
         Font passwordFont = new Font("Times New Roman", Font.PLAIN, 20);
         size.setFont(passwordFont);
         size.setForeground(Color.decode("#8ee0f0"));
         frame.add(size);
 
         sizeField = new JTextField();
-        sizeField.setBounds(150, 260, 236, 30);
+        sizeField.setBounds(150, 285, 236, 30);
         Font passfieldFont = new Font("Verdana", Font.PLAIN, 17);
         sizeField.setFont(passfieldFont);
         sizeField.setOpaque(false);
@@ -122,14 +120,14 @@ public class AddProperty implements ActionListener {
 
 
         rent = new JLabel("Rent per month :");
-        rent.setBounds(150, 310, 150, 50);
+        rent.setBounds(150, 335, 150, 50);
         Font emailFont = new Font("Times New Roman", Font.PLAIN, 20);
         rent.setFont(emailFont);
         rent.setForeground(Color.decode("#8ee0f0"));
         frame.add(rent);
 
         rentField = new JTextField();
-        rentField.setBounds(150, 350, 236, 30);
+        rentField.setBounds(150, 375, 236, 30);
         Font emailFieldFont = new Font("Verdana", Font.PLAIN, 17);
         rentField.setFont(emailFieldFont);
         rentField.setOpaque(false);
@@ -140,18 +138,12 @@ public class AddProperty implements ActionListener {
         frame.add(rentField);
 
         JLabel addPhoto = new JLabel("Add a photo here ");
-        addPhoto.setBounds(593, 65, 150, 30);
-        Font addPhotoFont = new Font("Times New Roman", Font.BOLD, 17);
+        addPhoto.setBounds(570, 55, 200, 30);
+        Font addPhotoFont = new Font("Comic Sans MS", Font.PLAIN, 20);
         addPhoto.setFont(addPhotoFont);
-        addPhoto.setForeground(new Color(0, 0, 0));
+        addPhoto.setForeground(Color.decode("#8ee0f0"));
         frame.add(addPhoto);
 
-        max = new JLabel("Max Photo Size 260 * 260");
-        max.setBounds(656, 345, 150, 30);
-        Font maxFont = new Font("Times New Roman", Font.PLAIN, 11);
-        max.setFont(maxFont);
-        max.setForeground(new Color(0, 0, 0));
-        frame.add(max);
 
         attach = new JTextField();
         attach.setBounds(540, 365, 220, 30);
@@ -165,20 +157,20 @@ public class AddProperty implements ActionListener {
         frame.add(attach);
 
         attachButton = new JButton("Attachment");
-        attachButton.setBounds(540, 395, 100, 30);
+        attachButton.setBounds(520, 395, 120, 60);
         attachButton.setBackground(new Color(219, 219, 9));
         attachButton.setForeground(Color.decode("#000000"));
-        Font attachButtonFont = new Font("Times New Roman", Font.BOLD, 15);
+        Font attachButtonFont = new Font("Comic Sans MS", Font.PLAIN, 20);
         attachButton.setFont(attachButtonFont);
         attachButton.setCursor(cursor);
         attachButton.setBorder(BorderFactory.createEmptyBorder());
         frame.add(attachButton);
 
         submitButton = new JButton("Submit");
-        submitButton.setBounds(660, 395, 100, 30);
+        submitButton.setBounds(661, 395, 120, 60);
         submitButton.setBackground(new Color(219, 219, 9));
         submitButton.setForeground(Color.decode("#000000"));
-        Font submitButtonFont = new Font("Times New Roman", Font.BOLD, 15);
+        Font submitButtonFont = new Font("Comic Sans MS", Font.PLAIN, 20);
         submitButton.setFont(submitButtonFont);
         submitButton.setCursor(cursor);
         submitButton.setBorder(BorderFactory.createEmptyBorder());
@@ -188,19 +180,20 @@ public class AddProperty implements ActionListener {
 
 
         backButton = new JButton("Back");
-        backButton.setBackground(new Color(219, 219, 9));
+        backButton.setBackground(new Color(142, 224, 240));
         backButton.setForeground(Color.decode("#000000"));
-        Font backbuttonFont = new Font("Times New Roman", Font.BOLD, 15);
+        Font backbuttonFont = new Font("Comic Sans MS", Font.PLAIN, 20);
         backButton.setFont(backbuttonFont);
         backButton.setCursor(cursor);
         backButton.setBorder(BorderFactory.createEmptyBorder());
-        backButton.setBounds(2, 2, 100, 30);
+        backButton.setBounds(150, 450, 236, 30);
         frame.add(backButton);
 
 
 
         imgLabel2 = new JLabel();
         panel.add(imgLabel2);
+
 
         submitButton.addActionListener(this);
         attachButton.addActionListener(this);
@@ -211,17 +204,17 @@ public class AddProperty implements ActionListener {
         String name1 = LandLordName.getText();
         String size1 = sizeField.getText();
         String rent1 = rentField.getText();
-        String place1 = placeField.getText();
+        String addressField = this.addressField.getText();
         String attach1 = attach.getText();
 
         boolean typeEmpty = name1.isEmpty();
         boolean sizeEmpty = size1.isEmpty();
         boolean rentEmpty = rent1.isEmpty();
-        boolean placeEmpty = place1.isEmpty();
+        boolean placeEmpty = addressField.isEmpty();
         boolean attachEmpty = attach1.isEmpty();
 
         if (e.getSource() == submitButton) {
-            if (typeEmpty == false && sizeEmpty == false && rentEmpty == false && attachEmpty == false) {
+            if (!typeEmpty && !sizeEmpty && !rentEmpty && !attachEmpty) {
                 try {
                     int n = Integer.parseInt(rent1);
                     String line = "Apartments\\Property.txt";
@@ -252,7 +245,7 @@ public class AddProperty implements ActionListener {
                             }
 
                         }
-                        if (flag == true) {
+                        if (flag) {
                             String image = "";
                             String p = attach1;
                             char ch;
@@ -269,11 +262,11 @@ public class AddProperty implements ActionListener {
                             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
                             PrintWriter printWriter = new PrintWriter(bufferedWriter);
 
-                            printWriter.println("Shop Details");
+
                             printWriter.println(name1);
                             printWriter.println(size1);
                             printWriter.println(rent1);
-                            printWriter.println(place1);
+                            printWriter.println(addressField);
                             printWriter.println(image);
                             printWriter.println();
                             printWriter.close();
@@ -292,7 +285,7 @@ public class AddProperty implements ActionListener {
                             JOptionPane.WARNING_MESSAGE);
                 }
 
-            } else if (typeEmpty == false && sizeEmpty == false && rentEmpty == false && placeEmpty == false && attachEmpty == true) {
+            } else if (!typeEmpty && !sizeEmpty && !rentEmpty && !placeEmpty && attachEmpty) {
                 JOptionPane.showMessageDialog(null, "Please attach a photo", "Error",
                         JOptionPane.WARNING_MESSAGE);
             } else {
@@ -312,7 +305,6 @@ public class AddProperty implements ActionListener {
                 imgLabel2.setBounds(0, 0, 260, 260);
 
             } catch (Exception ex) {
-                return;
             }
 
         } else if (e.getSource() == backButton) {

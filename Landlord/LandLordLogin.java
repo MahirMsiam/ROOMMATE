@@ -3,7 +3,6 @@ package Landlord;
 import Classes.*;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,7 +16,7 @@ public class LandLordLogin implements ActionListener {
 
     JFrame loginFrame;
     JPanel loginDashboard;
-    JLabel background, poster;
+    JLabel background;
     JLabel userlabel, passlabel;
     JPasswordField PasswordField;
     JTextField UserTextfield, UserPasswordField;
