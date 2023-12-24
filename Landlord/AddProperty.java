@@ -213,13 +213,12 @@ public class AddProperty extends JFrame implements ActionListener {
             //getting input
             String address = addressField.getText();
             String rent = rentField.getText();
-            String description = descriptionField.getText();
 
-            if (address.isEmpty() || rent.isEmpty() || description.isEmpty()) {
+            if (address.isEmpty() || rent.isEmpty() || LandLordName.getText().isEmpty() || sizeField.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Please fill in all fields");
 
-            } else if (validateInputs(address, rent, description)) {
-                saveDataToFile(address, rent, description, LandLordName.getText());
+            } else if (validateInputs(address, rent, LandLordName.getText(), sizeField.getText())) {
+                saveDataToFile(address, rent, LandLordName.getText());
                 JOptionPane.showMessageDialog(null, "Property Added Successfully");
                 new LandLordDashboard();
                 frame.setVisible(false);
@@ -232,6 +231,12 @@ public class AddProperty extends JFrame implements ActionListener {
                     outputFile.getParentFile().mkdirs(); // Create parent directories if needed
                     ImageIO.write(img, "jpg", outputFile);
                     System.out.println("Image saved successfully!");
+                    imgLabel2.setIcon(new ImageIcon(img));
+                    imgLabel2.setBounds(0, 0, 260, 260);
+                    imgLabel2.setVisible(true);
+                    panel.add(imgLabel2);
+                    panel.repaint();
+
                 } catch (IOException e1) {
                     System.err.println("Error saving image: " + e1.getMessage());
                 }
@@ -255,18 +260,18 @@ public class AddProperty extends JFrame implements ActionListener {
 
 
 
-    private boolean validateInputs(String address, String rent, String description) {
+    private boolean validateInputs(String address, String rent, String LandLordName, String size) {
         // validation logic here
 
         // check if the fields are not empty
-        if (address.isEmpty() || rent.isEmpty() || description.isEmpty()) {
+        if (address.isEmpty() || rent.isEmpty() || LandLordName.isEmpty() || size.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in all fields.");
             return false;
         }
         return true;
     }
 
-    private void saveDataToFile(String address,String rent, String description, String LandLordName) {
+    private void saveDataToFile(String address,String rent, String LandLordName) {
         try (BufferedWriter writer= new BufferedWriter(new FileWriter("Apartments\\Property.txt",true))) {
             //Append the user data to the text file
             LocalDateTime now = LocalDateTime.now();
@@ -276,7 +281,6 @@ public class AddProperty extends JFrame implements ActionListener {
             writer.write("Property added at: " + dtf.format(now)+ "\n");
             writer.write("Address: " + address + "\n");
             writer.write("Rent: " + rent + "\n");
-            writer.write("Description: " + description + "\n");
             writer.write("By: " + LandLordName + "\n");
             writer.write("====================\n");
         } catch (IOException ioException){
