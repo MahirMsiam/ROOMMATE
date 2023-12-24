@@ -133,12 +133,12 @@ public class TenantSignup extends JFrame implements ActionListener {
             return false;
         }
         // validate email format
-        if (!isValidEmail(email)) {
+        else if (!isValidEmail(email)) {
             JOptionPane.showMessageDialog(this, "Invalid email format.");
             return false;
         }
         // ensure that password and confirmPassword match.
-        if (!new String(password).equals(new String(confirmPassword))) {
+        else if (!new String(password).equals(new String(confirmPassword))) {
             JOptionPane.showMessageDialog(this, "Passwords do not match.");
             return false;
         }
