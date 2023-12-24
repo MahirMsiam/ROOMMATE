@@ -159,7 +159,6 @@ public class LandLordSignup extends JFrame implements ActionListener {
     private boolean isValidEmail(String email) {
 
         String emaicheck = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        String mobilecheck = "\\d{10}";
         return email.matches(emaicheck);
     }
 

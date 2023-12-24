@@ -1,22 +1,27 @@
 package Landlord;
 
+import java.awt.image.BufferedImage;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.lang.*;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import java.io.*;
-import java.nio.file.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-public class AddProperty implements ActionListener {
+public class AddProperty extends JFrame implements ActionListener {
     private final Container c;
     private final JFrame frame;
-    private final JLabel type;
+    private final JLabel descriptionField;
     private final JLabel size;
     private final JLabel rent;
     private final JLabel place;
     private final JLabel imgLabel2;
+    private final JLabel uploadLabel;
 
     private final JTextField attach;
     private final JTextField LandLordName;
@@ -64,12 +69,12 @@ public class AddProperty implements ActionListener {
         add.setForeground(Color.decode("#8ee0f0"));
         frame.add(add);
 
-        type = new JLabel("LandLord :");
-        type.setBounds(150, 55, 150, 50);
+        descriptionField = new JLabel("LandLord :");
+        descriptionField.setBounds(150, 55, 150, 50);
         Font typeFont = new Font("Times New Roman", Font.PLAIN, 20);
-        type.setFont(typeFont);
-        type.setForeground(Color.decode("#8ee0f0"));
-        frame.add(type);
+        descriptionField.setFont(typeFont);
+        descriptionField.setForeground(Color.decode("#8ee0f0"));
+        frame.add(descriptionField);
 
         LandLordName = new JTextField();
         LandLordName.setBounds(150, 105, 236, 30);
@@ -189,6 +194,8 @@ public class AddProperty implements ActionListener {
         backButton.setBounds(150, 450, 236, 30);
         frame.add(backButton);
 
+        uploadLabel= new JLabel("No image selected");
+
 
 
         imgLabel2 = new JLabel();
@@ -201,115 +208,100 @@ public class AddProperty implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        String name1 = LandLordName.getText();
-        String size1 = sizeField.getText();
-        String rent1 = rentField.getText();
-        String addressField = this.addressField.getText();
-        String attach1 = attach.getText();
-
-        boolean typeEmpty = name1.isEmpty();
-        boolean sizeEmpty = size1.isEmpty();
-        boolean rentEmpty = rent1.isEmpty();
-        boolean placeEmpty = addressField.isEmpty();
-        boolean attachEmpty = attach1.isEmpty();
 
         if (e.getSource() == submitButton) {
-            if (!typeEmpty && !sizeEmpty && !rentEmpty && !attachEmpty) {
+            //getting input
+            String address = addressField.getText();
+            String rent = rentField.getText();
+            String description = descriptionField.getText();
+
+            if (address.isEmpty() || rent.isEmpty() || description.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please fill in all fields");
+
+            } else if (validateInputs(address, rent, description)) {
+                saveDataToFile(address, rent, description);//saves data to file if true
+                JOptionPane.showMessageDialog(null, "Property Added Successfully");
+            }
+        } else if (e.getSource() == attachButton) {
+            BufferedImage img = selectImage();
+            if (img != null) {
                 try {
-                    int n = Integer.parseInt(rent1);
-                    String line = "Apartments\\Property.txt";
-                    try {
-                        File file = new File(line);
-                        if (!file.exists()) {
-                            file.createNewFile();
-                            FileWriter fileWriter = new FileWriter(file, true);
-                            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-                            PrintWriter printWriter = new PrintWriter(bufferedWriter);
-                            printWriter.close();
-                        }
-
-                        BufferedReader readFile3 = new BufferedReader(new FileReader("Apartments\\Property.txt"));
-                        int totalLines3 = 0;
-                        while (readFile3.readLine() != null) {
-                            totalLines3++;
-                        }
-                        readFile3.close();
-
-                        boolean flag = true;
-                        for (int k = 0; k < totalLines3; k++) {
-
-                            String linek = Files.readAllLines(Paths.get("Apartments\\Property.txt")).get(k);
-                            if (linek.equals(name1)) {
-                                flag = false;
-                                break;
-                            }
-
-                        }
-                        if (flag) {
-                            String image = "";
-                            String p = attach1;
-                            char ch;
-                            for (int i = attach1.length() - 1; i >= 0; i--) {
-                                if (p.charAt(i) == '\\') {
-                                    break;
-                                } else {
-                                    ch = p.charAt(i);
-                                    image = ch + image;
-                                }
-                            }
-                            image = "Apartments\\" + image;
-                            FileWriter fileWriter = new FileWriter(file, true);
-                            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-                            PrintWriter printWriter = new PrintWriter(bufferedWriter);
-
-
-                            printWriter.println(name1);
-                            printWriter.println(size1);
-                            printWriter.println(rent1);
-                            printWriter.println(addressField);
-                            printWriter.println(image);
-                            printWriter.println();
-                            printWriter.close();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Same type shop already exist", "Error",
-                                    JOptionPane.WARNING_MESSAGE);
-                        }
-                        frame.setVisible(false);
-                        new LandLordDashboard();
-
-                    } catch (Exception ex) {
-                        System.out.println(ex);
-                    }
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Invalid Rent Field", "Error",
-                            JOptionPane.WARNING_MESSAGE);
+                    File outputFile = new File("C:\\Users\\moyaz\\OneDrive\\Documents\\New folder\\ROOMMATE\\Apartments\\"+LandLordName.getText()+".jpg");
+                    outputFile.getParentFile().mkdirs(); // Create parent directories if needed
+                    ImageIO.write(img, "jpg", outputFile);
+                    System.out.println("Image saved successfully!");
+                } catch (IOException e1) {
+                    System.err.println("Error saving image: " + e1.getMessage());
+                    // Optionally, provide a user-friendly error message here
                 }
-
-            } else if (!typeEmpty && !sizeEmpty && !rentEmpty && !placeEmpty && attachEmpty) {
-                JOptionPane.showMessageDialog(null, "Please attach a photo", "Error",
-                        JOptionPane.WARNING_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(null, "Please fill all the field", "Error",
-                        JOptionPane.WARNING_MESSAGE);
+                System.out.println("No image was selected.");
             }
-        } else if (e.getSource() == attachButton)
+        }
 
-        {
-            try {
-                JFileChooser chooser = new JFileChooser();
-                chooser.showOpenDialog(null);
-                File f = chooser.getSelectedFile();
-                String filename = f.getAbsolutePath();
-                attach.setText(filename);
-                imgLabel2.setIcon(new ImageIcon(filename));
-                imgLabel2.setBounds(0, 0, 260, 260);
 
-            } catch (Exception ex) {
-            }
 
-        } else if (e.getSource() == backButton) {
-            frame.setVisible(false);
+
+
+        else if (e.getSource() == backButton) {
             new LandLordDashboard();
+            frame.setVisible(false);
+        }
+    }
+
+
+
+
+
+
+    private boolean validateInputs(String address, String rent, String description) {
+        // validation logic here
+
+        // check if the fields are not empty
+        if (address.isEmpty() || rent.isEmpty() || description.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill in all fields.");
+            return false;
+        }
+        return true;
+    }
+
+    private void saveDataToFile(String address,String rent, String description){
+        try (BufferedWriter writer= new BufferedWriter(new FileWriter("Apartments\\Property.txt",true))) {
+            //Append the user data to the text file
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+            writer.write("Property added at: " + dtf.format(now)+ "\n");
+            writer.write("Address: " + address + "\n");
+            writer.write("Rent: " + rent + "\n");
+            writer.write("Description: " + description + "\n");
+            writer.write("====================\n");
+        } catch (IOException ioException){
+            ioException.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error saving data");//Add a separator between entries
+        }
+    }
+
+    private BufferedImage selectImage() {
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Image files", "jpg", "jpeg", "png", "gif");
+        fileChooser.setFileFilter(filter);
+
+        int result = fileChooser.showOpenDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            String imagePath = fileChooser.getSelectedFile().getPath();
+            uploadLabel.setText("Selected Image: " + imagePath);
+
+            try {
+                return ImageIO.read(new File(imagePath)); // Load the image using ImageIO
+            } catch (IOException e) {
+                System.err.println("Error loading image: " + e.getMessage());
+                // Optionally, provide a user-friendly error message here
+                return null; // Indicate failure to load the image
+            }
+        } else {
+            return null; // No image was selected
         }
     }
 
