@@ -1,6 +1,6 @@
 package Classes;
 
-import Landlord.LandLordLogin;
+import Landlord.*;
 
 import javax.swing.*;
 import java.awt.*;
