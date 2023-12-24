@@ -1,6 +1,9 @@
 package Classes;
 
 import javax.swing.*;
+
+import Landlord.LandLord;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -59,7 +62,7 @@ public class TenantDashboard extends JFrame {
         }
     }
 
-
+   
 }
 
 
