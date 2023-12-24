@@ -279,10 +279,9 @@ public class AddProperty extends JFrame implements ActionListener {
 
             writer.write("====================\n");
             writer.write("Property added at: " + dtf.format(now)+ "\n");
-            //
-            writer.write("Address: " + address + "\n");
+            writer.write("Name: " + LandLordName + "\n");
+            writer.write("Location: " + address + "\n");
             writer.write("Rent: " + rent + "\n");
-            writer.write("By: " + LandLordName + "\n");
             writer.write("====================\n");
         } catch (IOException ioException){
             ioException.printStackTrace();
@@ -313,28 +312,28 @@ public class AddProperty extends JFrame implements ActionListener {
         }
     }
 
-    private boolean validateInputs(String address, String rent, String description, String wifi) {
-        // validation logic here
+    // private boolean validateInputs(String address, String rent, String description, String wifi) {
+    //     // validation logic here
 
-        // check if the fields are not empty
-        if (address.isEmpty() || rent.isEmpty() || description.isEmpty() || wifi.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill in all fields.");
-            return false;
-        }
-        return true;
-    }
+    //     // check if the fields are not empty
+    //     if (address.isEmpty() || rent.isEmpty() || description.isEmpty() || wifi.isEmpty()) {
+    //         JOptionPane.showMessageDialog(this, "Please fill in all fields.");
+    //         return false;
+    //     }
+    //     return true;
+    // }
 
-    private void saveDataToFile(String address,String rent, String description, String wifi){
-        try (BufferedWriter writer= new BufferedWriter(new FileWriter("Apartments\\Property.txt",true))) {
-            //Append the user data to the text file
-            writer.write("Address: " + address + "\n");
-            writer.write("Rent: " + rent + "\n");
-            writer.write("Description: " + description + "\n");
-            writer.write("Wifi: " + wifi + "\n");
-            writer.write("====================\n");
-        } catch (IOException ioException){
-            ioException.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error saving data");//Add a separator between entries
-        }
-    }
+    // private void saveDataToFile(String address,String rent, String description, String wifi){
+    //     try (BufferedWriter writer= new BufferedWriter(new FileWriter("Apartments\\Property.txt",true))) {
+    //         //Append the user data to the text file
+    //         writer.write("Address: " + address + "\n");
+    //         writer.write("Rent: " + rent + "\n");
+    //         writer.write("Description: " + description + "\n");
+    //         writer.write("Wifi: " + wifi + "\n");
+    //         writer.write("====================\n");
+    //     } catch (IOException ioException){
+    //         ioException.printStackTrace();
+    //         JOptionPane.showMessageDialog(this, "Error saving data");//Add a separator between entries
+    //     }
+    // }
 }
