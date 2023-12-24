@@ -19,7 +19,7 @@ public class LandLordLogin implements ActionListener {
     JLabel background;
     JLabel userlabel, passlabel;
     JPasswordField PasswordField;
-    JTextField UserTextfield, UserPasswordField;
+    JTextField emailTextField, UserPasswordField;
     JButton login;
     JButton signup;
     JButton ForgotPass;
@@ -52,13 +52,13 @@ public class LandLordLogin implements ActionListener {
         passlabel.setForeground(Color.BLACK);
         passlabel.setFont(smallFont);
 
-        UserTextfield = new JTextField("", 2);
-        UserTextfield.setBounds(725, 242, 300, 32);
+        emailTextField = new JTextField("", 2);
+        emailTextField.setBounds(725, 242, 300, 32);
 
-        UserTextfield.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
-        Font bigFont = UserTextfield.getFont().deriveFont(Font.PLAIN, 20);
-        UserTextfield.setFont(bigFont);
-        UserTextfield.setOpaque(false);
+        emailTextField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        Font bigFont = emailTextField.getFont().deriveFont(Font.PLAIN, 20);
+        emailTextField.setFont(bigFont);
+        emailTextField.setOpaque(false);
         // usertf.setContentAreaFilled(false);
         // usertf.setBorderPainted(false);
 
@@ -123,7 +123,7 @@ public class LandLordLogin implements ActionListener {
         //loginDashboard.add(Admin);
         loginDashboard.add(userlabel);
         loginDashboard.add(passlabel);
-        loginDashboard.add(UserTextfield);
+        loginDashboard.add(emailTextField);
         loginDashboard.add(PasswordField);
         loginDashboard.add(background);
 
@@ -158,13 +158,13 @@ public class LandLordLogin implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == login) {
-            String user = UserTextfield.getText();
+            String email = emailTextField.getText();
             String pass = new String(PasswordField.getPassword());
             // validating data from txt file by checking hashmap
-            if (user.isEmpty() || pass.isEmpty()) {
+            if (email.isEmpty() || pass.isEmpty()) {
                 showMessageDialog(null, "Both fields are required!");
                 // add another condition to check for empty field
-            } else if (validateLogin(user, pass)) {
+            } else if (validateLogin(email, pass)) {
                 showMessageDialog(null, "Login Successful");
                 LandLordDashboard frame = new LandLordDashboard();
                 frame.setVisible(true);
@@ -188,7 +188,7 @@ public class LandLordLogin implements ActionListener {
 
 
     // userpass validation methode
-    private boolean validateLogin(String user, String pass) {
+    private boolean validateLogin(String pass,String email) {
         try (Scanner scanner = new Scanner(new File("Data\\LandLordData.txt"))) {
             StringBuilder userData = new StringBuilder();
 
@@ -198,7 +198,7 @@ public class LandLordLogin implements ActionListener {
             }
             // Check if the entered credentials exist in the data
             String userCredentials = userData.toString();
-            return userCredentials.contains("Name: " + user) &&
+            return userCredentials.contains("Email " + email) &&
                     userCredentials.contains("Password: " + pass);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
