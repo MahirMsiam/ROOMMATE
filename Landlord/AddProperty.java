@@ -226,7 +226,7 @@ public class AddProperty extends JFrame implements ActionListener {
             BufferedImage img = selectImage();
             if (img != null) {
                 try {
-                    File outputFile = new File("C:\\Users\\moyaz\\OneDrive\\Documents\\New folder\\ROOMMATE\\Apartments\\"+LandLordName.getText()+".jpg");
+                    File outputFile = new File("Apartments\\"+LandLordName.getText()+".jpg");
                     outputFile.getParentFile().mkdirs(); // Create parent directories if needed
                     ImageIO.write(img, "jpg", outputFile);
                     System.out.println("Image saved successfully!");
@@ -272,6 +272,7 @@ public class AddProperty extends JFrame implements ActionListener {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
             writer.write("Property added at: " + dtf.format(now)+ "\n");
+            //
             writer.write("Address: " + address + "\n");
             writer.write("Rent: " + rent + "\n");
             writer.write("Description: " + description + "\n");
