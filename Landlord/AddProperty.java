@@ -221,6 +221,8 @@ public class AddProperty extends JFrame implements ActionListener {
             } else if (validateInputs(address, rent, description)) {
                 saveDataToFile(address, rent, description, LandLordName.getText());
                 JOptionPane.showMessageDialog(null, "Property Added Successfully");
+                new LandLordDashboard();
+                frame.setVisible(false);
             }
         } else if (e.getSource() == attachButton) {
             BufferedImage img = selectImage();
@@ -232,7 +234,6 @@ public class AddProperty extends JFrame implements ActionListener {
                     System.out.println("Image saved successfully!");
                 } catch (IOException e1) {
                     System.err.println("Error saving image: " + e1.getMessage());
-                    // Optionally, provide a user-friendly error message here
                 }
             } else {
                 System.out.println("No image was selected.");
