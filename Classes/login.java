@@ -227,6 +227,7 @@ public class login implements ActionListener, Ilginval {
             else if (validateLoginUser(user, pass)) {
                 showMessageDialog(null, "Login successful!");
                 // Additional frame here
+               new TenantDashboard();
             }
 
             else { // Login failed
@@ -284,7 +285,7 @@ public class login implements ActionListener, Ilginval {
             }
             // Check if the entered credentials exist in the data
             String userCredentials = userData.toString();// String builder to regular String
-            return userCredentials.contains("Email " + user) &&
+            return userCredentials.contains("Email: " + user) &&
                     userCredentials.contains("Password: " + pass);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
