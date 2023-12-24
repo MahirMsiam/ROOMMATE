@@ -120,8 +120,7 @@ public class LandLordLogin implements ActionListener {
         loginDashboard.add(signup);
         loginDashboard.add(ForgotPass);
         loginDashboard.add(exit);
-        loginDashboard.add(showPassword);
-
+        //loginDashboard.add(Admin);
         loginDashboard.add(userlabel);
         loginDashboard.add(passlabel);
         loginDashboard.add(UserTextfield);
@@ -183,16 +182,7 @@ public class LandLordLogin implements ActionListener {
         } else if (e.getSource() == signup) {
             new LandLordSignup();
             loginFrame.setVisible(false);
-        }
-        else if (e.getSource() == showPassword) {
-            if (showPassword.isSelected()) {
-                showPassword.setIcon(on);
-                PasswordField.setEchoChar((char) 0);
-            } else {
-                showPassword.setIcon(off);
-                PasswordField.setEchoChar('*');
-            }
-        }
+         }
     }
 
 

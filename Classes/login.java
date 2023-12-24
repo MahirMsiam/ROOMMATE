@@ -1,4 +1,5 @@
 package Classes;
+
 import Interfaces.*;
 
 import javax.swing.*;
@@ -118,7 +119,7 @@ public class login implements ActionListener, Ilginval {
 
         loginDashboard.add(login);
         loginDashboard.add(signup);
-        //loginDashboard.add(frgtpass);
+        // loginDashboard.add(frgtpass);
         loginDashboard.add(exit);
         loginDashboard.add(Admin);
         loginDashboard.add(userlabel);
@@ -226,6 +227,7 @@ public class login implements ActionListener, Ilginval {
             else if (validateLoginUser(user, pass)) {
                 showMessageDialog(null, "Login successful!");
                 // Additional frame here
+               new TenantDashboard();
             }
 
             else { // Login failed
@@ -257,10 +259,11 @@ public class login implements ActionListener, Ilginval {
             }
 
             else if (validateLoginAdmin(user, pass)) {
-                //showMessageDialog(null, "Login successful!");
+                // showMessageDialog(null, "Login successful!");
                 // Additional frame here
                 new AdminDashboard().setVisible(true);
-                //loginFrame.setVisible(false);
+                // loginFrame.setVisible(false);
+
             }
 
             else { // Login failed
@@ -276,38 +279,39 @@ public class login implements ActionListener, Ilginval {
         try (Scanner scanner = new Scanner(new File("Data\\tenantdata.txt"))) {
             StringBuilder userData = new StringBuilder();
 
-            // Read the entire file into a StringBuilder
+            // Reading file into a StringBuilder
             while (scanner.hasNextLine()) {
                 userData.append(scanner.nextLine().trim()).append("\n");
             }
             // Check if the entered credentials exist in the data
-            String userCredentials = userData.toString();
+            String userCredentials = userData.toString();// String builder to regular String
             return userCredentials.contains("Email: " + user) &&
                     userCredentials.contains("Password: " + pass);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        return false; // Unable to validate login
+        return false; // if Unable to validate login
     }
-    //admin validation methode
+
+    @Override
     public boolean validateLoginAdmin(String user, String pass) {
         try (Scanner scanner = new Scanner(new File("Data\\Admindata.txt"))) {
             StringBuilder userData = new StringBuilder();
 
-            // Read the entire file into a StringBuilder
+            // Reading file into a StringBuilder
             while (scanner.hasNextLine()) {
                 userData.append(scanner.nextLine().trim()).append("\n");
             }
             // Check if the entered credentials exist in the data
-            String userCredentials = userData.toString();
+            String userCredentials = userData.toString();// String builder to regular String
             return userCredentials.contains("Name: " + user) &&
                     userCredentials.contains("Password: " + pass);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        return false; // Unable to validate login
+        return false; // if Unable to validate login
     }
 }
 // Hello Bad Boy!!!

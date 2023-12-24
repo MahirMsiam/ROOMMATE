@@ -61,7 +61,7 @@ public class IntroDuck extends JFrame {
             }
         });
 
-        // adding buttons
+        // adding buttons to the frame
         BGlabel.add(Tenant);
         BGlabel.add(landLord);
         setVisible(true);

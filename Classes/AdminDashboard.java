@@ -1,7 +1,6 @@
 package Classes;
 
 import javax.swing.*;
-import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -10,12 +9,37 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.table.*;
+import java.awt.event.*;
+import java.awt.*;
 
 public class AdminDashboard extends JFrame {
     private JTable userListTable;
     private JTable landLordListTable, poster;
     private DefaultTableModel userListTableModel;
     private DefaultTableModel landLordListTableModel;
+    DefaultTableModel propertyListTableModel;
+    JTable propertyListTable;
+    private JTable propertyTable;
+    private DefaultTableModel propertyTableModel;
+
+    public AdminDashboard() {
+        setTitle("ADMIN-Dashboard");
+        // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new GridLayout(2, 2, 10, 10));
+
+        // Create labels with clickable images
+        add(createClickableLabel("Tenant List", "Media\\tenant.png"));
+        add(createClickableLabel("LandLord List", "Media\\landlord.png"));
+        // add(createClickableLabel("Properties", ",,,,,,"));
+        add(createClickableLabel("Contributors", "Media\\contribution.png"));
+        add(createClickableLabel("Properties", "Media\\3.jpeg"));
+
+        // add(poster);
+
+        setSize(1000, 600);
+        setLocationRelativeTo(null);
+    }
 
     private JLabel createClickableLabel(String labelText, String imagePath) {
         ImageIcon icon = new ImageIcon(imagePath);
@@ -52,15 +76,17 @@ public class AdminDashboard extends JFrame {
                 showLandLordList();
             } else if ("Contributors".equals(labelText)) {
                 showContributorsImage();
-            } else {
-                JLabel clickedLabel = (JLabel) e.getSource();
+            } else if ("Properties".equals(labelText)) {
+                showPropertyList();
+             } //else {
+            //     JLabel clickedLabel = (JLabel) e.getSource();
 
-                // Open a new frame or perform other actions when a label is clicked
-                JFrame newFrame = new JFrame("Clicked Label: " + clickedLabel.getText());
-                newFrame.setSize(300, 300);
-                newFrame.setLocationRelativeTo(null);
-                newFrame.setVisible(true);
-            }
+            //     // Open a new frame or perform other actions when a label is clicked
+            //     JFrame newFrame = new JFrame("Clicked Label: " + clickedLabel.getText());
+            //     newFrame.setSize(300, 300);
+            //     newFrame.setLocationRelativeTo(null);
+            //     newFrame.setVisible(true);
+            // }
         }
 
         private void showUserList() {
@@ -119,6 +145,127 @@ public class AdminDashboard extends JFrame {
             landLordListFrame.setVisible(true);
         }
 
+        private void showPropertyList() {
+            loadPropertyData();
+
+            JFrame propertyListFrame = new JFrame("Property List");
+            propertyListFrame.setLayout(new BorderLayout());
+            propertyListFrame.add(new JScrollPane(mainFrame.propertyTable), BorderLayout.CENTER);
+
+            // Add search and delete functionality similar to the user and landlord lists
+            JPanel searchPanel = new JPanel();
+            JTextField searchField = new JTextField(20);
+            JButton searchButton = new JButton("Search");
+            JButton deleteButton = new JButton("Delete");
+
+            searchButton.addActionListener(e -> searchProperty(searchField.getText()));
+            deleteButton.addActionListener(e -> deleteProperty());
+
+            searchPanel.add(new JLabel("Search Property: "));
+            searchPanel.add(searchField);
+            searchPanel.add(searchButton);
+            searchPanel.add(deleteButton);
+
+            propertyListFrame.add(searchPanel, BorderLayout.SOUTH);
+
+            propertyListFrame.setSize(800, 600);
+            propertyListFrame.setLocationRelativeTo(mainFrame);
+            propertyListFrame.setVisible(true);
+        }
+
+        private void loadPropertyData() {
+            JTable propertyTable = new JTable(); // Declare propertyTable as a local variable
+            String[] columnNames = { "Property Name", "Location", "Price", "Details" };
+            DefaultTableModel propertyTableModel = new DefaultTableModel(columnNames, 0);
+
+            try (BufferedReader br = new BufferedReader(new FileReader("Appartments\\Propertydata.txt"))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    if (line.startsWith("Property Name:")) {
+                        String propertyName = line.substring(14).trim();
+                        String location = br.readLine().substring(10).trim();
+                        String price = br.readLine().substring(7).trim();
+                        String details = br.readLine().substring(9).trim();
+                        br.readLine(); // Skip a line (Separator line)
+
+                        Object[] data = { propertyName, location, price, details };
+                        propertyTableModel.addRow(data);
+                    }
+                }
+
+                propertyTable.setModel(propertyTableModel); // Set the model to the propertyTable
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        private void savePropertyDataToFile() {
+            DefaultTableModel propertyTableModel = (DefaultTableModel) propertyTable.getModel(); // Adjust this line
+                                                                                                 // based on how
+                                                                                                 // propertyTable is
+                                                                                                 // declared
+
+            if (propertyTableModel != null) {
+                FileWriter writer = null;
+                try {
+                    writer = new FileWriter("Appartments\\propertydata.txt");
+                    for (int row = 0; row < propertyTableModel.getRowCount(); row++) {
+                        writer.write("Property Name: " + propertyTableModel.getValueAt(row, 0) + "\n");
+                        writer.write("Location: " + propertyTableModel.getValueAt(row, 1) + "\n");
+                        writer.write("Price: " + propertyTableModel.getValueAt(row, 2) + "\n");
+                        writer.write("Details: " + propertyTableModel.getValueAt(row, 3) + "\n");
+                        writer.write("====================\n");
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (writer != null) {
+                            writer.close();
+                        }
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        private void searchProperty(String propertyName) {
+            if (propertyTableModel != null) {
+                for (int row = 0; row < propertyTableModel.getRowCount(); row++) {
+                    String tablePropertyName = (String) propertyTableModel.getValueAt(row, 0);
+                    if (tablePropertyName.equalsIgnoreCase(propertyName)) {
+                        propertyTable.setRowSelectionInterval(row, row);
+                        return;
+                    }
+                }
+            }
+
+            JOptionPane.showMessageDialog(AdminDashboard.this, "Property not found", "Search Result",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        private void deleteProperty() {
+            if (propertyTableModel != null && propertyTable != null) {
+                int selectedRow = propertyTable.getSelectedRow();
+                if (selectedRow != -1) {
+                    int confirm = JOptionPane.showConfirmDialog(AdminDashboard.this,
+                            "Are you sure you want to delete this property?", "Confirm Deletion",
+                            JOptionPane.YES_NO_OPTION);
+
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        propertyTableModel.removeRow(selectedRow);
+                        savePropertyDataToFile();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(AdminDashboard.this, "Please select a property to delete",
+                            "Delete Property",
+                            JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        }
+        //prop
+
         private void showContributorsImage() {
             // Change the path to the actual image file
             ImageIcon contributorsImage = new ImageIcon("Media\\3.jpeg");
@@ -155,7 +302,7 @@ public class AdminDashboard extends JFrame {
                 int selectedRow = mainFrame.userListTable.getSelectedRow();
                 if (selectedRow != -1) {
                     int confirm = JOptionPane.showConfirmDialog(mainFrame,
-                            "Are you sure you want to delete this user?", "Confirm Deletion",
+                            "Are you sure you want to delete this user?", "Confirm if you want to delete",
                             JOptionPane.YES_NO_OPTION);
 
                     if (confirm == JOptionPane.YES_OPTION) {
