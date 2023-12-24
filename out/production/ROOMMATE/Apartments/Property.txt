@@ -106,3 +106,30 @@ Rent: 123124
 Description: LandLord :
 By: AA
 ====================
+====================
+Property added at: 2023/12/25 01:09:37
+Address: Dhaka
+Rent: 20000
+By: AS
+====================
+====================
+Property added at: 2023/12/25 01:15:20
+Address: Dhaka
+Rent: 124214
+By: LandLord :
+Size: 10200
+====================
+====================
+Property added at: 2023/12/25 01:17:32
+Address: 1234
+Rent: 1234
+By: LandLord :
+Size: 1234
+====================
+====================
+Property added at: 2023/12/25 01:17:58
+Address: 1234
+Rent: 1234
+By: LandLord :
+Size: 1234
+====================
