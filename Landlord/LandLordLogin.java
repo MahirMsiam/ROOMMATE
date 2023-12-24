@@ -115,7 +115,7 @@ public class LandLordLogin implements ActionListener {
         loginDashboard.add(signup);
         loginDashboard.add(frgtpass);
         loginDashboard.add(exit);
-        loginDashboard.add(Admin);
+        //loginDashboard.add(Admin);
         loginDashboard.add(userlabel);
         loginDashboard.add(passlabel);
         loginDashboard.add(usertf);
@@ -233,31 +233,7 @@ public class LandLordLogin implements ActionListener {
         } else if (e.getSource() == signup) {
             new LandLordSignup();
             loginFrame.setVisible(false);
-        } else if (e.getSource() == Admin) {
-            loginDashboard.setVisible(false);
-            adminLogin.setVisible(true);
-        } else if (e.getSource() == bc2usr) {
-            loginDashboard.setVisible(true);
-            adminLogin.setVisible(false);
-        } else if (e.getSource() == ad_exi) {
-            new IntroDuck();
-            loginFrame.setVisible(false);
-        } else if (e.getSource() == lgin) {
-            String user = passtf.getText();
-            String pass = new String(ad_pf.getPassword());
-            // validating data from txt file by checking hashmap
-            if (user.isEmpty() || pass.isEmpty()) {
-                showMessageDialog(null, "Both fields are required!");
-                // add another condition to check for empty field
-            } else if (validateLogin(user, pass)) {
-                showMessageDialog(null, "Login Successful");
-                new AdminDashboard().setVisible(true);
-                loginFrame.setVisible(false);
-                // Additional logic if login is successful
-            } else { // Login failed
-                showMessageDialog(null, "Invalid username or password!");
-            }
-        }
+         }
     }
 
     // userpass validation methode
