@@ -1,22 +1,22 @@
 package Landlord;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LandLordDashboard extends JFrame implements ActionListener {
 
-    private JLabel background;
-    private JFrame dashframe;
-
-    private JButton addProperty, viewProperties,logout;
+    private  JButton addProperty;
+    private  JButton logout;
 
     public LandLordDashboard() {
 
 
-        ImageIcon img = new ImageIcon("Media\\landlord.jpg");
-        background = new JLabel(img);
-        background.setBounds(0, 0, 1100, 700);
+        ImageIcon img = new ImageIcon("Media\\vb.png");
+        JLabel background = new JLabel(img);
+        background.setBounds(0, 0, 1085, 700);
 
         // Setting up the frame
         setTitle("LandLord Dashboard");
@@ -27,24 +27,35 @@ public class LandLordDashboard extends JFrame implements ActionListener {
 
         // Creating components
         addProperty = new JButton("Add Property");
-        viewProperties = new JButton("View Property");
         logout = new JButton("Logout");
 
         // Setting bounds for components
-        addProperty.setBounds(450, 200, 200, 50);
-        viewProperties.setBounds(450, 300, 200, 50);
-        logout.setBounds(450, 600, 200, 50);
+        addProperty.setBounds(432, 454, 170, 66);
+        logout.setBounds(431, 520, 171, 65);
 
         // Adding components to the frame
         add(addProperty);
-        add(viewProperties);
         add(logout);
         add(background);
 
         // Adding action listeners
         addProperty.addActionListener(this);
-        viewProperties.addActionListener(this);
         logout.addActionListener(this);
+
+        //setting color
+        addProperty.setBackground(new Color(252,251,251));
+        addProperty.setBorder(BorderFactory.createEmptyBorder());
+        Border redBorder2 = BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(252,251,251));
+        addProperty.setBorder(redBorder2);
+        Font font = new Font("Comic Sans MS", Font.PLAIN, 22);
+        addProperty.setFont(font);
+
+        logout.setBackground(new Color(252,251,251));
+        logout.setBorder(BorderFactory.createEmptyBorder());
+        Border redBorder3 = BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(252,251,251));
+        Font font2 = new Font("Comic Sans MS", Font.PLAIN, 22);
+        logout.setFont(font2);
+        logout.setBorder(redBorder3);
 
         // Setting visibility
         setVisible(true);
@@ -53,11 +64,10 @@ public class LandLordDashboard extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addProperty) {
             new AddProperty();
-            setVisible(false);
-        } else if (e.getSource() == viewProperties) {
-            JOptionPane.showMessageDialog(LandLordDashboard.this, "Frame incoming");
+            setVisible(false);;
         } else if (e.getSource() == logout) {
             new LandLordLogin();
+            setVisible(false);
         }
     }
 }

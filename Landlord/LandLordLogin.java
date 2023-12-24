@@ -1,8 +1,6 @@
 package Landlord;
 
 import Classes.*;
-import Landlord.LandLordSignup;
-import Interfaces.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,13 +16,16 @@ public class LandLordLogin implements ActionListener {
 
     JFrame loginFrame;
     JPanel loginDashboard;
-    JPanel adminLogin;
-    JLabel background, poster;
-    JLabel userlabel, passlabel, ad_usl, ad_psl;
-    JPasswordField pasF, ad_pf;
-    JTextField usertf, passtf;
-    JButton login, signup, frgtpass, exit, Admin; // login dashboard
-    JButton lgin, ad_exi, bc2usr; // admin Login
+    JLabel background;
+    JLabel userlabel, passlabel;
+    JPasswordField PasswordField;
+    JTextField UserTextfield, UserPasswordField;
+    JButton login;
+    JButton signup;
+    JButton ForgotPass;
+    JButton exit;
+    JToggleButton showPassword;
+    ImageIcon on, off;
 
     public LandLordLogin() {
 
@@ -51,21 +52,21 @@ public class LandLordLogin implements ActionListener {
         passlabel.setForeground(Color.BLACK);
         passlabel.setFont(smallFont);
 
-        usertf = new JTextField("", 2);
-        usertf.setBounds(725, 242, 300, 32);
+        UserTextfield = new JTextField("", 2);
+        UserTextfield.setBounds(725, 242, 300, 32);
 
-        usertf.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
-        Font bigFont = usertf.getFont().deriveFont(Font.PLAIN, 20);
-        usertf.setFont(bigFont);
-        usertf.setOpaque(false);
+        UserTextfield.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        Font bigFont = UserTextfield.getFont().deriveFont(Font.PLAIN, 20);
+        UserTextfield.setFont(bigFont);
+        UserTextfield.setOpaque(false);
         // usertf.setContentAreaFilled(false);
         // usertf.setBorderPainted(false);
 
-        pasF = new JPasswordField("", 2);
-        pasF.setBounds(725, 311, 300, 32);
-        pasF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
-        pasF.setFont(smallFont);
-        pasF.setOpaque(false);
+        PasswordField = new JPasswordField("", 2);
+        PasswordField.setBounds(725, 311, 300, 32);
+        PasswordField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        PasswordField.setFont(smallFont);
+        PasswordField.setOpaque(false);
         // / pasF.setContentAreaFilled(false);
         // pasF.setBorderPainted(false);
 
@@ -87,13 +88,13 @@ public class LandLordLogin implements ActionListener {
         signup.setBorderPainted(true);
         signup.setForeground(Color.WHITE);
 
-        frgtpass = new JButton("Forgot Password");
-        frgtpass.setBounds(610, 355, 135, 20);
-        frgtpass.addActionListener(this);
-        frgtpass.setOpaque(false);
-        frgtpass.setContentAreaFilled(false);
-        frgtpass.setBorderPainted(false);
-        frgtpass.setForeground(Color.BLACK);
+        ForgotPass = new JButton("Forgot Password");
+        ForgotPass.setBounds(610, 355, 135, 20);
+        ForgotPass.addActionListener(this);
+        ForgotPass.setOpaque(false);
+        ForgotPass.setContentAreaFilled(false);
+        ForgotPass.setBorderPainted(false);
+        ForgotPass.setForeground(Color.BLACK);
 
         exit = new JButton("Exit");
         exit.setBounds(1000, 620, 80, 30);
@@ -103,101 +104,46 @@ public class LandLordLogin implements ActionListener {
         exit.setBorderPainted(false);
         exit.setForeground(Color.BLACK);
 
-        Admin = new JButton("*Administrator portal");
-        Admin.setBounds(0, 620, 200, 30);
-        Admin.addActionListener(this);
-        Admin.setOpaque(false);
-        Admin.setContentAreaFilled(false);
-        Admin.setBorderPainted(false);
-        Admin.setForeground(Color.BLACK);
+
+        on = new ImageIcon("Media\\show.png");
+        off = new ImageIcon("Media\\hidden.png");
+        showPassword = new JToggleButton(off);
+        showPassword.setBounds(1025, 303, 40, 40);
+        showPassword.setBackground(new Color(0, 0, 0, 0));
+        showPassword.setForeground(new Color(0, 0, 0, 0));
+        showPassword.setOpaque(false);
+        showPassword.addActionListener(this);
+        loginFrame.add(showPassword);
+
 
         loginDashboard.add(login);
         loginDashboard.add(signup);
-        loginDashboard.add(frgtpass);
+        loginDashboard.add(ForgotPass);
         loginDashboard.add(exit);
         //loginDashboard.add(Admin);
         loginDashboard.add(userlabel);
         loginDashboard.add(passlabel);
-        loginDashboard.add(usertf);
-        loginDashboard.add(pasF);
+        loginDashboard.add(UserTextfield);
+        loginDashboard.add(PasswordField);
         loginDashboard.add(background);
+
         // loginDashboard.add(slider);
         loginDashboard.setLayout(null);
         loginDashboard.setBounds(0, 0, 1100, 700);
         loginDashboard.setBackground(Color.gray);
         loginDashboard.setVisible(true);
 
-        // admin login panel
 
-        adminLogin = new JPanel();
-        ad_usl = new JLabel("Username: ");
-        ad_usl.setBounds(390, 245, 150, 20);
-        ad_usl.setForeground(Color.BLACK);
-        ad_usl.setFont(smallFont);
+        UserPasswordField = new JTextField("", 4);
+        UserPasswordField.setBounds(495, 240, 300, 32);
+        UserPasswordField.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
+        UserPasswordField.setFont(bigFont);
+        UserPasswordField.setOpaque(false);
 
-        ad_psl = new JLabel("Password: ");
-        ad_psl.setBounds(390, 315, 150, 20);
-        ad_psl.setForeground(Color.BLACK);
-        ad_psl.setFont(smallFont);
 
-        passtf = new JTextField("", 4);
-        passtf.setBounds(495, 240, 300, 32);
-        passtf.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
-        passtf.setFont(bigFont);
-        passtf.setOpaque(false);
-
-        ad_pf = new JPasswordField("", 4);
-        ad_pf.setBounds(495, 308, 300, 32);
-        ad_pf.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
-        ad_pf.setFont(bigFont);
-        ad_pf.setOpaque(false);
-
-        lgin = new JButton("Login");
-        lgin.setBounds(545, 400, 150, 50);
-        lgin.addActionListener(this);
-        lgin.setOpaque(true);
-        lgin.setContentAreaFilled(true);
-        lgin.setBackground(Color.BLACK);
-        lgin.setBorderPainted(true);
-        lgin.setForeground(Color.WHITE);
-
-        ad_exi = new JButton("Exit");
-        ad_exi.setBounds(1000, 620, 80, 30);
-        ad_exi.addActionListener(this);
-        ad_exi.setOpaque(false);
-        ad_exi.setContentAreaFilled(false);
-        ad_exi.setBorderPainted(false);
-        ad_exi.setForeground(Color.BLACK);
-
-        bc2usr = new JButton("Back to user Login");
-        bc2usr.setBounds(0, 620, 200, 30);
-        bc2usr.addActionListener(this);
-        bc2usr.setOpaque(false);
-        bc2usr.setContentAreaFilled(false);
-        bc2usr.setBorderPainted(false);
-        bc2usr.setForeground(Color.BLACK);
-
-        ImageIcon img = new ImageIcon("Media\\\\admindash.jpg");
-        poster = new JLabel(img);
-        poster.setBounds(0, 0, 1100, 700);
-
-        adminLogin.add(ad_usl);
-        adminLogin.add(ad_psl);
-        adminLogin.add(lgin);
-        adminLogin.add(ad_exi);
-        adminLogin.add(bc2usr);
-        adminLogin.add(passtf);
-        adminLogin.add(ad_pf);
-        adminLogin.add(poster);
-        // adminLogin.add(slider);
-        adminLogin.setLayout(null);
-        adminLogin.setBounds(0, 0, 1100, 700);
-        adminLogin.setBackground(Color.blue);
-        adminLogin.setVisible(false);
 
         loginFrame.setIconImage(icon.getImage());
         loginFrame.add(loginDashboard);
-        loginFrame.add(adminLogin);
 
         loginFrame.setLayout(null);
         loginFrame.setTitle("Login - LandLord");
@@ -206,20 +152,22 @@ public class LandLordLogin implements ActionListener {
         loginFrame.setLocationRelativeTo(null);
         loginFrame.setVisible(true);
 
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == login) {
-            String user = usertf.getText();
-            String pass = new String(pasF.getPassword());
+            String user = UserTextfield.getText();
+            String pass = new String(PasswordField.getPassword());
             // validating data from txt file by checking hashmap
             if (user.isEmpty() || pass.isEmpty()) {
                 showMessageDialog(null, "Both fields are required!");
                 // add another condition to check for empty field
             } else if (validateLogin(user, pass)) {
                 showMessageDialog(null, "Login Successful");
-                new LandLordDashboard();
+                LandLordDashboard frame = new LandLordDashboard();
+                frame.setVisible(true);
                 loginFrame.setVisible(false);
                 // Additional logic if login is successful
             } else { // Login failed
@@ -227,7 +175,8 @@ public class LandLordLogin implements ActionListener {
             }
         }
 
-        else if (e.getSource() == exit) {
+        else if (e.getSource() == exit)
+        {
             new IntroDuck();
             loginFrame.setVisible(false);
         } else if (e.getSource() == signup) {
@@ -235,6 +184,8 @@ public class LandLordLogin implements ActionListener {
             loginFrame.setVisible(false);
          }
     }
+
+
 
     // userpass validation methode
     private boolean validateLogin(String user, String pass) {
@@ -255,5 +206,7 @@ public class LandLordLogin implements ActionListener {
 
         return false; // Unable to validate login
     }
+
+
 }
 // Hello Bad Boy!!

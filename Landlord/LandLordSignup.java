@@ -6,6 +6,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class LandLordSignup extends JFrame implements ActionListener {
     private JTextField nameField, addressField, contactField, emailField, Nidfield;
@@ -140,6 +142,11 @@ public class LandLordSignup extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(this, "Invalid email format.");
             return false;
         }
+        if (!isValidMobile(contact)) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid Mobile number.");
+            return false;
+        }
+
         // ensure that password and confirmPassword match.
         if (!new String(password).equals(new String(confirmPassword))) {
             JOptionPane.showMessageDialog(this, "Passwords do not match.");
@@ -152,7 +159,14 @@ public class LandLordSignup extends JFrame implements ActionListener {
     private boolean isValidEmail(String email) {
 
         String emaicheck = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        String mobilecheck = "\\d{10}";
         return email.matches(emaicheck);
+    }
+
+    private boolean isValidMobile(String mobile) {
+
+        String mobilecheck = "\\d{10}";
+        return mobile.matches(mobilecheck);
     }
 
     // saving user data in a txt file
@@ -160,6 +174,10 @@ public class LandLordSignup extends JFrame implements ActionListener {
             String Nid) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data\\LandLordData.txt", true))) {
             // Append the user data to the text file
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+            writer.write("Account created at: " + dtf.format(now) + "\n");
             writer.write("Name: " + name + "\n");
             writer.write("Address: " + address + "\n");
             writer.write("Contact Number: " + contact + "\n");
