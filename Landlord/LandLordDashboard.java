@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 public class LandLordDashboard extends JFrame implements ActionListener {
 
     private final JButton addProperty;
-    private final JButton viewProperties;
     private final JButton logout;
 
     public LandLordDashboard() {
@@ -27,28 +26,23 @@ public class LandLordDashboard extends JFrame implements ActionListener {
 
         // Creating components
         addProperty = new JButton("Add Property");
-        viewProperties = new JButton("View Property");
         logout = new JButton("Logout");
 
         // Setting bounds for components
-        addProperty.setBounds(417, 430, 200, 50);
-        viewProperties.setBounds(417, 480, 200, 50);
-        logout.setBounds(417, 530, 200, 50);
+        addProperty.setBounds(432, 455, 170, 65);
+        logout.setBounds(431, 520, 171, 65);
 
         // Adding components to the frame
         add(addProperty);
-        add(viewProperties);
         add(logout);
         add(background);
 
         // Adding action listeners
         addProperty.addActionListener(this);
-        viewProperties.addActionListener(this);
         logout.addActionListener(this);
 
         //setting color
         addProperty.setBackground(Color.ORANGE);
-        viewProperties.setBackground(Color.ORANGE);
         logout.setBackground(Color.ORANGE);
 
         // Setting visibility
@@ -58,10 +52,7 @@ public class LandLordDashboard extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addProperty) {
             new AddProperty();
-            setVisible(false);
-        } else if (e.getSource() == viewProperties) {
-            JOptionPane.showMessageDialog(null, "No Properties Added Yet");
-            setVisible(false);
+            setVisible(false);;
         } else if (e.getSource() == logout) {
             new LandLordLogin();
             setVisible(false);
