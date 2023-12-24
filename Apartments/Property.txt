@@ -1,47 +1,36 @@
+Property added at: 2023/12/24 00:02:01
 Address: 1
 Rent: 1
-Description: 1
-Wifi: No
-====================
-Address: 1
-Rent: 1
-Description: 1
-Wifi: No
-====================
-Address: 1
-Rent: 1
-Description: 1
-Wifi: No
-====================
-Address: 1
-Rent: 1
-Description: 1
-Wifi: No
-====================
-Address: 123123
-Rent: 1231231
-Description: 123123
+Description: 11
 Wifi: Yes
 ====================
-Address: 123123
-Rent: 1231231
-Description: 123123
+Property added at: 2023/12/24 00:09:22By6caac79c-0cfb-4e70-b5d9-1aab0cf1cb45
+Address: 1
+Rent: 1
+Description: 1
+Wifi: No
+====================
+Property added at: 2023/12/24 00:15:43 By 413482b1-0082-48af-b103-58e4145db32e
+Address: 1
+Rent: 1
+Description: 1
 Wifi: Yes
 ====================
-Address: 123123
-Rent: 1231231
-Description: 123123
+Property added at: 2023/12/24 00:20:41 By e87eb204-e5cc-41a3-8c55-73eb0540aacc
+Address: 11
+Rent: 11
+Description: 1
 Wifi: No
 ====================
-Property added at: 2023/12/23 21:45:28
-Address: fdafa
-Rent: 12222222222222
-Description: awfawf
+Property added at: 2023/12/24 00:22:34 By 10350e05-e845-401a-bd85-cc5cb7678890
+Address: 1
+Rent: 1
+Description: 1
 Wifi: No
 ====================
-Property added at: 2023/12/23 23:38:38
-Address: USA
-Rent: 2000000
-Description: Be rich
+Property added at: 2023/12/24 00:23:38 By bab1a992-46db-4ef2-b0aa-15b4fe6844f9
+Address: 1
+Rent: 1
+Description: 1
 Wifi: Yes
 ====================

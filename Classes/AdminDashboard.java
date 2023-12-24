@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.util.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
@@ -17,22 +16,6 @@ public class AdminDashboard extends JFrame {
     private JTable landLordListTable, poster;
     private DefaultTableModel userListTableModel;
     private DefaultTableModel landLordListTableModel;
-
-    public AdminDashboard() {
-        setTitle("ADMIN-Dashboard");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new GridLayout(2, 2, 10, 10));
-
-        // Create labels with clickable images
-        add(createClickableLabel("Tenant List", "Media\\tenant.png"));
-        add(createClickableLabel("LandLord List", "Media\\landlord.png"));
-        add(createClickableLabel("Properties", ",,,,,,"));
-        add(createClickableLabel("Contributors", "Media\\contribution.png"));
-        // add(poster);
-
-        setSize(1000, 600);
-        setLocationRelativeTo(null);
-    }
 
     private JLabel createClickableLabel(String labelText, String imagePath) {
         ImageIcon icon = new ImageIcon(imagePath);

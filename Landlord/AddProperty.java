@@ -13,231 +13,226 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
+import java.lang.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
+import java.io.*;
+import java.nio.file.*;
 
 
-public class AddProperty extends JFrame implements ActionListener {
+public class AddProperty implements ActionListener {
 
-    private final JTextField addressField;
-    private final JTextField rentField;
-    private final JTextField descriptionField;
-    private JTextField wifiField;
-
-    private final JButton submit;
-    private final JButton Back;
-    private final JButton upload;
+    private JFrame frame;
+    private Container c;
+    private JTextField addressField, rentField, sizeField,attach;
+    private JLabel addressLabel;
+    private JLabel imgLabel2;
+    private JPanel panel;
+    private Cursor cursor;
+    private JButton submit, Back, upload;
     private JRadioButton wifiYes, wifiNo;
-    File file;
+    String uniqueID= UUID.randomUUID().toString();
     BufferedImage img;
-    String filExtension = "";
 
     public AddProperty() {
+        frame = new JFrame();
+        frame.setBounds(50,50,1100,700);
+        frame.setTitle("Add Property");
+        frame.setLayout(null);
+        frame.setVisible(true);
+        c = frame.getContentPane();
+        c.setBackground(Color.decode("#24292e"));
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        ImageIcon img = new ImageIcon("Media\\blu.jpg");
-        JLabel background = new JLabel(img);
-        background.setBounds(0, 0, 1100, 700);
+        ImageIcon icon = new ImageIcon("Media\\landlord.png");
+        frame.setIconImage(icon.getImage());
+        frame.setLocationRelativeTo(null);
 
-        // Setting up the frame
-        setTitle("Add Property");
-        setSize(1100, 700);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        cursor = new Cursor(Cursor.HAND_CURSOR);
 
-        // Creating components
-        JLabel addressLabel = new JLabel("Address :");
-        JLabel rentLabel = new JLabel("Rent :");
-        JLabel descriptionLabel = new JLabel("Description :");
-        JLabel WifiLabel = new JLabel("Wifi :");
-        JLabel uploadLabel = new JLabel("Choose Image :");
+        panel = new JPanel();
+        panel.setBounds(200,200,360,300);
+        panel.setLayout(null);
+        panel.setVisible(true);
+        panel.setBackground(new Color(49,11,112,50));
+        c.add(panel);
 
+        JLabel add = new JLabel("Add Property Details");
+        add.setBounds(250, 50, 300, 30);
+        Font addFont = new Font("Arial", Font.BOLD, 20);
+        add.setFont(addFont);
+        add.setForeground(Color.WHITE);
+        frame.add(add);
 
+        addressLabel = new JLabel("Address :");
+        addressLabel.setBounds(170, 120, 160, 30);
+        Font fullNameFont = new Font("Arial", Font.BOLD, 15);
+        addressLabel.setFont(fullNameFont);
+        addressLabel.setForeground(Color.WHITE);
+        frame.add(addressLabel);
 
         addressField = new JTextField();
-        rentField = new JTextField();
-        descriptionField = new JTextField();
+        addressField.setBounds(260, 120, 180, 30);
+        Font fullFieldFont= new Font("Arial", Font.BOLD, 15);
+        addressField.setFont(fullFieldFont);
+        addressField.setOpaque(false);
+        addressField.setForeground(Color.WHITE);
+        addressField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.WHITE));
+        frame.add(addressField);
 
+        sizeField = new JTextField();
+        sizeField.setBounds(150, 260, 236, 30);
+        Font passfieldFont = new Font("Verdana", Font.PLAIN, 17);
+        sizeField.setFont(passfieldFont);
+        sizeField.setOpaque(false);
+        sizeField.setForeground(Color.WHITE);
+        frame.add(sizeField);
+
+        JLabel rentLabel = new JLabel("Rent per month :");
+        rentLabel.setBounds(150, 400, 150, 50);
+        Font emailFont = new Font("Times New Roman", Font.PLAIN, 20);
+        rentLabel.setFont(emailFont);
+        rentLabel.setForeground(Color.WHITE);
+        frame.add(rentLabel);
+
+        rentField = new JTextField();
+        rentField.setBounds(150, 440, 236, 30);
+        Font emailFieldFont = new Font("Verdana", Font.PLAIN, 17);
+        rentField.setFont(emailFieldFont);
+        rentField.setOpaque(false);
+        rentField.setForeground(Color.WHITE);
+        frame.add(rentField);
+
+        attach = new JTextField();
+        attach.setBounds(540, 365, 220, 30);
+        Font attachFont = new Font("Verdana", Font.PLAIN, 17);
+        attach.setFont(attachFont);
+        attach.setOpaque(false);
+        attach.setForeground(new Color(219, 226, 233));
+        attach.setBorder(BorderFactory.createEmptyBorder());
+        Border redBorder5 = BorderFactory.createMatteBorder(0, 0, 0, 0, new Color(49, 111, 112));
+        attach.setBorder(redBorder5);
+        frame.add(attach);
+
+        upload = new JButton("Upload");
+        upload.setBounds(540, 400, 220, 30);
+        upload.setBackground(new Color(49, 111, 112));
+        upload.setForeground(Color.WHITE);
+        upload.setFont(new Font("Arial", Font.BOLD, 15));
+        upload.setBorder(BorderFactory.createEmptyBorder());
+        upload.setCursor(cursor);
+        frame.add(upload);
 
         submit = new JButton("Submit");
+        submit.setBounds(150, 500, 100, 35);
+        submit.setBackground(new Color(49, 111, 112));
+        submit.setForeground(Color.WHITE);
+        submit.setFont(new Font("Arial", Font.BOLD, 15));
+        submit.setBorder(BorderFactory.createEmptyBorder());
+        submit.setCursor(cursor);
+        frame.add(submit);
+
         Back = new JButton("Back");
-        upload = new JButton("Upload");
+        Back.setBounds(150, 550, 100, 35);
+        Back.setBackground(new Color(49, 111, 112));
+        Back.setForeground(Color.WHITE);
+        Back.setFont(new Font("Arial", Font.BOLD, 15));
+        Back.setBorder(BorderFactory.createEmptyBorder());
+        Back.setCursor(cursor);
+        frame.add(Back);
 
-        // Adding action listeners
+        JLabel imgLabel2 = new JLabel();
+        panel.add(imgLabel2);
+
+
+        //adding action listeners
         submit.addActionListener(this);
-        Back.addActionListener(this);
         upload.addActionListener(this);
+        Back.addActionListener(this);
 
 
-        // Setting bounds for components
-
-        addressLabel.setBounds(170, 120, 160, 30);
-        rentLabel.setBounds(170, 170, 200, 30);
-        descriptionLabel.setBounds(170, 220, 200, 30);
-        WifiLabel.setBounds(170, 270, 200, 30);
-        uploadLabel.setBounds(170, 320, 200, 30);
-
-        addressField.setBounds(260, 120, 180, 30);
-        rentField.setBounds(260, 170, 180, 30);
-        descriptionField.setBounds(260, 220, 180, 30);
-        submit.setBounds(170, 370, 100, 35);
-        Back.setBounds(170, 420, 100, 35);
-        upload.setBounds(260, 320, 180, 30);
-
-
-        // Adding components to the frame
-
-        //Labels
-        add(addressLabel);
-        add(rentLabel);
-        add(descriptionLabel);
-        add(WifiLabel);
-        add(uploadLabel);
-
-        //Fields
-        add(addressField);
-        add(rentField);
-        add(descriptionField);
-
-        //Buttons
-        add(submit);
-        add(Back);
-        add(upload);
-
-        //creating radio buttons
-        wifiNo = new JRadioButton("No");
-        wifiNo.setForeground(Color.decode("#301934"));
-        wifiNo.setBackground(Color.WHITE);
-        wifiYes = new JRadioButton("Yes");
-        wifiYes.setForeground(Color.decode("#301934"));
-        wifiYes.setBackground(Color.WHITE);
-        wifiNo.setFocusPainted(false);
-        wifiYes.setFocusPainted(false);
-        wifiNo.setBounds(260, 270, 80, 30);
-        wifiYes.setBounds(340, 270, 80, 30);
-
-        //grouping the radio buttons
-        ButtonGroup bg = new ButtonGroup();
-        bg.add(wifiNo);
-        bg.add(wifiYes);
-        add(wifiNo);
-        add(wifiYes);
-        wifiNo.setSelected(true);
-
-        //setting the background of radio options
-        wifiNo.setOpaque(false);
-        wifiYes.setOpaque(false);
-
-        //setting background
-        add(background);
-
-
-        setVisible(true);
 
     }
 
-
-    @Override
     public void actionPerformed(ActionEvent e) {
 
         String wifi = "";
-        if (wifiYes.isSelected()) {
-            wifi = "Yes";
-        } else if (wifiNo.isSelected()) {
-            wifi = "No";
-        }
+        String size1 = sizeField.getText();
+        String rent1 = rentField.getText();
+        String address1 = addressField.getText();
+        String attach1 = attach.getText();
+
+        boolean sizeEmpty = size1.isEmpty();
+        boolean rentEmpty = rent1.isEmpty();
+        boolean addressEmpty = address1.isEmpty();
+        boolean attachEmpty = attach1.isEmpty();
 
         if (e.getSource() == submit) {
-            //getting input
-            String address = addressField.getText();
-            String rent = rentField.getText();
-            String description = descriptionField.getText();
-
-            if (address.isEmpty() || rent.isEmpty() || description.isEmpty()|| wifi.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Please fill in all fields");
-
-            } else if (validateInputs(address, rent, description,wifi)) {
-                saveDataToFile(address, rent, description,wifi);//saves data to file if true
+            if (addressEmpty == false && rentEmpty == false && attachEmpty == false && sizeEmpty == false) {
                 try {
-                    ImageIO.write(img, filExtension, new File("Apartments\\AptPictures\\" + address + filExtension));
-                } catch (IOException e1) {
-                    throw new RuntimeException(e1);
-                }
+                    int n = Integer.parseInt(rent1);
+                    String line = "Apartments\\\\Property.txt";
+                    try {
+                        File file = new File(line);
+                        if (!file.exists()) {
+                            file.createNewFile();
+                            FileWriter fileWriter = new FileWriter(file, true);
+                            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                            PrintWriter printWriter = new PrintWriter(bufferedWriter);
+                            printWriter.close();
+                        }
 
-                JOptionPane.showMessageDialog(null, "Property Added Successfully");
-            }
-        } else if (e.getSource() == upload) {
-            try {
-                FileNameExtensionFilter filter = new FileNameExtensionFilter("*.IMAGE", "jpg", "gif", "png");
-                JFileChooser chooser = new JFileChooser();
-                chooser.setFileFilter(filter);
-                chooser.showOpenDialog(this);
-                file = chooser.getSelectedFile();
-                img = ImageIO.read(file);
+                        BufferedReader readFile3 = new BufferedReader(new FileReader("Apartments\\\\Property.txt"));
+                        int totalLines3 = 0;
+                        while (readFile3.readLine() != null) {
+                            totalLines3++;
+                        }
+                        readFile3.close();
+                        frame.setVisible(false);
+                        new LandLordDashboard();
 
-                ImageIcon icon = new ImageIcon(img);
-                ImageIcon imageIcon = new ImageIcon(icon.getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH));
-                upload.setIcon(imageIcon);
-                String[] extensions = {".jpg", ".png", ".gif" };
-                for (String extension : extensions) {
-                    if (file.getName().toLowerCase().endsWith(extension)) {
-                        filExtension = extension;
-                        break;
+                    } catch (Exception ex) {
+                        System.out.println(ex);
                     }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Invalid Rent Field", "Error",
+                            JOptionPane.WARNING_MESSAGE);
                 }
 
-                upload.revalidate();
-                upload.repaint();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (Exception ex2) {
-                throw new RuntimeException(ex2);
+            } else if (!sizeEmpty && !rentEmpty && attachEmpty && !addressEmpty) {
+                JOptionPane.showMessageDialog(null, "Please attach a photo", "Error",
+                        JOptionPane.WARNING_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Please fill all the field", "Error",
+                        JOptionPane.WARNING_MESSAGE);
             }
-        }
+        } else if (e.getSource() == upload)
 
+        {
+            try {
+                JFileChooser chooser = new JFileChooser();
+                chooser.showOpenDialog(null);
+                File f = chooser.getSelectedFile();
+                String filename = f.getAbsolutePath();
+                attach.setText(filename);
+                imgLabel2.setIcon(new ImageIcon(filename));
+                imgLabel2.setBounds(0, 0, 260, 260);
 
-
-        else if (e.getSource() == Back) {
-            new LandLordDashboard();
-            setVisible(false);
-        }
+            } catch (Exception ex) {
+                return;
+            }
+        } else if (e.getSource() == Back)
+            frame.setVisible(false);
+        new LandLordDashboard();
     }
-
-
-
-
-
-
-    private boolean validateInputs(String address, String rent, String description, String wifi) {
-        // validation logic here
-
-        // check if the fields are not empty
-        if (address.isEmpty() || rent.isEmpty() || description.isEmpty()|| wifi.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill in all fields.");
-            return false;
-        }
-        return true;
-    }
-
-    private void saveDataToFile(String address,String rent, String description, String wifi){
-        try (BufferedWriter writer= new BufferedWriter(new FileWriter("Apartments\\Property.txt",true))) {
-            //Append the user data to the text file
-            LocalDateTime now = LocalDateTime.now();
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-
-            writer.write("Property added at: " + dtf.format(now)+"\n");
-            writer.write("Address: " + address + "\n");
-            writer.write("Rent: " + rent + "\n");
-            writer.write("Description: " + description + "\n");
-            writer.write("Wifi: " + wifi + "\n");
-            writer.write("====================\n");
-        } catch (IOException ioException){
-            ioException.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error saving data");//Add a separator between entries
-        }
-    }
-
-
-
-
 }
+
 
 
 
