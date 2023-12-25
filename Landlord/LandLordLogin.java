@@ -19,7 +19,7 @@ public class LandLordLogin implements ActionListener {
     JLabel background;
     JLabel userlabel, passlabel;
     JPasswordField PasswordField;
-    JTextField emailTextField, UserPasswordField;
+    JTextField UserTextfield, UserPasswordField;
     JButton login;
     JButton signup;
     JButton ForgotPass;
@@ -52,13 +52,13 @@ public class LandLordLogin implements ActionListener {
         passlabel.setForeground(Color.BLACK);
         passlabel.setFont(smallFont);
 
-        emailTextField = new JTextField("", 2);
-        emailTextField.setBounds(725, 242, 300, 32);
+        UserTextfield = new JTextField("", 2);
+        UserTextfield.setBounds(725, 242, 300, 32);
 
-        emailTextField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
-        Font bigFont = emailTextField.getFont().deriveFont(Font.PLAIN, 20);
-        emailTextField.setFont(bigFont);
-        emailTextField.setOpaque(false);
+        UserTextfield.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        Font bigFont = UserTextfield.getFont().deriveFont(Font.PLAIN, 20);
+        UserTextfield.setFont(bigFont);
+        UserTextfield.setOpaque(false);
         // usertf.setContentAreaFilled(false);
         // usertf.setBorderPainted(false);
 
@@ -120,10 +120,11 @@ public class LandLordLogin implements ActionListener {
         loginDashboard.add(signup);
         loginDashboard.add(ForgotPass);
         loginDashboard.add(exit);
-        //loginDashboard.add(Admin);
+        loginDashboard.add(showPassword);
+
         loginDashboard.add(userlabel);
         loginDashboard.add(passlabel);
-        loginDashboard.add(emailTextField);
+        loginDashboard.add(UserTextfield);
         loginDashboard.add(PasswordField);
         loginDashboard.add(background);
 
@@ -158,13 +159,13 @@ public class LandLordLogin implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == login) {
-            String email = emailTextField.getText();
+            String user = UserTextfield.getText();
             String pass = new String(PasswordField.getPassword());
             // validating data from txt file by checking hashmap
-            if (email.isEmpty() || pass.isEmpty()) {
+            if (user.isEmpty() || pass.isEmpty()) {
                 showMessageDialog(null, "Both fields are required!");
                 // add another condition to check for empty field
-            } else if (validateLogin(email, pass)) {
+            } else if (validateLogin(user, pass)) {
                 showMessageDialog(null, "Login Successful");
                 LandLordDashboard frame = new LandLordDashboard();
                 frame.setVisible(true);
@@ -182,13 +183,22 @@ public class LandLordLogin implements ActionListener {
         } else if (e.getSource() == signup) {
             new LandLordSignup();
             loginFrame.setVisible(false);
-         }
+        }
+        else if (e.getSource() == showPassword) {
+            if (showPassword.isSelected()) {
+                showPassword.setIcon(on);
+                PasswordField.setEchoChar((char) 0);
+            } else {
+                showPassword.setIcon(off);
+                PasswordField.setEchoChar('*');
+            }
+        }
     }
 
 
 
     // userpass validation methode
-    private boolean validateLogin(String pass,String email) {
+    private boolean validateLogin(String user, String pass) {
         try (Scanner scanner = new Scanner(new File("Data\\LandLordData.txt"))) {
             StringBuilder userData = new StringBuilder();
 
@@ -198,7 +208,7 @@ public class LandLordLogin implements ActionListener {
             }
             // Check if the entered credentials exist in the data
             String userCredentials = userData.toString();
-            return userCredentials.contains("Email " + email) &&
+            return userCredentials.contains("Name: " + user) &&
                     userCredentials.contains("Password: " + pass);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
