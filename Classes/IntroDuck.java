@@ -8,9 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class IntroDuck extends JFrame {
-    private JButton Tenant, landLord;
-
-    public IntroDuck() {
+    JButton Tenant,landLord;
+    
+public IntroDuck() {
         ImageIcon icon = new ImageIcon("Media\\Frmlogo.png");// icon
         // Setting title and close operation
         setTitle("ROOMMATE");
@@ -38,8 +38,8 @@ public class IntroDuck extends JFrame {
         landLord.setBorder(BorderFactory.createMatteBorder(1, 1, 2, 1, Color.black));
         landLord.setForeground(Color.black);
 
-        Tenant.setBounds(720, 290, 120, 38);
-        landLord.setBounds(830, 340, 120, 38);
+        Tenant.setBounds(770, 290, 120, 38);
+        landLord.setBounds(770, 340, 120, 38);
         // Set button colors using RGB values
         Tenant.setBackground(new Color(255, 219, 88)); // mustard yellow
         landLord.setBackground(new Color(255, 219, 88)); // mustard yellow
@@ -57,13 +57,14 @@ public class IntroDuck extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 new LandLordLogin();
                 setVisible(false);
-                ;
+                
             }
         });
-
+       
         // adding buttons to the frame
         BGlabel.add(Tenant);
         BGlabel.add(landLord);
         setVisible(true);
-    }
+   
+   }
 }
