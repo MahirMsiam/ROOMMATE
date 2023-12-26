@@ -1,0 +1,7 @@
+====================
+Property added at: 2023/12/27 04:18:47
+Name: siam
+Location: badda
+Rent: 5000
+Size: 1221
+====================
