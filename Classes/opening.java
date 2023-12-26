@@ -11,7 +11,7 @@ public class opening {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 ImageIcon icon = new ImageIcon("Media\\Frmlogo.png");// icon
-                // Create the Cards
+                // Creating the Cards
                 JPanel card1 = new JPanel();
                 ImageIcon img1 = new ImageIcon("Media\\Roommate logo.gif");
                 JLabel label1 = new JLabel(img1);
@@ -65,3 +65,8 @@ public class opening {
         });
     }
 }
+/*HAPPY CODING
+If you liked it and it helped you drp a star
+Every Method is open for all just copy and paste
+DM freely on my socials in case you need help
+*/
