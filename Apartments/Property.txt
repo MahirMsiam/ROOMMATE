@@ -168,3 +168,10 @@ Rent: 120000
 By: Mazid
 Size: 2000
 ====================
+====================
+Property added at: 2023/12/26 21:18:35
+Address: Uttara
+Rent: 20000
+By: Munira
+Size: 12000
+====================

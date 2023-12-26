@@ -117,6 +117,8 @@ public class LandLordSignup extends JFrame implements ActionListener {
                 saveDataToFile(name, address, contact, email, password, NID);// if=true then data will be written in
                                                                              // tenantdata.txt file
                 JOptionPane.showMessageDialog(this, "Signup successful!");
+                new LandLordLogin();
+                setVisible(false);
             } // else {
               // JOptionPane.showMessageDialog(this, "Invalid input or passwords do not
               // match.");
