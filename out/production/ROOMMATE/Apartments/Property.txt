@@ -133,3 +133,17 @@ Rent: 1234
 By: LandLord :
 Size: 1234
 ====================
+====================
+Property added at: 2023/12/25 03:02:38
+Address: Uttara
+Rent: 1500
+By: LandLord :
+Size: 6000
+====================
+====================
+Property added at: 2023/12/25 03:05:05
+Address: Gulshan 2
+Rent: 36000
+By: LandLord :
+Size: 2100
+====================
