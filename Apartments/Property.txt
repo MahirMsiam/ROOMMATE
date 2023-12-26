@@ -147,3 +147,10 @@ Rent: 36000
 By: LandLord :
 Size: 2100
 ====================
+====================
+Property added at: 2023/12/26 16:09:26
+Address: Dhaka
+Rent: 20000
+By: LandLord :
+Size: 1212
+====================
