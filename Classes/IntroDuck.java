@@ -8,9 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class IntroDuck extends JFrame {
-    JButton Tenant,landLord;
-    
-public IntroDuck() {
+    JButton Tenant, landLord;
+
+    public IntroDuck() {
         ImageIcon icon = new ImageIcon("Media\\Frmlogo.png");// icon
         // Setting title and close operation
         setTitle("ROOMMATE");
@@ -57,14 +57,19 @@ public IntroDuck() {
             public void actionPerformed(ActionEvent e) {
                 new LandLordLogin();
                 setVisible(false);
-                
+
             }
         });
-       
+
         // adding buttons to the frame
         BGlabel.add(Tenant);
         BGlabel.add(landLord);
         setVisible(true);
-   
-   }
+
+    }
 }
+/*HAPPY CODING
+If you liked it and it helped you drp a star
+Every Method is open for all just copy and paste
+DM freely on my socials in case you need help
+*/
