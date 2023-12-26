@@ -254,12 +254,7 @@ public class AddProperty extends JFrame implements ActionListener {
             frame.setVisible(false);
         }
     }
-
-
-
-
-
-
+    
     private boolean validateInputs(String address, String rent, String LandLordName, String size) {
         // validation logic here
 
