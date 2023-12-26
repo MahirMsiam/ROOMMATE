@@ -16,15 +16,14 @@ import java.time.format.DateTimeFormatter;
 public class AddProperty extends JFrame implements ActionListener {
     private final Container c;
     private final JFrame frame;
-    private final JLabel LandLordNameField;
+    private final JLabel LandLordNameLabel;
     private final JLabel size;
     private final JLabel rent;
     private final JLabel address;
     private final JLabel imgLabel2;
     private final JLabel uploadLabel;
 
-    private final JTextField attach;
-    private final JTextField LandLordName;
+    private final JTextField LandLordNameField;
     private final JTextField rentField;
     private final JTextField sizeField;
     private final JTextField addressField;
@@ -69,23 +68,23 @@ public class AddProperty extends JFrame implements ActionListener {
         add.setForeground(Color.decode("#8ee0f0"));
         frame.add(add);
 
-        LandLordNameField = new JLabel("LandLord :");
-        LandLordNameField.setBounds(150, 55, 150, 50);
+        LandLordNameLabel = new JLabel("LandLord :");
+        LandLordNameLabel.setBounds(150, 55, 150, 50);
         Font typeFont = new Font("Times New Roman", Font.PLAIN, 20);
-        LandLordNameField.setFont(typeFont);
-        LandLordNameField.setForeground(Color.decode("#8ee0f0"));
-        frame.add(LandLordNameField);
+        LandLordNameLabel.setFont(typeFont);
+        LandLordNameLabel.setForeground(Color.decode("#8ee0f0"));
+        frame.add(LandLordNameLabel);
 
-        LandLordName = new JTextField();
-        LandLordName.setBounds(150, 105, 236, 30);
+        LandLordNameField = new JTextField();
+        LandLordNameField.setBounds(150, 105, 236, 30);
         Font userfieldFont = new Font("Verdana", Font.PLAIN, 17);
-        LandLordName.setFont(userfieldFont);
-        LandLordName.setOpaque(false);
-        LandLordName.setForeground(new Color(219, 226, 233));
-        LandLordName.setBorder(BorderFactory.createEmptyBorder());
+        LandLordNameField.setFont(userfieldFont);
+        LandLordNameField.setOpaque(false);
+        LandLordNameField.setForeground(new Color(219, 226, 233));
+        LandLordNameField.setBorder(BorderFactory.createEmptyBorder());
         Border redBorder1 = BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(14, 14, 14));
-        LandLordName.setBorder(redBorder1);
-        frame.add(LandLordName);
+        LandLordNameField.setBorder(redBorder1);
+        frame.add(LandLordNameField);
 
         address = new JLabel("Place :");
         address.setBounds(150, 155, 150, 50);
@@ -149,17 +148,6 @@ public class AddProperty extends JFrame implements ActionListener {
         addPhoto.setForeground(Color.decode("#8ee0f0"));
         frame.add(addPhoto);
 
-
-        attach = new JTextField();
-        attach.setBounds(540, 365, 220, 30);
-        Font attachFont = new Font("Verdana", Font.PLAIN, 17);
-        attach.setFont(attachFont);
-        attach.setOpaque(false);
-        attach.setForeground(new Color(219, 226, 233));
-        attach.setBorder(BorderFactory.createEmptyBorder());
-        Border redBorder5 = BorderFactory.createMatteBorder(0, 0, 0, 0, new Color(14, 37, 110));
-        attach.setBorder(redBorder5);
-        frame.add(attach);
 
         attachButton = new JButton("Attachment");
         attachButton.setBounds(520, 395, 120, 60);
@@ -229,7 +217,7 @@ public class AddProperty extends JFrame implements ActionListener {
             BufferedImage img = selectImage();
             if (img != null) {
                 try {
-                    File outputFile = new File("Apartments\\"+LandLordName.getText()+".jpg");
+                    File outputFile = new File("Apartments\\"+ LandLordNameField.getText()+".jpg");
                     outputFile.getParentFile().mkdirs(); // Create parent directories if needed
                     ImageIO.write(img, "jpg", outputFile);
                     System.out.println("Image saved successfully!");
