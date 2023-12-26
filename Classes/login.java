@@ -56,16 +56,12 @@ public class login implements ActionListener, Ilginval {
         Font bigFont = usertf.getFont().deriveFont(Font.PLAIN, 20);
         usertf.setFont(bigFont);
         usertf.setOpaque(false);
-        // usertf.setContentAreaFilled(false);
-        // usertf.setBorderPainted(false);
 
         pasF = new JPasswordField("", 2);
         pasF.setBounds(725, 311, 300, 32);
         pasF.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
         pasF.setFont(smallFont);
         pasF.setOpaque(false);
-        // / pasF.setContentAreaFilled(false);
-        // pasF.setBorderPainted(false);
 
         login = new RoundButton("LOGIN");
         login.setBounds(680, 420, 100, 35);
@@ -73,10 +69,6 @@ public class login implements ActionListener, Ilginval {
         login.setBackground(Color.BLACK);
         login.setForeground(Color.black);
         login.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.black));
-        /*
-         * login.setOpaque(true);
-         * login.setContentAreaFilled(true);
-         */
 
         signup = new RoundButton("SIGN-UP");
         signup.setBounds(850, 420, 100, 35);
@@ -84,10 +76,6 @@ public class login implements ActionListener, Ilginval {
         signup.setBackground(Color.BLACK);
         signup.setForeground(Color.black);
         signup.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.black));
-        /*
-         * signup.setOpaque(true);
-         * signup.setContentAreaFilled(true);
-         */
 
         login.setBackground(new Color(167, 199, 231)); // pastel blue
         signup.setBackground(new Color(167, 199, 231)); // pastel blue
@@ -120,7 +108,7 @@ public class login implements ActionListener, Ilginval {
 
         loginDashboard.add(login);
         loginDashboard.add(signup);
-        // loginDashboard.add(frgtpass);
+
         loginDashboard.add(exit);
         loginDashboard.add(Admin);
         loginDashboard.add(userlabel);
@@ -128,7 +116,7 @@ public class login implements ActionListener, Ilginval {
         loginDashboard.add(usertf);
         loginDashboard.add(pasF);
         loginDashboard.add(background);
-        // loginDashboard.add(slider);
+
         loginDashboard.setLayout(null);
         loginDashboard.setBounds(0, 0, 1100, 700);
         loginDashboard.setBackground(Color.gray);
@@ -163,10 +151,7 @@ public class login implements ActionListener, Ilginval {
         lgin.setBounds(590, 400, 100, 35);
         lgin.addActionListener(this);
         lgin.setBorder(BorderFactory.createMatteBorder(1, 1, 2, 1, Color.BLACK));
-        /*
-         * lgin.setOpaque(true);
-         * lgin.setContentAreaFilled(true);
-         */
+
         lgin.setBackground(Color.BLACK);
         lgin.setBorderPainted(true);
         lgin.setForeground(Color.black);
@@ -175,10 +160,7 @@ public class login implements ActionListener, Ilginval {
         ad_exi.setBounds(1000, 620, 80, 30);
         ad_exi.addActionListener(this);
         ad_exi.setBorder(BorderFactory.createMatteBorder(1, 1, 5, 1, Color.BLACK));
-        /*
-         * ad_exi.setOpaque(false);
-         * ad_exi.setContentAreaFilled(false);
-         */
+
         ad_exi.setBorderPainted(false);
         ad_exi.setForeground(Color.BLACK);
 
@@ -271,9 +253,9 @@ public class login implements ActionListener, Ilginval {
 
             else if (validateLoginAdmin(user, pass)) {
                 // showMessageDialog(null, "Login successful!");
-                // Additional frame here
+
                 new AdminDashboard().setVisible(true);
-                // loginFrame.setVisible(false);
+
 
             }
 
@@ -304,7 +286,7 @@ public class login implements ActionListener, Ilginval {
 
         return false; // if Unable to validate login
     }
-
+    //AdminDash Validation Method
     @Override
     public boolean validateLoginAdmin(String user, String pass) {
         try (Scanner scanner = new Scanner(new File("Data\\Admindata.txt"))) {
@@ -325,4 +307,8 @@ public class login implements ActionListener, Ilginval {
         return false; // if Unable to validate login
     }
 }
-// Hello Bad Boy!!!
+/*HAPPY CODING
+If you liked it and it helped you drp a star
+Every Method is open for all just copy and paste
+DM freely on my socials in case you need help
+*/
