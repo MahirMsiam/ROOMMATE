@@ -217,7 +217,7 @@ public class AddProperty extends JFrame implements ActionListener {
             BufferedImage img = selectImage();
             if (img != null) {
                 try {
-                    File outputFile = new File("Apartments\\"+ LandLordNameField.getText()+".jpg");
+                    File outputFile = new File("Apartments\\"+LandLordNameField.getText()+".jpg");
                     outputFile.getParentFile().mkdirs(); // Create parent directories if needed
                     ImageIO.write(img, "jpg", outputFile);
                     System.out.println("Image saved successfully!");
@@ -234,21 +234,11 @@ public class AddProperty extends JFrame implements ActionListener {
                 System.out.println("No image was selected.");
             }
         }
-
-
-
-
-
         else if (e.getSource() == backButton) {
             new LandLordDashboard();
             frame.setVisible(false);
         }
     }
-
-
-
-
-
 
     private boolean validateInputs(String address, String rent, String LandLordName, String size) {
         // validation logic here
