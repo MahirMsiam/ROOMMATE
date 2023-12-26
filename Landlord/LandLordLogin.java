@@ -69,32 +69,36 @@ public class LandLordLogin implements ActionListener {
         // / pasF.setContentAreaFilled(false);
         // pasF.setBorderPainted(false);
 
-        login = new JButton("Login as Land Lord");
+        login = new RoundButton("Login as Land Lord");
         login.setBounds(680, 420, 150, 50);
         login.addActionListener(this);
-        login.setOpaque(true);
-        login.setContentAreaFilled(true);
-        login.setBackground(Color.BLACK);
-        login.setBorderPainted(true);
-        login.setForeground(Color.WHITE);
+        login.setOpaque(false);
+        login.setContentAreaFilled(false);
+        login.setBackground(new Color(81, 112, 253));
+        login.setBorderPainted(false);
+        login.setForeground(Color.BLACK);
+        login.setBorder(BorderFactory.createMatteBorder(1, 1, 3, 1, Color.black));
 
-        signup = new JButton("Sign-up as Land Lord");
+        signup = new RoundButton("Sign-up as Land Lord");
         signup.setBounds(850, 420, 170, 50);
         signup.addActionListener(this);
-        signup.setOpaque(true);
-        signup.setContentAreaFilled(true);
-        signup.setBackground(Color.BLACK);
-        signup.setBorderPainted(true);
-        signup.setForeground(Color.WHITE);
+        signup.setOpaque(false);
+        signup.setContentAreaFilled(false);
+        signup.setBackground(new Color(81, 112, 253));
+        signup.setBorderPainted(false);
+        signup.setForeground(Color.BLACK);
+        signup.setBorder(BorderFactory.createMatteBorder(1, 1, 3, 1, Color.black));
 
 
-        exit = new JButton("Exit");
+        exit = new RoundButton("Exit");
         exit.setBounds(1000, 620, 80, 30);
         exit.addActionListener(this);
         exit.setOpaque(false);
         exit.setContentAreaFilled(false);
         exit.setBorderPainted(false);
         exit.setForeground(Color.BLACK);
+        exit.setBackground(new Color(191, 49, 49));
+        exit.setBorder(BorderFactory.createMatteBorder(1, 1, 3, 1, Color.black));
 
 
         on = new ImageIcon("Media\\show.png");
