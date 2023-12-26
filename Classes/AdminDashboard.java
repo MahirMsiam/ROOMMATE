@@ -58,10 +58,7 @@ public class AdminDashboard extends JFrame {
 
         return label;
     }
-    // BG image
-    // ImageIcon img = new ImageIcon("Media\\admindash.jpg");
-    // poster = new JLabel(img);
-    // poster.setBounds(0, 0, 1100, 700);
+
 
     private class MouseClickListener extends MouseAdapter {
         private final String labelText;
@@ -82,15 +79,7 @@ public class AdminDashboard extends JFrame {
                 showContributorsImage();
             } else if ("Properties".equals(labelText)) {
                 showPropertyList();
-             } //else {
-            //     JLabel clickedLabel = (JLabel) e.getSource();
-
-            //     // Open a new frame or perform other actions when a label is clicked
-            //     JFrame newFrame = new JFrame("Clicked Label: " + clickedLabel.getText());
-            //     newFrame.setSize(300, 300);
-            //     newFrame.setLocationRelativeTo(null);
-            //     newFrame.setVisible(true);
-            // }
+             }
         }
 
         private void showUserList() {
@@ -100,7 +89,7 @@ public class AdminDashboard extends JFrame {
             userListFrame.setLayout(new BorderLayout());
             userListFrame.add(new JScrollPane(mainFrame.userListTable), BorderLayout.CENTER);
 
-            // Add search and delete functionality
+            //search and delete functionality
             JPanel searchPanel = new JPanel();
             JTextField searchField = new JTextField(20);
             JButton searchButton = new JButton("Search");
@@ -128,7 +117,7 @@ public class AdminDashboard extends JFrame {
             landLordListFrame.setLayout(new BorderLayout());
             landLordListFrame.add(new JScrollPane(mainFrame.landLordListTable), BorderLayout.CENTER);
 
-            // Add search and delete functionality
+            //search and delete functionality
             JPanel searchPanel = new JPanel();
             JTextField searchField = new JTextField(20);
             JButton searchButton = new JButton("Search");
@@ -425,3 +414,8 @@ public class AdminDashboard extends JFrame {
     }
 
 }
+/*HAPPY CODING
+If you liked it and it helped you drp a star
+Every Method is open for all just copy and paste
+DM freely on my socials in case you need help
+*/
