@@ -259,9 +259,9 @@ public class AddProperty extends JFrame implements ActionListener {
 
             writer.write("====================\n");
             writer.write("Property added at: " + dtf.format(now)+ "\n");
-            writer.write("Address: " + address + "\n");
+            writer.write("Name: " + LandLordName + "\n");
+            writer.write("Location: " + address + "\n");
             writer.write("Rent: " + rent + "\n");
-            writer.write("By: " + LandLordName + "\n");
             writer.write("Size: " + size + "\n");
             writer.write("====================\n");
         } catch (IOException ioException){
@@ -294,3 +294,8 @@ public class AddProperty extends JFrame implements ActionListener {
     }
 
 }
+/*HAPPY CODING
+If you liked it and it helped you drp a star
+Every Method is open for all just copy and paste
+DM freely on my socials in case you need help
+*/
