@@ -195,6 +195,8 @@ public class LandLordLogin implements ActionListener {
 
 
 
+
+
     // email and pass validation methode
     private boolean validateLogin(String email, String pass) {
         try (Scanner scanner = new Scanner(new File("Data\\LandLordData.txt"))) {
