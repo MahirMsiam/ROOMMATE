@@ -22,7 +22,6 @@ public class LandLordLogin implements ActionListener {
     JTextField EmailTextField, UserPasswordField;
     JButton login;
     JButton signup;
-    JButton ForgotPass;
     JButton exit;
     JToggleButton showPassword;
     ImageIcon on, off;
@@ -88,13 +87,6 @@ public class LandLordLogin implements ActionListener {
         signup.setBorderPainted(true);
         signup.setForeground(Color.WHITE);
 
-        ForgotPass = new JButton("Forgot Password");
-        ForgotPass.setBounds(610, 355, 135, 20);
-        ForgotPass.addActionListener(this);
-        ForgotPass.setOpaque(false);
-        ForgotPass.setContentAreaFilled(false);
-        ForgotPass.setBorderPainted(false);
-        ForgotPass.setForeground(Color.BLACK);
 
         exit = new JButton("Exit");
         exit.setBounds(1000, 620, 80, 30);
@@ -118,7 +110,6 @@ public class LandLordLogin implements ActionListener {
 
         loginDashboard.add(login);
         loginDashboard.add(signup);
-        loginDashboard.add(ForgotPass);
         loginDashboard.add(exit);
         loginDashboard.add(showPassword);
 
@@ -200,7 +191,7 @@ public class LandLordLogin implements ActionListener {
 
 
 
-    // userpass validation methode
+    // email and pass validation methode
     private boolean validateLogin(String email, String pass) {
         try (Scanner scanner = new Scanner(new File("Data\\LandLordData.txt"))) {
             StringBuilder userData = new StringBuilder();
