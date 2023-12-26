@@ -21,7 +21,8 @@ public class login implements ActionListener, Ilginval {
     JTextField usertf, passtf;
     RoundButton login, signup, exit;
     JButton frgtpass, Admin; // login dashboard
-    JButton lgin, b7, b8, ad_exi, bc2usr; // admin Login
+    RoundButton lgin, ad_exi;
+    JButton b7, b8, bc2usr; // admin Login
 
     login() {
 
@@ -158,22 +159,32 @@ public class login implements ActionListener, Ilginval {
         ad_pf.setFont(bigFont);
         ad_pf.setOpaque(false);
 
-        lgin = new JButton("Login");
-        lgin.setBounds(545, 400, 150, 50);
+        lgin = new RoundButton("LOGIN");
+        lgin.setBounds(590, 400, 100, 35);
         lgin.addActionListener(this);
-        lgin.setOpaque(true);
-        lgin.setContentAreaFilled(true);
+        lgin.setBorder(BorderFactory.createMatteBorder(1, 1, 2, 1, Color.BLACK));
+        /*
+         * lgin.setOpaque(true);
+         * lgin.setContentAreaFilled(true);
+         */
         lgin.setBackground(Color.BLACK);
         lgin.setBorderPainted(true);
-        lgin.setForeground(Color.WHITE);
+        lgin.setForeground(Color.black);
 
-        ad_exi = new JButton("Exit");
+        ad_exi = new RoundButton("Exit");
         ad_exi.setBounds(1000, 620, 80, 30);
         ad_exi.addActionListener(this);
-        ad_exi.setOpaque(false);
-        ad_exi.setContentAreaFilled(false);
+        ad_exi.setBorder(BorderFactory.createMatteBorder(1, 1, 5, 1, Color.BLACK));
+        /*
+         * ad_exi.setOpaque(false);
+         * ad_exi.setContentAreaFilled(false);
+         */
         ad_exi.setBorderPainted(false);
         ad_exi.setForeground(Color.BLACK);
+
+        // Set button colors using RGB values
+        lgin.setBackground(new Color(248, 196, 48)); // Saffron
+        ad_exi.setBackground(new Color(255, 102, 102)); // very light red
 
         bc2usr = new JButton("go back to user Login");
         bc2usr.setBounds(0, 620, 200, 30);
@@ -227,7 +238,7 @@ public class login implements ActionListener, Ilginval {
             else if (validateLoginUser(user, pass)) {
                 showMessageDialog(null, "Login successful!");
                 // Additional frame here
-               new TenantDashboard();
+                new TenantDashboard();
             }
 
             else { // Login failed

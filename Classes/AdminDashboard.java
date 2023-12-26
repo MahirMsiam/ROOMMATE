@@ -12,6 +12,7 @@ import java.io.IOException;
 import javax.swing.table.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.awt.Color;
 
 public class AdminDashboard extends JFrame {
     private JTable userListTable;
@@ -25,17 +26,20 @@ public class AdminDashboard extends JFrame {
 
     public AdminDashboard() {
         setTitle("ADMIN-Dashboard");
-        // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridLayout(2, 2, 10, 10));
+
+        // Set frame icon
+        ImageIcon frameIcon = new ImageIcon("Media\\Frmlogo.png");
+        setIconImage(frameIcon.getImage());
 
         // Create labels with clickable images
         add(createClickableLabel("Tenant List", "Media\\tenant.png"));
         add(createClickableLabel("LandLord List", "Media\\landlord.png"));
-        // add(createClickableLabel("Properties", ",,,,,,"));
         add(createClickableLabel("Contributors", "Media\\contribution.png"));
-        add(createClickableLabel("Properties", "Media\\3.jpeg"));
+        add(createClickableLabel("Properties", "Media\\prop.png"));
 
-        // add(poster);
+        // Set background color
+        getContentPane().setBackground(new Color(0x3081D0));
 
         setSize(1000, 600);
         setLocationRelativeTo(null);
@@ -174,47 +178,38 @@ public class AdminDashboard extends JFrame {
         }
 
         private void loadPropertyData() {
-            JTable propertyTable = new JTable(); // Declare propertyTable as a local variable
-            String[] columnNames = { "Property Name", "Location", "Price", "Details" };
-            DefaultTableModel propertyTableModel = new DefaultTableModel(columnNames, 0);
-
-            try (BufferedReader br = new BufferedReader(new FileReader("Appartments\\Propertydata.txt"))) {
+            String[] columnNames = { "Name", "Location", "Rent" };
+            propertyTableModel = new DefaultTableModel(columnNames, 0);
+            propertyTable = new JTable(propertyTableModel);
+        
+            try (BufferedReader br = new BufferedReader(new FileReader("Apartments\\Property.txt"))) {
                 String line;
                 while ((line = br.readLine()) != null) {
-                    if (line.startsWith("Property Name:")) {
-                        String propertyName = line.substring(14).trim();
-                        String location = br.readLine().substring(10).trim();
-                        String price = br.readLine().substring(7).trim();
-                        String details = br.readLine().substring(9).trim();
+                    if (line.startsWith("Name:")) {
+                        String propertyName = line.substring(6).trim();
+                        String location = br.readLine().substring(9).trim();
+                        String rent = br.readLine().substring(6).trim();
                         br.readLine(); // Skip a line (Separator line)
-
-                        Object[] data = { propertyName, location, price, details };
+        
+                        Object[] data = { propertyName, location, rent };
                         propertyTableModel.addRow(data);
                     }
                 }
-
-                propertyTable.setModel(propertyTableModel); // Set the model to the propertyTable
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-
+        
         private void savePropertyDataToFile() {
-            DefaultTableModel propertyTableModel = (DefaultTableModel) propertyTable.getModel(); // Adjust this line
-                                                                                                 // based on how
-                                                                                                 // propertyTable is
-                                                                                                 // declared
-
             if (propertyTableModel != null) {
                 FileWriter writer = null;
                 try {
-                    writer = new FileWriter("Appartments\\propertydata.txt");
+                    writer = new FileWriter("Apartments\\Property.txt");
                     for (int row = 0; row < propertyTableModel.getRowCount(); row++) {
-                        writer.write("Property Name: " + propertyTableModel.getValueAt(row, 0) + "\n");
-                        writer.write("Location: " + propertyTableModel.getValueAt(row, 1) + "\n");
-                        writer.write("Price: " + propertyTableModel.getValueAt(row, 2) + "\n");
-                        writer.write("Details: " + propertyTableModel.getValueAt(row, 3) + "\n");
                         writer.write("====================\n");
+                        writer.write("Name: " + propertyTableModel.getValueAt(row, 0) + "\n");
+                        writer.write("Location: " + propertyTableModel.getValueAt(row, 1) + "\n");
+                        writer.write("Rent: " + propertyTableModel.getValueAt(row, 2) + "\n");
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -229,7 +224,6 @@ public class AdminDashboard extends JFrame {
                 }
             }
         }
-
         private void searchProperty(String propertyName) {
             if (propertyTableModel != null) {
                 for (int row = 0; row < propertyTableModel.getRowCount(); row++) {
@@ -268,7 +262,7 @@ public class AdminDashboard extends JFrame {
 
         private void showContributorsImage() {
             // Change the path to the actual image file
-            ImageIcon contributorsImage = new ImageIcon("Media\\3.jpeg");
+            ImageIcon contributorsImage = new ImageIcon("Media\\grpmates.png");
 
             // Create a new frame to display the image
             JFrame contributorsFrame = new JFrame("Contributors");
