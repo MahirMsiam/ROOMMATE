@@ -32,3 +32,8 @@ public class RoundButton extends JButton {
         return new Dimension(100, 40); // Sets the preferred size of the button
     }
 }
+/*HAPPY CODING
+If you liked it and it helped you drp a star
+Every Method is open for all just copy and paste
+DM freely on my socials in case you need help
+*/
