@@ -1,0 +1,4 @@
+====================
+Name: Siam
+Location: Badda
+Rent: 10000
