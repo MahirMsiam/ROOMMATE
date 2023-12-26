@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 public class AddProperty extends JFrame implements ActionListener {
     private final Container c;
     private final JFrame frame;
-    private final JLabel descriptionField;
+    private final JLabel LandLordNameField;
     private final JLabel size;
     private final JLabel rent;
     private final JLabel address;
@@ -69,12 +69,12 @@ public class AddProperty extends JFrame implements ActionListener {
         add.setForeground(Color.decode("#8ee0f0"));
         frame.add(add);
 
-        descriptionField = new JLabel("LandLord :");
-        descriptionField.setBounds(150, 55, 150, 50);
+        LandLordNameField = new JLabel("LandLord :");
+        LandLordNameField.setBounds(150, 55, 150, 50);
         Font typeFont = new Font("Times New Roman", Font.PLAIN, 20);
-        descriptionField.setFont(typeFont);
-        descriptionField.setForeground(Color.decode("#8ee0f0"));
-        frame.add(descriptionField);
+        LandLordNameField.setFont(typeFont);
+        LandLordNameField.setForeground(Color.decode("#8ee0f0"));
+        frame.add(LandLordNameField);
 
         LandLordName = new JTextField();
         LandLordName.setBounds(150, 105, 236, 30);
@@ -213,12 +213,14 @@ public class AddProperty extends JFrame implements ActionListener {
             //getting input
             String address = addressField.getText();
             String rent = rentField.getText();
+            String size = sizeField.getText();
+            String LandLordName = LandLordNameField.getText();
 
-            if (address.isEmpty() || rent.isEmpty() || LandLordName.getText().isEmpty() || sizeField.getText().isEmpty()) {
+            if (address.isEmpty() || rent.isEmpty() || LandLordName.isEmpty() || size.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Please fill in all fields");
 
-            } else if (validateInputs(address, rent, LandLordName.getText(), sizeField.getText())) {
-                saveDataToFile(address, rent, LandLordName.getText());
+            } else if (validateInputs(address, rent, LandLordName, size)) {
+                saveDataToFile(address, rent, LandLordName, size);
                 JOptionPane.showMessageDialog(null, "Property Added Successfully");
                 new LandLordDashboard();
                 frame.setVisible(false);
@@ -254,7 +256,12 @@ public class AddProperty extends JFrame implements ActionListener {
             frame.setVisible(false);
         }
     }
-    
+
+
+
+
+
+
     private boolean validateInputs(String address, String rent, String LandLordName, String size) {
         // validation logic here
 
@@ -266,7 +273,7 @@ public class AddProperty extends JFrame implements ActionListener {
         return true;
     }
 
-    private void saveDataToFile(String address,String rent, String LandLordName) {
+    private void saveDataToFile(String address,String rent, String LandLordName, String size){
         try (BufferedWriter writer= new BufferedWriter(new FileWriter("Apartments\\Property.txt",true))) {
             //Append the user data to the text file
             LocalDateTime now = LocalDateTime.now();
@@ -274,13 +281,14 @@ public class AddProperty extends JFrame implements ActionListener {
 
             writer.write("====================\n");
             writer.write("Property added at: " + dtf.format(now)+ "\n");
-            writer.write("Name: " + LandLordName + "\n");
-            writer.write("Location: " + address + "\n");
+            writer.write("Address: " + address + "\n");
             writer.write("Rent: " + rent + "\n");
+            writer.write("By: " + LandLordName + "\n");
+            writer.write("Size: " + size + "\n");
             writer.write("====================\n");
         } catch (IOException ioException){
             ioException.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error saving data");//Add a separator between entries
+            JOptionPane.showMessageDialog(this, "Error saving data");
         }
     }
 
@@ -307,28 +315,4 @@ public class AddProperty extends JFrame implements ActionListener {
         }
     }
 
-    // private boolean validateInputs(String address, String rent, String description, String wifi) {
-    //     // validation logic here
-
-    //     // check if the fields are not empty
-    //     if (address.isEmpty() || rent.isEmpty() || description.isEmpty() || wifi.isEmpty()) {
-    //         JOptionPane.showMessageDialog(this, "Please fill in all fields.");
-    //         return false;
-    //     }
-    //     return true;
-    // }
-
-    // private void saveDataToFile(String address,String rent, String description, String wifi){
-    //     try (BufferedWriter writer= new BufferedWriter(new FileWriter("Apartments\\Property.txt",true))) {
-    //         //Append the user data to the text file
-    //         writer.write("Address: " + address + "\n");
-    //         writer.write("Rent: " + rent + "\n");
-    //         writer.write("Description: " + description + "\n");
-    //         writer.write("Wifi: " + wifi + "\n");
-    //         writer.write("====================\n");
-    //     } catch (IOException ioException){
-    //         ioException.printStackTrace();
-    //         JOptionPane.showMessageDialog(this, "Error saving data");//Add a separator between entries
-    //     }
-    // }
 }
