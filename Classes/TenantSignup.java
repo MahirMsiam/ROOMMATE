@@ -121,6 +121,8 @@ public class TenantSignup extends JFrame implements ActionListener {
             setVisible(false);
         }
     }
+    
+                               ////////*IMPORTANT METHODS *////////
 
     private boolean validateInputs(String name, String address, String contact, String email,
             char[] password, char[] confirmPassword) {
@@ -169,3 +171,8 @@ public class TenantSignup extends JFrame implements ActionListener {
     }
 
 }
+/*HAPPY CODING
+If you liked it and it helped you drp a star
+Every Method is open for all just copy and paste
+DM freely on my socials in case you need help
+*/
