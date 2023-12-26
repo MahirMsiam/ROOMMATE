@@ -10,3 +10,10 @@ Rent: 10000000
 Name: muaz
 Location: Bashundhara
 Rent: 100000
+====================
+Property added at: 2023/12/27 04:32:50
+Name: siam
+Location: Badda
+Rent: 160000000
+Size: 1222222
+====================
