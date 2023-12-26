@@ -12,6 +12,7 @@ import java.io.IOException;
 import javax.swing.table.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.awt.Color;
 
 public class AdminDashboard extends JFrame {
     private JTable userListTable;
@@ -25,17 +26,20 @@ public class AdminDashboard extends JFrame {
 
     public AdminDashboard() {
         setTitle("ADMIN-Dashboard");
-        // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridLayout(2, 2, 10, 10));
+
+        // Set frame icon
+        ImageIcon frameIcon = new ImageIcon("Media\\Frmlogo.png");
+        setIconImage(frameIcon.getImage());
 
         // Create labels with clickable images
         add(createClickableLabel("Tenant List", "Media\\tenant.png"));
         add(createClickableLabel("LandLord List", "Media\\landlord.png"));
-        // add(createClickableLabel("Properties", ",,,,,,"));
         add(createClickableLabel("Contributors", "Media\\contribution.png"));
-        add(createClickableLabel("Properties", "Media\\3.jpeg"));
+        add(createClickableLabel("Properties", "Media\\prop.png"));
 
-        // add(poster);
+        // Set background color
+        getContentPane().setBackground(new Color(0x3081D0));
 
         setSize(1000, 600);
         setLocationRelativeTo(null);
@@ -258,7 +262,7 @@ public class AdminDashboard extends JFrame {
 
         private void showContributorsImage() {
             // Change the path to the actual image file
-            ImageIcon contributorsImage = new ImageIcon("Media\\3.jpeg");
+            ImageIcon contributorsImage = new ImageIcon("Media\\grpmates.png");
 
             // Create a new frame to display the image
             JFrame contributorsFrame = new JFrame("Contributors");
